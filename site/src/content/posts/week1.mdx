@@ -8,28 +8,44 @@ dataset: "week-1 snapshot, 2026-08-26"
 ---
 import DegreePlot from "../../components/DegreePlot";
 import NetworkGraph from "../../components/NetworkGraph";
+import SpiderRace from "../../components/SpiderRace";
+import Stats from "../../components/Stats";
 import Figure from "../../components/Figure.astro";
-import Stats from "../../components/Stats.astro";
 import Interactive from "../../components/Interactive.astro";
 import dist from "../../data/week1/degree-distributions.json";
 import panels from "../../assets/week1/degree-panels.svg";
 
+Before the charts, a game. Every character in the playground is a Wikipedia article; every article links to other characters. Start somewhere in the Marvel category and reach Spider-Man by clicking those links. Then switch direction and try to get *away* from him — same graph, same rules, very different game. The difference between the two is the finding of this post.
+
+<Interactive id="play" label="Play first · Two clicks from Spider-Man" note="The links you can click are exactly the out-links in the week-1 snapshot. Shortest paths are computed live from the same graph the post is about.">
+  <SpiderRace client:visible week={1} />
+</Interactive>
+
 ## What we asked
 
-Wikipedia links have a direction. When the Hulk article mentions Spider-Man, that is one link, Hulk → Spider-Man: Spider-Man *receives* it, Hulk *sends* it. So every character in the playground carries two numbers — how many articles point at them (**in-degree**) and how many they point at (**out-degree**).
+Wikipedia links have a direction. When the Hulk article mentions Spider-Man, that is one link, Hulk → Spider-Man: Spider-Man *receives* it, Hulk *sends* it. So every character carries two numbers — how many articles point at them (**in-degree**) and how many they point at (**out-degree**).
 
-Our question for week 1: **do those two numbers measure the same thing?** If "being well-connected" were a single property of a character, the two distributions should have the same shape, and the same names should sit at the top of both lists.
+Our question for week 1: **do those two numbers measure the same thing?** If "being well-connected" were a single property, the two distributions should have the same shape, the same names should top both lists, and it should be about as easy to get *to* a hub as to get *from* it.
 
 ## What we did
 
-We loaded the frozen snapshot as a directed graph, taking the node list from the roster so the isolated characters survive. Then we computed both degrees for every character, plotted each distribution on linear and log–log axes, and overlaid the course's binning scheme on the raw counts.
+We loaded the frozen snapshot as a directed graph, taking the node list from the roster so the isolated characters survive. Then we computed both degrees for every character, plotted each distribution on linear and log–log axes, overlaid the course's binning scheme on the raw counts, and measured shortest paths to and from the biggest hub.
 
-<Stats items={[
-  { value: "303", label: "characters (nodes)" },
-  { value: "1,784", label: "directed links (edges)" },
-  { value: "39%", label: "of links are reciprocated" },
-  { value: "17", label: "characters with no links at all" },
+<Stats client:visible items={[
+  { value: 303, label: "characters (nodes)" },
+  { value: 1784, label: "directed links (edges)" },
+  { value: 39, suffix: "%", label: "of links are reciprocated" },
+  { value: 17, label: "characters with no links at all" },
 ]} />
+
+One number you will see reported two ways for this network — by us, by other groups, by the exercise itself — is the average degree:
+
+| | formula | value | answers |
+|---|---|---:|---|
+| directed | 1,784 links ÷ 303 | **5.89** | how many links does an article send, on average? |
+| undirected pairs | 2 × 1,434 pairs ÷ 303 | **9.47** | how many *other characters* is one connected to, either way? |
+
+Both are right. They differ because 350 pairs link in both directions, so 700 of the 1,784 links collapse into 350 pairs when direction is dropped. Whenever a network number looks off by almost 2×, check whether someone dropped the arrows.
 
 Everything is plotted against *k + 1* rather than *k*: a log axis cannot show zero, and 58 characters have in-degree 0.
 
@@ -43,11 +59,13 @@ Everything is plotted against *k + 1* rather than *k*: a log axis cannot show ze
 
 ## What surprised us
 
-**1. They are two different shapes.** In-degree has a heavy tail: most characters are linked by a handful of articles, and then there is Spider-Man, linked by 106 — more than a third of the entire category. On log–log axes the in-degree cloud drops in a near-straight line across a full decade. Out-degree looks nothing like that: it rises to a peak around 3, falls off, and *stops* at 28. Nobody links to more than 28 other superheroes.
+**1. They are two different shapes.** In-degree has a heavy tail: most characters are linked by a handful of articles, and then there is Spider-Man, linked by 106 — more than a third of the entire category. On log–log axes the in-degree cloud drops in a roughly straight line — but only across a single decade, and 303 characters is far too few to call that a power law; in the notebook we put the real distribution next to 10,000 exponential and 10,000 power-law samples, and it sits between them. Out-degree looks nothing like either: it rises to a peak around 3, falls off, and *stops* at 28. Nobody links to more than 28 other superheroes.
 
 The reading that convinced us: out-degree is bounded by **effort** — one article, written by a finite number of editors, can only mention so many characters. In-degree is bounded only by the **size of the universe**. Attention is free to concentrate; writing is not.
 
-**2. The famous do not link back.** Of the 106 articles that link to Spider-Man, his own article links back to 9. That is 8% reciprocity for the biggest hub in the network — against 39% for the network as a whole. Hulk returns 14% of his links, Doctor Strange 20%. Fame in a link graph is largely one-way traffic.
+**2. Fame is one-way traffic.** Of the 106 articles that link to Spider-Man, his own article links back to 9 — 8% reciprocity for the biggest hub, against 39% for the network as a whole. Hulk returns 14% of his links, Doctor Strange 20%.
+
+The same asymmetry shows up in paths, which is what the game is about. Following links *towards* Spider-Man, 106 characters are one click away, 247 are within two, and 273 within four. Following links *away* from him, his 9 out-links only ever reach 230 characters, some of them 6 clicks deep, and 72 are out of reach entirely. Everyone can get to the hub; the hub can barely get anywhere.
 
 **3. The talkers are not the famous.** The characters who send the most links are a different crowd from the ones who receive them:
 
@@ -59,11 +77,13 @@ The reading that convinced us: out-degree is bounded by **effort** — one artic
 | Venom | 21 | 17 |   | Doctor Strange | 50 | 17 |
 | She-Hulk | 20 | 29 |   | Deadpool | 33 | 19 |
 
-Betsy Braddock's article mentions 28 heroes; 7 mention her. If we had collapsed the graph to undirected, she and Deadpool would look similar. They are not.
+Betsy Braddock's article mentions 28 heroes; 7 mention her. The two degrees are correlated (Spearman 0.70) but far from identical — collapse the graph to undirected and she and Deadpool look alike. They are not. At the extremes: 41 characters link out but are linked by nobody; only 3 are linked to but link to no one — Peggy Carter among them.
 
-**4. Seventeen characters are not in the story at all.** Baymax, Super Rabbit, Miracleman, Yo-Yo Rodriguez — no article in the category links to them, and they link to no one. Being in *Category:Marvel Comics superheroes* is an editorial decision; being part of the network is a different one. This is also why we built the graph from the roster and not from the edge list: the edge list alone would silently drop them and report 286 nodes.
+**4. Nine characters only talk to each other.** The network has one giant component of 277, seventeen isolates, and one island of exactly nine: Backhand, Blackthorn, Radian, Scaredycat, Scatterbrain, Shear, Snapdragon, Toxyn and Vyking — the cast of *Strikeforce: Morituri*. Inside the island 82% of links are reciprocated, more than double the network's rate. A team that exists only in its own pages.
 
-A smaller surprise, about the method rather than the data: the binned line only tells a clean story because every count is divided by its bin width. Skip that step and the doubling bins in the tail jump up by 8×, 16×, 32× — and manufacture a bump that is not there.
+The 17 isolates — Baymax, Super Rabbit, Miracleman, Yo-Yo Rodriguez — are not in the story at all. Being in *Category:Marvel Comics superheroes* is an editorial decision; being part of the network is a different one. This is also why we built the graph from the roster and not from the edge list: the edge list alone would silently drop them and report 286 nodes.
+
+**5. A note on the method.** The binned line only tells a clean story because every count is divided by its bin width. Skip that step and the doubling bins in the tail jump up by 8×, 16×, 32× — and manufacture a bump that is not there.
 
 ## The network itself
 
@@ -73,8 +93,8 @@ A smaller surprise, about the method rather than the data: the binned line only 
 
 ## What we would check next
 
-The optional stretch — re-deriving a corner of the snapshot from the live Wikipedia API — we did not do this week. The obvious candidate is the 17 isolates: are they really unlinked, or did the snapshot miss links that go through redirects the course resolver did not catch?
+The optional stretch — re-deriving a corner of the snapshot from the live Wikipedia API — we only touched: we used the API for the character images above, not to verify links. The obvious next check is the 17 isolates: are they really unlinked, or did the snapshot miss links that go through redirects the course resolver did not catch?
 
 ## Methods and AI
 
-The counts above (303 / 1,784 / 1,434 / ⟨k⟩ = 9.47) were checked against the numbers stated in the exercise, and the top-five lists against the leaderboard in the course explorable. Loading, degree tables, binning, plots and this site were built with a coding agent; the binning implementation was verified by asserting that it coincides exactly with the raw counts wherever the bin width is 1. What the agent did and what we verified by hand is logged in the repository's `AI_METHODS.md`.
+The counts above (303 / 1,784 / 1,434 / ⟨k⟩ = 9.47) were checked against the numbers stated in the exercise, and the top-five lists against the leaderboard in the course explorable; they also match what other groups report for the same snapshot. Loading, degree tables, binning, plots, the game and this site were built with a coding agent; the binning implementation was verified by asserting that it coincides exactly with the raw counts wherever the bin width is 1, and reciprocity was computed two independent ways. What the agent did and what we verified by hand is logged in the repository's `AI_METHODS.md`.

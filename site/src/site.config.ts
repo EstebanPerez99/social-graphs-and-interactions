@@ -1,8 +1,8 @@
 // Datos del grupo y del curso. Cambia aquí y se propaga a todo el sitio.
 export const site = {
-  group: "Group TBD",                       // TODO: nombre del grupo
+  group: "Team ##",                          // TODO: número/nombre oficial del equipo
   tagline: "Weekly notes on networks, language, and what the machine gets wrong.",
-  members: ["Esteban Pérez", "TBD", "TBD"], // TODO
+  members: ["Matteo", "Giulia", "Esteban"],
   repo: "https://github.com/EstebanPerez99/social-graphs-and-interactions", // TODO si cambia el nombre
   course: {
     code: "02805",

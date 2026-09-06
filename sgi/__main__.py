@@ -28,7 +28,7 @@ dataset: "TODO"
 draft: true
 ---
 import Figure from "../../components/Figure.astro";
-import Stats from "../../components/Stats.astro";
+import Stats from "../../components/Stats";
 import Interactive from "../../components/Interactive.astro";
 import DegreePlot from "../../components/DegreePlot";
 import NetworkGraph from "../../components/NetworkGraph";
@@ -37,9 +37,9 @@ import NetworkGraph from "../../components/NetworkGraph";
 
 ## What we did
 
-<Stats items={{[
-  {{ value: "—", label: "nodes" }},
-  {{ value: "—", label: "edges" }},
+<Stats client:visible items={{[
+  {{ value: 0, label: "nodes" }},
+  {{ value: 0, label: "edges" }},
 ]}} />
 
 ## The figure

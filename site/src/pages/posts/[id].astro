@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import Base from "../../layouts/Base.astro";
+import PostTitle from "../../components/PostTitle";
 import { site } from "../../site.config";
 import { url, fmtDate } from "../../lib/url";
 
@@ -17,7 +18,7 @@ const authors = post.data.authors.length ? post.data.authors : site.members;
     <header class="max-w-[68ch]">
       <a href={url("/")} class="font-mono text-[0.75rem] text-ink-muted hover:text-ink">← all posts</a>
       <p class="font-mono text-[0.75rem] uppercase tracking-wider text-ink-muted mt-6">Week {post.data.week} · {post.data.topic}</p>
-      <h1 class="font-display font-extrabold text-[2.2rem] sm:text-[3rem] leading-[1.02] tracking-[-0.02em] mt-2">{post.data.title}</h1>
+      <PostTitle client:load text={post.data.title} />
       <p class="mt-4 text-[1.15rem] text-ink-muted">{post.data.description}</p>
       <p class="font-mono text-[0.75rem] text-ink-muted mt-5 border-t border-ink/15 pt-3">
         {authors.join(" · ")} · {fmtDate(post.data.date)}{post.data.dataset && <> · dataset: {post.data.dataset}</>}

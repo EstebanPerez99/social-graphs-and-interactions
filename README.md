@@ -1,4 +1,4 @@
-# Social Graphs and Interactions — Group TBD
+# Social Graphs and Interactions — Team ##
 
 Weekly posts, notebooks and the final project for **02805 Social Graphs and Interactions** (DTU, Fall 2026).
 

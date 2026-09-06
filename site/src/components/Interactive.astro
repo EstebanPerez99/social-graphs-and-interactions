@@ -1,9 +1,9 @@
 ---
-// Marco para islas interactivas: fondo blanco, etiqueta y nota.
-interface Props { label?: string; note?: string; wide?: boolean }
-const { label, note, wide = true } = Astro.props;
+// Marco para islas interactivas: etiqueta, panel blanco y nota. `id` permite anclas (#play).
+interface Props { label?: string; note?: string; wide?: boolean; id?: string }
+const { label, note, wide = true, id } = Astro.props;
 ---
-<div class:list={["my-10", { wide }]}>
+<div id={id} class:list={["my-10 scroll-mt-8", { wide }]}>
   {label && <div class="font-mono text-[0.72rem] uppercase tracking-wider text-ink-muted mb-2">{label}</div>}
   <div class="panel p-3 sm:p-5 overflow-hidden">
     <slot />
