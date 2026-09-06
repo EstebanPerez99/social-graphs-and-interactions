@@ -46,7 +46,7 @@ const byWeek = new Map(posts.map((p) => [p.data.week, p]));
       {site.schedule.map((s) => {
         const p = byWeek.get(s.week);
         return (
-          <li class="grid grid-cols-[4.5rem_1fr_auto] sm:grid-cols-[5rem_14rem_1fr_auto] gap-x-4 py-3.5 items-baseline font-mono text-[0.8rem]">
+          <li class="grid grid-cols-[5.5rem_1fr_auto] sm:grid-cols-[5.5rem_14rem_1fr_auto] gap-x-4 py-3.5 items-baseline font-mono text-[0.8rem]">
             <span class="text-ink-muted">Week {s.week}</span>
             <span class="text-ink-muted hidden sm:inline">{s.topic}</span>
             {p
@@ -57,8 +57,8 @@ const byWeek = new Map(posts.map((p) => [p.data.week, p]));
           </li>
         );
       })}
-      <li class="grid grid-cols-[4.5rem_1fr] sm:grid-cols-[5rem_1fr] gap-x-4 py-3.5 font-mono text-[0.8rem] text-ink-faint">
-        <span>Weeks 9–13</span><span>Final project · demo fair 2 Dec</span>
+      <li class="grid grid-cols-[5.5rem_1fr] gap-x-4 py-3.5 font-mono text-[0.8rem] text-ink-faint">
+        <span class="whitespace-nowrap">Weeks 9–13</span><span>Final project · demo fair 2 Dec</span>
       </li>
     </ol>
   </section>
