@@ -1,0 +1,10 @@
+---
+interface Props { src: string; alt: string; caption?: string; wide?: boolean }
+const { src, alt, caption, wide = false } = Astro.props;
+---
+<figure class:list={["my-8", { wide }]}>
+  <div class="panel p-3 sm:p-4">
+    <img src={src} alt={alt} loading="lazy" class="w-full h-auto" />
+  </div>
+  {caption && <figcaption class="font-mono text-[0.78rem] text-ink-muted mt-2 leading-snug">{caption}</figcaption>}
+</figure>

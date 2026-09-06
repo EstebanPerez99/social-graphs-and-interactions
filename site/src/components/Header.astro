@@ -1,0 +1,25 @@
+---
+import { site } from "../site.config";
+import { url } from "../lib/url";
+---
+<header class="w-full max-w-6xl mx-auto px-6 sm:px-10 pt-7 pb-4 flex items-center justify-between gap-6">
+  <a href={url("/")} class="flex items-center gap-3 no-underline group">
+    <!-- marca: una matriz de adyacencia 5x5 -->
+    <svg width="26" height="26" viewBox="0 0 5 5" aria-hidden="true" class="shrink-0">
+      <g fill="var(--color-ink)">
+        <rect x="0" y="0" width="1" height="1"/><rect x="1" y="0" width="1" height="1"/><rect x="3" y="0" width="1" height="1"/>
+        <rect x="0" y="1" width="1" height="1"/><rect x="2" y="1" width="1" height="1"/>
+        <rect x="1" y="2" width="1" height="1"/><rect x="4" y="2" width="1" height="1"/>
+        <rect x="0" y="3" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/>
+        <rect x="2" y="4" width="1" height="1"/>
+      </g>
+      <rect x="0" y="0" width="1" height="1" fill="var(--color-in)"/>
+    </svg>
+    <span class="font-display font-bold text-lg tracking-tight text-ink group-hover:text-in transition-colors">{site.group}</span>
+  </a>
+  <nav class="font-mono text-[0.78rem] flex items-center gap-5 text-ink-muted">
+    <a href={url("/#posts")} class="hover:text-ink">posts</a>
+    <a href={`${site.repo}/blob/main/AI_METHODS.md`} class="hover:text-ink">methods</a>
+    <a href={site.course.url} class="hover:text-ink hidden sm:inline">{site.course.code}</a>
+  </nav>
+</header>

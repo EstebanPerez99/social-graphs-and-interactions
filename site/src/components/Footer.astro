@@ -1,0 +1,11 @@
+---
+import { site } from "../site.config";
+---
+<footer class="w-full max-w-6xl mx-auto px-6 sm:px-10 py-10 mt-20 border-t border-ink/15 font-mono text-[0.75rem] text-ink-muted flex flex-col sm:flex-row gap-3 sm:items-center justify-between">
+  <span>{site.course.code} · {site.course.name} · {site.course.org}</span>
+  <span>
+    paper for understanding, agents for exploring ·
+    <a href={`${site.repo}/blob/main/AI_METHODS.md`} class="underline hover:text-ink">AI_METHODS.md</a> ·
+    <a href={site.repo} class="underline hover:text-ink">source</a>
+  </span>
+</footer>

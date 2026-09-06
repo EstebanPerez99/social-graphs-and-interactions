@@ -1,0 +1,65 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+import AdjacencyMatrix from "../components/AdjacencyMatrix";
+import { site } from "../site.config";
+import { url, fmtDate } from "../lib/url";
+
+const posts = (await getCollection("posts", ({ data }) => !data.draft)).sort((a, b) => b.data.week - a.data.week);
+const latest = posts[0];
+const byWeek = new Map(posts.map((p) => [p.data.week, p]));
+---
+<Base>
+  <!-- hero: la matriz de la semana actual + el post más reciente -->
+  <section class="grid lg:grid-cols-[minmax(0,520px)_1fr] gap-10 lg:gap-16 items-start pt-8 pb-16">
+    <div>
+      <div class="panel p-2">
+        <AdjacencyMatrix client:only="react" week={latest?.data.week ?? 1} />
+      </div>
+      <p class="font-mono text-[0.72rem] text-ink-muted mt-2 leading-snug">
+        Adjacency matrix, week {latest?.data.week ?? 1} · nodes sorted by degree · row{" "}
+        <span style="color:var(--color-out)">links out</span>, column{" "}
+        <span style="color:var(--color-in)">links in</span> · hover
+      </p>
+    </div>
+
+    <div class="lg:pt-4">
+      <p class="font-mono text-[0.75rem] uppercase tracking-wider text-ink-muted">{site.course.code} · {site.course.name}</p>
+      <h1 class="font-display font-extrabold text-[2.6rem] sm:text-[3.4rem] leading-[0.98] tracking-[-0.02em] mt-3">{site.group}</h1>
+      <p class="mt-5 text-[1.15rem] max-w-[34ch] text-ink-muted">{site.tagline}</p>
+
+      {latest && (
+        <div class="mt-10 border-t-2 border-ink pt-4">
+          <p class="font-mono text-[0.72rem] text-ink-muted">Latest · Week {latest.data.week} · {latest.data.topic} · {fmtDate(latest.data.date)}</p>
+          <a href={url(`/posts/${latest.id}/`)} class="block mt-2 font-display font-bold text-2xl leading-tight tracking-tight hover:text-in transition-colors">{latest.data.title}</a>
+          <p class="mt-2 text-ink-muted max-w-[40ch]">{latest.data.description}</p>
+          <a href={url(`/posts/${latest.id}/`)} class="inline-block mt-4 font-mono text-[0.78rem] underline underline-offset-4 hover:text-in">Read the post →</a>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- índice: la secuencia real del curso -->
+  <section id="posts" class="pb-10">
+    <h2 class="font-display font-bold text-xl tracking-tight border-b-2 border-ink pb-2">Posts</h2>
+    <ol class="divide-y divide-grid">
+      {site.schedule.map((s) => {
+        const p = byWeek.get(s.week);
+        return (
+          <li class="grid grid-cols-[4.5rem_1fr_auto] sm:grid-cols-[5rem_14rem_1fr_auto] gap-x-4 py-3.5 items-baseline font-mono text-[0.8rem]">
+            <span class="text-ink-muted">Week {s.week}</span>
+            <span class="text-ink-muted hidden sm:inline">{s.topic}</span>
+            {p
+              ? <a href={url(`/posts/${p.id}/`)} class="font-body text-[1.05rem] text-ink hover:text-in">{p.data.title}</a>
+              : <span class="font-body text-[1.05rem] text-ink-faint sm:hidden">{s.topic}</span>}
+            {!p && <span class="font-mono text-ink-faint hidden sm:inline">not yet</span>}
+            <span class="text-ink-faint">{p ? fmtDate(p.data.date) : fmtDate(s.date)}</span>
+          </li>
+        );
+      })}
+      <li class="grid grid-cols-[4.5rem_1fr] sm:grid-cols-[5rem_1fr] gap-x-4 py-3.5 font-mono text-[0.8rem] text-ink-faint">
+        <span>Weeks 9–13</span><span>Final project · demo fair 2 Dec</span>
+      </li>
+    </ol>
+  </section>
+</Base>

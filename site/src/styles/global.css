@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f6f8fb;
+  --color-grid: #e4eaf2;
+  --color-ink: #0f172a;
+  --color-ink-muted: #5b6577;
+  --color-ink-faint: #9aa4b2;
+  --color-in: #d1495b;      /* in-degree: links received  */
+  --color-out: #1f6f8b;     /* out-degree: links sent     */
+  --color-in-soft: #fbe9ec;
+  --color-out-soft: #e3f0f5;
+
+  --font-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html { color-scheme: light; }
+
+body {
+  background-color: var(--color-paper);
+  background-image:
+    linear-gradient(var(--color-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: -1px -1px;
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible { outline: 2px solid var(--color-out); outline-offset: 3px; border-radius: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* ---------- prosa de los posts ---------- */
+.prose { max-width: 68ch; }
+.prose > * + * { margin-top: 1.1em; }
+.prose h2 {
+  font-family: var(--font-display); font-weight: 700; font-size: 1.6rem; line-height: 1.15;
+  letter-spacing: -0.01em; margin-top: 2.4em;
+}
+.prose h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; margin-top: 1.8em; }
+.prose a { color: var(--color-out); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.prose a:hover { color: var(--color-in); }
+.prose strong { font-weight: 600; }
+.prose code {
+  font-family: var(--font-mono); font-size: 0.85em; background: white;
+  border: 1px solid var(--color-grid); border-radius: 4px; padding: 0.08em 0.35em;
+}
+.prose pre { background: white; border: 1px solid var(--color-grid); border-radius: 6px; padding: 1rem 1.2rem; overflow-x: auto; font-size: 0.85rem; }
+.prose pre code { border: 0; padding: 0; background: none; }
+.prose ul, .prose ol { padding-left: 1.4em; }
+.prose li + li { margin-top: 0.35em; }
+.prose blockquote { border-left: 3px solid var(--color-grid); padding-left: 1rem; color: var(--color-ink-muted); font-style: italic; }
+.prose table { width: 100%; border-collapse: collapse; font-size: 0.92rem; font-family: var(--font-mono); }
+.prose th { text-align: left; font-weight: 500; color: var(--color-ink-muted); border-bottom: 1.5px solid var(--color-ink); padding: 0.4em 0.6em; }
+.prose td { border-bottom: 1px solid var(--color-grid); padding: 0.4em 0.6em; }
+.prose td:not(:first-child), .prose th:not(:first-child) { text-align: right; }
+.prose hr { border: 0; border-top: 1.5px solid var(--color-ink); width: 4rem; margin: 3rem 0; }
+
+/* ---------- elementos que rompen la columna ---------- */
+.wide { width: min(100%, 60rem); margin-left: 0; }
+@media (min-width: 64rem) {
+  .prose .wide { width: min(60rem, calc(100vw - 6rem)); }
+}
+.panel { background: white; border: 1px solid var(--color-grid); border-radius: 8px; }
