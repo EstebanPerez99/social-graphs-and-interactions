@@ -1,6 +1,6 @@
 ---
 title: "Fame is not the same as talking"
-description: "In-degree and out-degree of 303 Marvel superhero articles tell two different stories — and the famous ones almost never link back."
+description: "In-degree and out-degree of 303 Marvel superhero articles tell two different stories — and the famous ones rarely link back."
 week: 1
 topic: "Networks"
 date: 2026-09-07
@@ -59,15 +59,15 @@ Everything is plotted against *k + 1* rather than *k*: a log axis cannot show ze
 
 ## What surprised us
 
-**1. They are two different shapes.** In-degree has a heavy tail: most characters are linked by a handful of articles, and then there is Spider-Man, linked by 106 — more than a third of the entire category. On log–log axes the in-degree cloud drops in a roughly straight line — but only across a single decade, and 303 characters is far too few to call that a power law; in the notebook we put the real distribution next to 10,000 exponential and 10,000 power-law samples, and it sits between them. Out-degree looks nothing like either: it rises to a peak around 3, falls off, and *stops* at 28. Nobody links to more than 28 other superheroes.
+**1. They are two different shapes.** In-degree has a heavy tail: most characters are linked by a handful of articles, and then there is Spider-Man, linked by 106 — more than a third of the entire category. On log–log axes the in-degree cloud drops in a roughly straight line — but only across a single decade, and 303 characters is far too few to call that a power law; in the notebook we put the real distribution next to 10,000 exponential and 10,000 power-law samples, and it sits between them. Out-degree looks nothing like either: it rises to a peak around 3, falls off, and *stops* at 28. No article links out to more than 28 other superheroes.
 
 The reading that convinced us: out-degree is bounded by **effort** — one article, written by a finite number of editors, can only mention so many characters. In-degree is bounded only by the **size of the universe**. Attention is free to concentrate; writing is not.
 
-**2. Fame is one-way traffic.** Of the 106 articles that link to Spider-Man, his own article links back to 9 — 8% reciprocity for the biggest hub, against 39% for the network as a whole. Hulk returns 14% of his links, Doctor Strange 20%.
+**2. Fame is one-way traffic.** Of the 106 articles that link to Spider-Man, his own article links back to 9 — 8% reciprocity for the biggest hub, against 39% for the network as a whole. Hulk links back to 14% of the articles that link to him, Doctor Strange to 20%.
 
-The same asymmetry shows up in paths, which is what the game is about. Following links *towards* Spider-Man, 106 characters are one click away, 247 are within two, and 273 within four. Following links *away* from him, his 9 out-links only ever reach 230 characters, some of them 6 clicks deep, and 72 are out of reach entirely. Everyone can get to the hub; the hub can barely get anywhere.
+The same asymmetry shows up in paths, which is what the game is about. Following links *towards* Spider-Man, 106 characters are one click away, 247 are within two, and 273 within four. Following links *away* from him, his 9 out-links only ever reach 230 characters, some of them 6 clicks deep, and 72 are out of reach entirely. Inside the giant component almost everyone can get to the hub; the hub can barely get anywhere.
 
-**3. The talkers are not the famous.** The characters who send the most links are a different crowd from the ones who receive them:
+**3. The top talkers are not the top famous.** The two degrees do move together — Spearman 0.70, so a character that mentions many tends to be mentioned by many — but the *top* of each list is a different crowd, with no overlap at all:
 
 | top out-degree | out | in |   | top in-degree | in | out |
 |---|---:|---:|---|---|---:|---:|
@@ -77,11 +77,11 @@ The same asymmetry shows up in paths, which is what the game is about. Following
 | Venom | 21 | 17 |   | Doctor Strange | 50 | 17 |
 | She-Hulk | 20 | 29 |   | Deadpool | 33 | 19 |
 
-Betsy Braddock's article mentions 28 heroes; 7 mention her. The two degrees are correlated (Spearman 0.70) but far from identical — collapse the graph to undirected and she and Deadpool look alike. They are not. At the extremes: 41 characters link out but are linked by nobody; only 3 are linked to but link to no one — Peggy Carter among them.
+Betsy Braddock's article mentions 28 heroes; 7 mention her. Luke Cage is her mirror image: 25 mention him, he mentions 9. Collapse the graph to undirected and both become "a character with 28 connections" — identical, when they are opposites. At the extremes: 41 characters link out but are linked by nobody; only 3 are linked to but link to no one — Peggy Carter among them.
 
 **4. Nine characters only talk to each other.** The network has one giant component of 277, seventeen isolates, and one island of exactly nine: Backhand, Blackthorn, Radian, Scaredycat, Scatterbrain, Shear, Snapdragon, Toxyn and Vyking — the cast of *Strikeforce: Morituri*. Inside the island 82% of links are reciprocated, more than double the network's rate. A team that exists only in its own pages.
 
-The 17 isolates — Baymax, Super Rabbit, Miracleman, Yo-Yo Rodriguez — are not in the story at all. Being in *Category:Marvel Comics superheroes* is an editorial decision; being part of the network is a different one. This is also why we built the graph from the roster and not from the edge list: the edge list alone would silently drop them and report 286 nodes.
+The 17 isolates — Baymax, Super Rabbit, Miracleman and Yo-Yo Rodriguez among them — are not in the story at all. Being in *Category:Marvel Comics superheroes* is an editorial decision; being part of the network is a different one. This is also why we built the graph from the roster and not from the edge list: the edge list alone would silently drop them and report 286 nodes.
 
 **5. A note on the method.** The binned line only tells a clean story because every count is divided by its bin width. Skip that step and the doubling bins in the tail jump up by 8×, 16×, 32× — and manufacture a bump that is not there.
 
@@ -93,7 +93,7 @@ The 17 isolates — Baymax, Super Rabbit, Miracleman, Yo-Yo Rodriguez — are no
 
 ## What we would check next
 
-The optional stretch — re-deriving a corner of the snapshot from the live Wikipedia API — we only touched: we used the API for the character images above, not to verify links. The obvious next check is the 17 isolates: are they really unlinked, or did the snapshot miss links that go through redirects the course resolver did not catch?
+We only touched the optional stretch of re-deriving a corner of the snapshot from the live Wikipedia API: we used the API for the character images in the game, not to verify links. The obvious next check is the 17 isolates: are they really unlinked, or did the snapshot miss links that go through redirects the course resolver did not catch?
 
 ## Methods and AI
 
