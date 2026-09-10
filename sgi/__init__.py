@@ -16,6 +16,7 @@ SITE = ROOT / "site"
 from .data import load_marvel                                              # noqa: E402
 from .degree import degree_table, top, raw_distribution, goodies_bins       # noqa: E402
 from .plots import set_style, plot_distribution, degree_panels, PALETTE     # noqa: E402
+from .graph import draw                                                    # noqa: E402
 from .export import save_fig, save_json, save_table                         # noqa: E402
 from .wiki import fetch_thumbnails                                         # noqa: E402
 
@@ -24,6 +25,7 @@ __all__ = [
     "load_marvel",
     "degree_table", "top", "raw_distribution", "goodies_bins",
     "set_style", "plot_distribution", "degree_panels", "PALETTE",
+    "draw",
     "save_fig", "save_json", "save_table",
     "fetch_thumbnails",
 ]
