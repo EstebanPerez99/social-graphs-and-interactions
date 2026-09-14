@@ -1,0 +1,24 @@
+/* Hallmark — Grade P4 H4 E4 S4 R4 V4 | pre-emit critique: restrained hierarchy, one argument per scene, existing palette preserved */
+:root {
+  --journey-panel-width: 18rem;
+  --journey-stage-height: clamp(34rem, 72dvh, 46rem);
+  --journey-control-height: 4rem;
+  --journey-space-1: 0.375rem;
+  --journey-space-2: 0.625rem;
+  --journey-space-3: 1rem;
+  --journey-space-4: 1.5rem;
+  --journey-space-5: 2.25rem;
+  --journey-radius: 0.5rem;
+  --journey-border: 1px;
+  --journey-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --journey-fast: 160ms;
+  --journey-slow: 600ms;
+}
+
+@media (max-width: 47.99rem) {
+  :root {
+    --journey-panel-width: 100%;
+    --journey-stage-height: 42rem;
+    --journey-control-height: 4.5rem;
+  }
+}

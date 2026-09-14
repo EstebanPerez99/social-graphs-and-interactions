@@ -17,6 +17,7 @@
 }
 
 html { color-scheme: light; }
+html, body { overflow-x: clip; }
 
 body {
   background-color: var(--color-paper);
@@ -70,3 +71,24 @@ body {
   .prose .wide { width: min(60rem, calc(100vw - 6rem)); }
 }
 .panel { background: white; border: 1px solid var(--color-grid); border-radius: 8px; }
+
+.immersive-post > h2,
+.immersive-post > p {
+  max-width: 68ch;
+  margin-inline: auto;
+}
+
+.immersive-post > h2 {
+  margin-top: 3rem;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.immersive-post > p {
+  margin-top: 1rem;
+  padding-inline: 1.5rem;
+}
+
+.immersive-post > p:last-child { margin-bottom: 3rem; }

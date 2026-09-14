@@ -42,16 +42,25 @@ function build(data: Data) {
   return { byId, out, inn, toHub, fromHub, n: data.nodes.length };
 }
 type Graph = ReturnType<typeof build>;
+type GameState = {
+  mode: Mode;
+  start: string;
+  target: string;
+  path: string[];
+  clicks: number;
+  status: "playing" | "won" | "gaveup";
+  hint: boolean;
+};
 
 const pick = <T,>(xs: T[]) => xs[Math.floor(Math.random() * xs.length)];
 
-function newGame(g: Graph, mode: Mode) {
+function newGame(g: Graph, mode: Mode): GameState {
   if (mode === "to") {
-    const start = pick([...g.toHub.dist].filter(([id, d]) => d >= 2 && d <= 4).map(([id]) => id));
-    return { mode, start, target: HUB, path: [start], clicks: 0, status: "playing" as const, hint: false };
+    const start = pick([...g.toHub.dist].filter(([, d]) => d >= 2 && d <= 4).map(([id]) => id));
+    return { mode, start, target: HUB, path: [start], clicks: 0, status: "playing", hint: false };
   }
-  const target = pick([...g.fromHub.dist].filter(([id, d]) => d >= 3).map(([id]) => id));
-  return { mode, start: HUB, target, path: [HUB], clicks: 0, status: "playing" as const, hint: false };
+  const target = pick([...g.fromHub.dist].filter(([, d]) => d >= 3).map(([id]) => id));
+  return { mode, start: HUB, target, path: [HUB], clicks: 0, status: "playing", hint: false };
 }
 
 function optimalPath(g: Graph, mode: Mode, start: string, target: string) {
@@ -90,7 +99,7 @@ function Chip({ node, onClick, badge, tone }: { node: Node; onClick?: () => void
 
 function Game({ data }: { data: Data }) {
   const g = useMemo(() => build(data), [data]);
-  const [s, setS] = useState(() => newGame(g, "to"));
+  const [s, setS] = useState<GameState>(() => newGame(g, "to"));
   const cur = g.byId.get(s.path[s.path.length - 1])!;
   const target = g.byId.get(s.target)!;
   const links = g.out.get(cur.id) ?? [];

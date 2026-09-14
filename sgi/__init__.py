@@ -21,7 +21,7 @@ from .export import save_fig, save_json, save_table                         # no
 from .wiki import fetch_thumbnails                                         # noqa: E402
 from .friendship import (                                                   # noqa: E402
     friendship_table, friendship_summary, popular_friends,
-    sample_friendship_pairs,
+    sample_friendship_pairs, friendship_journey_data,
 )
 
 __all__ = [
@@ -33,5 +33,5 @@ __all__ = [
     "save_fig", "save_json", "save_table",
     "fetch_thumbnails",
     "friendship_table", "friendship_summary", "popular_friends",
-    "sample_friendship_pairs",
+    "sample_friendship_pairs", "friendship_journey_data",
 ]

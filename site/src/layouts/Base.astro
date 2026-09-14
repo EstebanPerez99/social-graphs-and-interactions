@@ -5,8 +5,8 @@ import Footer from "../components/Footer.astro";
 import { site } from "../site.config";
 import { url } from "../lib/url";
 
-interface Props { title?: string; description?: string }
-const { title, description = site.tagline } = Astro.props;
+interface Props { title?: string; description?: string; immersive?: boolean }
+const { title, description = site.tagline, immersive = false } = Astro.props;
 const fullTitle = title ? `${title} · ${site.group}` : `${site.group} · ${site.course.code}`;
 ---
 <html lang="en">
@@ -24,11 +24,11 @@ const fullTitle = title ? `${title} · ${site.group}` : `${site.group} · ${site
       rel="stylesheet"
     />
   </head>
-  <body class="min-h-screen flex flex-col">
-    <Header />
-    <main class="flex-1 w-full max-w-6xl mx-auto px-6 sm:px-10">
+  <body class:list={["min-h-screen flex flex-col", immersive && "overflow-hidden"]}>
+    {!immersive && <Header />}
+    <main class:list={["flex-1 w-full", immersive ? "h-dvh overflow-hidden" : "max-w-6xl mx-auto px-6 sm:px-10"]}>
       <slot />
     </main>
-    <Footer />
+    {!immersive && <Footer />}
   </body>
 </html>

@@ -3,6 +3,7 @@ import unittest
 import networkx as nx
 
 from sgi.friendship import (
+    friendship_journey_data,
     friendship_summary,
     friendship_table,
     popular_friends,
@@ -55,6 +56,24 @@ class FriendshipTest(unittest.TestCase):
         summary = friendship_summary(graph)
         self.assertEqual(summary["edge_count"], 1)
         self.assertEqual(summary["person_mean_degree"], 1)
+
+    def test_journey_export_preserves_degrees_and_is_reproducible(self):
+        graph = nx.cycle_graph(8)
+        first = friendship_journey_data(graph, seed=12, swaps_per_edge=1)
+        second = friendship_journey_data(graph, seed=12, swaps_per_edge=1)
+
+        self.assertEqual(first, second)
+        self.assertEqual(len(first["nodes"]), 8)
+        self.assertEqual(len(first["links"]), len(first["shuffled_links"]))
+        self.assertEqual(
+            sorted(node["degree"] for node in first["nodes"]),
+            sorted(dict(graph.degree()).values()),
+        )
+        self.assertTrue(all(len(node["position"]) == 3 for node in first["nodes"]))
+
+    def test_journey_export_rejects_negative_swaps(self):
+        with self.assertRaises(ValueError):
+            friendship_journey_data(self.graph, swaps_per_edge=-1)
 
 
 if __name__ == "__main__":

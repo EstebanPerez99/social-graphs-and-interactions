@@ -12,6 +12,7 @@ const posts = defineCollection({
     authors: z.array(z.string()).default([]),
     dataset: z.string().optional(),
     draft: z.boolean().default(false),
+    immersive: z.boolean().default(false),
   }),
 });
 

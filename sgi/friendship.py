@@ -1,7 +1,7 @@
 """Friendship-paradox metrics for simple, undirected views of networks."""
 from __future__ import annotations
 
-from collections.abc import Hashable
+from collections.abc import Hashable, Mapping
 
 import networkx as nx
 import numpy as np
@@ -198,3 +198,159 @@ def sample_friendship_pairs(
             "friend_at_least_as_popular": degree[friend] >= degree[person],
         })
     return pd.DataFrame(rows)
+
+
+def _packed_spring_layout(G: nx.Graph, seed: int) -> dict[Hashable, np.ndarray]:
+    """Lay out the giant component at full scale and pack satellites around it."""
+    components = sorted(nx.connected_components(G), key=len, reverse=True)
+    satellite_count = max(1, len(components) - 1)
+    positions: dict[Hashable, np.ndarray] = {}
+
+    for component_index, component in enumerate(components):
+        subgraph = G.subgraph(component)
+        size = len(component)
+        if component_index == 0:
+            center = np.zeros(3)
+            radius = 14.0
+        else:
+            satellite_index = component_index - 1
+            ring_index = satellite_index // 14
+            index_on_ring = satellite_index % 14
+            members_on_ring = min(14, satellite_count - ring_index * 14)
+            angle = 2 * np.pi * index_on_ring / members_on_ring
+            orbit = 17.5 + ring_index * 3.4
+            center = np.asarray([
+                orbit * np.cos(angle),
+                0.0,
+                orbit * np.sin(angle),
+            ])
+            radius = min(3.0, 0.75 + 0.42 * np.sqrt(size))
+
+        if size == 1:
+            positions[next(iter(component))] = center
+            continue
+
+        local = nx.spring_layout(
+            subgraph,
+            dim=2,
+            seed=seed + component_index,
+            iterations=180,
+            k=2.4 / np.sqrt(size),
+            scale=radius,
+        )
+        depth_rng = np.random.default_rng(seed + component_index)
+        for node, local_point in local.items():
+            positions[node] = np.asarray([
+                local_point[0] + center[0],
+                depth_rng.uniform(-1.35, 1.35),
+                local_point[1] + center[2],
+            ])
+
+    return positions
+
+
+def friendship_journey_data(
+    G: nx.Graph,
+    nodes: pd.DataFrame | None = None,
+    *,
+    seed: int = 20260914,
+    swaps_per_edge: int = 10,
+    enrichment: Mapping[Hashable, Mapping[str, object]] | None = None,
+) -> dict[str, object]:
+    """Build the deterministic data artifact used by the Week 2 web journey.
+
+    The second network is created with double-edge swaps, so every node keeps
+    its degree while the endpoints are rewired. Both layouts are calculated
+    here rather than in the browser, making the visual transition reproducible.
+    ``enrichment`` can add presentation-only fields such as thumbnail URLs.
+    """
+    if swaps_per_edge < 0:
+        raise ValueError("swaps_per_edge must be non-negative")
+
+    U = _undirected_simple(G)
+    shuffled = U.copy()
+    swap_count = swaps_per_edge * U.number_of_edges()
+    if swap_count:
+        nx.double_edge_swap(
+            shuffled,
+            nswap=swap_count,
+            max_tries=max(100, 20 * swap_count),
+            seed=seed,
+        )
+
+    node_order = list(U.nodes())
+    original_layout = _packed_spring_layout(U, seed)
+    shuffled_layout = _packed_spring_layout(shuffled, seed + 1)
+
+    table = friendship_table(U, nodes).set_index("node_id")
+    drivers = popular_friends(U, nodes, n=None).set_index("node_id")
+    names = _names(U, nodes)
+    metadata: dict[Hashable, dict[str, object]] = {
+        node: dict(data) for node, data in U.nodes(data=True)
+    }
+    if nodes is not None and "node_id" in nodes.columns:
+        for row in nodes.to_dict(orient="records"):
+            node = row.pop("node_id")
+            metadata.setdefault(node, {}).update(row)
+    if enrichment:
+        for node, values in enrichment.items():
+            metadata.setdefault(node, {}).update(values)
+
+    node_records = []
+    for node in node_order:
+        row = table.loc[node]
+        driver = drivers.loc[node] if node in drivers.index else None
+        meta = metadata.get(node, {})
+        node_records.append({
+            "id": str(node),
+            "name": names[node],
+            "degree": int(row["degree"]),
+            "mean_neighbor_degree": (
+                None if pd.isna(row["mean_neighbor_degree"])
+                else round(float(row["mean_neighbor_degree"]), 6)
+            ),
+            "higher_degree_neighbors": int(row["higher_degree_neighbors"]),
+            "local_paradox": (
+                None if pd.isna(row["local_paradox"])
+                else bool(row["local_paradox"])
+            ),
+            "unbeaten": None if pd.isna(row["unbeaten"]) else bool(row["unbeaten"]),
+            "friend_sample_probability": (
+                0.0 if driver is None
+                else round(float(driver["friend_sample_probability"]), 8)
+            ),
+            "url": meta.get("url"),
+            "description": meta.get("description", meta.get("desc")),
+            "thumbnail": meta.get("thumbnail", meta.get("thumb")),
+            "position": [round(float(value), 5) for value in original_layout[node]],
+            "shuffled_position": [
+                round(float(value), 5) for value in shuffled_layout[node]
+            ],
+        })
+
+    def edge_records(graph: nx.Graph) -> list[dict[str, str]]:
+        return [
+            {"source": str(source), "target": str(target)}
+            for source, target in graph.edges()
+        ]
+
+    top_drivers = popular_friends(U, nodes, n=5)
+    unbeaten = table[(table["degree"] > 0) & table["unbeaten"]]
+    return {
+        "seed": seed,
+        "swaps": swap_count,
+        "nodes": node_records,
+        "links": edge_records(U),
+        "shuffled_links": edge_records(shuffled),
+        "summary": friendship_summary(U),
+        "shuffled_summary": friendship_summary(shuffled),
+        "popular_friends": top_drivers.to_dict(orient="records"),
+        "unbeaten": [
+            {
+                "id": str(node),
+                "name": names[node],
+                "degree": int(row["degree"]),
+            }
+            for node, row in unbeaten.iterrows()
+        ],
+    }

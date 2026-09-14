@@ -1,0 +1,38 @@
+{
+  "task": "Week 2 interactive friendship-paradox journey",
+  "audience": "Classmates and instructors who know basic network concepts",
+  "primaryUse": "Step through one technical argument and inspect individual characters",
+  "tone": ["clear", "synthetic", "technical"],
+  "genre": "modern-minimal",
+  "macrostructure": "map-diagram",
+  "theme": {
+    "source": "DESIGN.md",
+    "mode": "light-only",
+    "palette": "paper-grid-ink; red and blue remain reserved for degree semantics",
+    "typography": "Bricolage Grotesque, Source Serif 4, IBM Plex Mono"
+  },
+  "interaction": {
+    "stages": ["network", "degree-preserving shuffle", "degree comparison", "conclusions"],
+    "controls": "persistent Back/Next bar plus direct stage buttons and keyboard arrows",
+    "selection": "node click or keyboard-accessible character list updates a concise facts panel"
+  },
+  "responsiveTargets": [320, 375, 414, 768, 1280],
+  "constraints": [
+    "Keep the existing site header, footer, grid, and semantic color rules",
+    "Use real exported data; do not calculate layouts or null models in the browser",
+    "Keep each stage to one claim and one primary action",
+    "Respect reduced-motion and provide a readable non-WebGL fallback"
+  ],
+  "anticipatedFiles": [
+    "package.json and package-lock.json",
+    "src/components/FriendshipJourney.tsx",
+    "src/components/friendship-journey.css",
+    "src/content/posts/week2.mdx",
+    "src/data/week2/friendship-journey.json",
+    "../sgi/friendship.py",
+    "../sgi/__init__.py",
+    "../tests/test_friendship.py",
+    ".hallmark/log.json",
+    "tokens.css"
+  ]
+}

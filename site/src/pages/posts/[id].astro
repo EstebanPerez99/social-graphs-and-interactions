@@ -13,19 +13,25 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 const authors = post.data.authors.length ? post.data.authors : site.members;
 ---
-<Base title={post.data.title} description={post.data.description}>
-  <article class="pt-6 pb-10">
-    <header class="max-w-[68ch]">
-      <a href={url("/")} class="font-mono text-[0.75rem] text-ink-muted hover:text-ink">← all posts</a>
-      <p class="font-mono text-[0.75rem] uppercase tracking-wider text-ink-muted mt-6">Week {post.data.week} · {post.data.topic}</p>
-      <PostTitle client:load text={post.data.title} />
-      <p class="mt-4 text-[1.15rem] text-ink-muted">{post.data.description}</p>
-      <p class="font-mono text-[0.75rem] text-ink-muted mt-5 border-t border-ink/15 pt-3">
-        {authors.join(" · ")} · {fmtDate(post.data.date)}{post.data.dataset && <> · dataset: {post.data.dataset}</>}
-      </p>
-    </header>
-    <div class="prose mt-10">
+<Base title={post.data.title} description={post.data.description} immersive={post.data.immersive}>
+  {post.data.immersive ? (
+    <article class="immersive-post">
       <Content />
-    </div>
-  </article>
+    </article>
+  ) : (
+    <article class="pt-6 pb-10">
+      <header class="max-w-[68ch]">
+        <a href={url("/")} class="font-mono text-[0.75rem] text-ink-muted hover:text-ink">← all posts</a>
+        <p class="font-mono text-[0.75rem] uppercase tracking-wider text-ink-muted mt-6">Week {post.data.week} · {post.data.topic}</p>
+        <PostTitle client:load text={post.data.title} />
+        <p class="mt-4 text-[1.15rem] text-ink-muted">{post.data.description}</p>
+        <p class="font-mono text-[0.75rem] text-ink-muted mt-5 border-t border-ink/15 pt-3">
+          {authors.join(" · ")} · {fmtDate(post.data.date)}{post.data.dataset && <> · dataset: {post.data.dataset}</>}
+        </p>
+      </header>
+      <div class="prose mt-10">
+        <Content />
+      </div>
+    </article>
+  )}
 </Base>
