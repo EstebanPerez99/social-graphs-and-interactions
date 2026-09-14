@@ -37,3 +37,24 @@ Exercises 1.1, 1.4, 1.5 (pen and paper) and 1.7 were done by each member without
 
 ### 🔬 Tool — LLM calibration (exercise 1.2)
 _To be filled by the group: ten factual questions, grading against trusted sources, error classes, and the paragraph on what we would supervise vs. verify._
+
+## Week 2 — Models & null models
+
+### 🚀 Builder — friendship-paradox notebook
+- A coding agent (OpenAI Codex) implemented the reusable friendship-paradox helpers in `sgi/friendship.py`, their unit tests, and the first complete version of `notebooks/week2/2.11-go-nuts.ipynb`.
+- The notebook computes exact person–friend probabilities, checks them against 20,000 seeded samples, ranks the characters most likely to appear as the friend, identifies local degree maxima, and compares Marvel with 100 degree-preserving shuffles and 100 matched $G(n,m)$ networks.
+- The agent generated the Week 2 figure and data exports. The group still owns the framing, interpretation, and final post text.
+
+### What we verified, and how
+| Check | Method |
+|---|---|
+| Exact person–friend calculation | Verified that all exact friend-selection probabilities sum to one, then compared the aggregate results with 20,000 independently sampled pairs using a fixed seed. |
+| Character-level conclusion | Counted the rows where mean neighbor degree exceeds the character's degree; isolates are excluded because their neighbor mean is undefined. |
+| Degree-preserving null | Asserted after every shuffle that the complete sorted degree sequence is unchanged. |
+| Helper behavior | Six unit tests cover uniform person–friend sampling, isolates, local maxima, exact sampling probabilities, reproducibility, and reciprocal directed-edge collapse. |
+| Notebook reproducibility | Executed from top to bottom without errors; JSON exports were parsed independently after generation. |
+
+### Still to verify by hand
+- Read a sample of rows in the character-level export back against direct NetworkX neighbor lists.
+- Agree as a group that “unbeaten” means no **direct neighbor** has strictly greater undirected degree, and retain that wording in the post.
+- Review the null-model interpretation and final prose before removing `draft: true`.

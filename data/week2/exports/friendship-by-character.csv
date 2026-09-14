@@ -1,0 +1,287 @@
+node_id,name,degree,mean_neighbor_degree,max_neighbor_degree,neighbor_degree_gap,higher_degree_neighbors,fraction_higher_degree_neighbors,fraction_at_least_as_popular_neighbors,local_paradox,unbeaten
+Abomination_(character),Abomination (character),9,33.666666666666664,106.0,24.666666666666664,7,0.7777777777777778,0.7777777777777778,True,False
+Adam_Warlock,Adam Warlock,25,25.12,106.0,0.120000000000001,9,0.36,0.4,True,False
+Agent_X_(Marvel_Comics),Agent X (Marvel Comics),5,18.8,41.0,13.8,5,1.0,1.0,True,False
+Ajak,Ajak,4,10.0,26.0,6.0,3,0.75,0.75,True,False
+Alex_Wilder,Alex Wilder,2,17.0,28.0,15.0,2,1.0,1.0,True,False
+Anne_Weying,She-Venom (Patricia Robertson),5,43.0,106.0,38.0,5,1.0,1.0,True,False
+Anole_(character),Anole (character),8,19.5,28.0,11.5,7,0.875,0.875,True,False
+Anya_Corazon,Anya Corazon,16,18.8125,106.0,2.8125,6,0.375,0.375,True,False
+Arabian_Knight_(character),Arabian Knight (character),10,21.8,65.0,11.8,6,0.6,0.7,True,False
+Ares_(Marvel_Comics),Ares (Marvel Comics),9,13.333333333333334,26.0,4.333333333333334,5,0.5555555555555556,0.6666666666666666,True,False
+Backhand_(character),Backhand (character),2,2.5,3.0,0.5,1,0.5,1.0,True,False
+Balder_the_Brave,Balder the Brave,3,12.333333333333334,26.0,9.333333333333334,2,0.6666666666666666,0.6666666666666666,True,False
+Battlestar_(character),Battlestar (character),3,15.333333333333334,21.0,12.333333333333334,3,1.0,1.0,True,False
+Beta_Ray_Bill,Beta Ray Bill,7,37.285714285714285,106.0,30.285714285714285,6,0.8571428571428571,0.8571428571428571,True,False
+Betsy_Braddock,Betsy Braddock,28,25.071428571428573,106.0,-2.928571428571427,6,0.21428571428571427,0.25,False,False
+Bill_Foster_(character),Bill Foster (character),17,28.176470588235293,106.0,11.176470588235293,12,0.7058823529411765,0.7058823529411765,True,False
+Black_Bolt,Black Bolt,18,21.333333333333332,106.0,3.333333333333332,4,0.2222222222222222,0.3333333333333333,True,False
+Black_Cat_(Marvel_Comics),Black Cat (Marvel Comics),28,24.428571428571427,106.0,-3.571428571428573,5,0.17857142857142858,0.25,False,False
+Black_Jack_Tarr,Black Jack Tarr,1,18.0,18.0,17.0,1,1.0,1.0,True,False
+Black_Knight_(Marvel_Comics),Black Knight (Marvel Comics),7,21.142857142857142,57.0,14.142857142857142,6,0.8571428571428571,0.8571428571428571,True,False
+Black_Marvel,Black Marvel,6,23.333333333333332,106.0,17.333333333333332,3,0.5,1.0,True,False
+Black_Panther_(character),Black Panther (character),31,17.032258064516128,57.0,-13.967741935483872,3,0.0967741935483871,0.0967741935483871,False,False
+Black_Rider_(character),Black Rider (character),4,20.0,57.0,16.0,3,0.75,1.0,True,False
+Black_Widow_(Natasha_Romanova),Black Widow (Natasha Romanova),25,22.24,106.0,-2.7600000000000016,7,0.28,0.32,False,False
+Blackthorn_(character),Blackthorn (character),2,4.5,6.0,2.5,2,1.0,1.0,True,False
+Blackwulf,Blackwulf,2,23.5,27.0,21.5,2,1.0,1.0,True,False
+Blade_(character),Blade (character),22,24.045454545454547,106.0,2.0454545454545467,7,0.3181818181818182,0.36363636363636365,True,False
+Blazing_Skull,Blazing Skull,8,15.25,37.0,7.25,4,0.5,0.75,True,False
+Blue_Bullet,Blue Bullet,3,8.0,15.0,5.0,2,0.6666666666666666,1.0,True,False
+Blue_Diamond_(character),Blue Diamond (character),9,8.444444444444445,18.0,-0.5555555555555554,2,0.2222222222222222,0.2222222222222222,False,False
+Blue_Eagle_(character),Blue Eagle (character),1,25.0,25.0,24.0,1,1.0,1.0,True,False
+Blue_Marvel,Blue Marvel,5,26.6,65.0,21.6,5,1.0,1.0,True,False
+"Bob,_Agent_of_Hydra","Bob, Agent of Hydra",7,49.42857142857143,106.0,42.42857142857143,6,0.8571428571428571,0.8571428571428571,True,False
+Box_(comics),Box (comics),3,6.666666666666667,7.0,3.666666666666667,3,1.0,1.0,True,False
+Brian_Braddock,Brian Braddock,11,27.545454545454547,106.0,16.545454545454547,6,0.5454545454545454,0.6363636363636364,True,False
+Bucky_(Marvel_Comics),Bucky (Marvel Comics),12,9.833333333333334,21.0,-2.166666666666666,4,0.3333333333333333,0.3333333333333333,False,False
+Bug_(Marvel_Comics),Bug (Marvel Comics),4,14.0,17.0,10.0,4,1.0,1.0,True,False
+Cable_(character),Cable (character),24,18.708333333333332,63.0,-5.291666666666668,7,0.2916666666666667,0.375,False,False
+Cammi_(character),Cammi (character),4,12.75,21.0,8.75,4,1.0,1.0,True,False
+Captain_Marvel_(Khn'nr),Captain Marvel (Khn'nr),3,15.333333333333334,18.0,12.333333333333334,3,1.0,1.0,True,False
+Captain_Marvel_(Marvel_Comics),Captain Marvel (Marvel Comics),17,16.823529411764707,32.0,-0.1764705882352935,7,0.4117647058823529,0.4117647058823529,False,False
+Captain_Ultra,Captain Ultra,1,57.0,57.0,56.0,1,1.0,1.0,True,False
+Captain_Universe,Captain Universe,17,27.294117647058822,106.0,10.294117647058822,8,0.47058823529411764,0.5294117647058824,True,False
+Caretaker_(comics),Caretaker (comics),3,15.666666666666666,22.0,12.666666666666666,3,1.0,1.0,True,False
+Ch'od,Ch'od,6,15.166666666666666,24.0,9.166666666666666,5,0.8333333333333334,0.8333333333333334,True,False
+Chase_Stein,Chase Stein,6,19.833333333333332,63.0,13.833333333333332,4,0.6666666666666666,0.6666666666666666,True,False
+Citizen_V,Citizen V,3,16.666666666666668,24.0,13.666666666666668,3,1.0,1.0,True,False
+Cloak_and_Dagger_(characters),Cloak and Dagger (characters),28,23.75,106.0,-4.25,3,0.10714285714285714,0.17857142857142858,False,False
+Coldblood,Coldblood,2,17.5,20.0,15.5,2,1.0,1.0,True,False
+Crane_Mother,Crane Mother,3,31.666666666666668,65.0,28.666666666666668,3,1.0,1.0,True,False
+Crippler_(character),Crippler (character),4,17.0,22.0,13.0,4,1.0,1.0,True,False
+Cyclops_(Marvel_Comics),Cyclops (Marvel Comics),26,16.192307692307693,63.0,-9.807692307692307,6,0.23076923076923078,0.23076923076923078,False,False
+Dargo_Ktor,Dargo Ktor,2,16.5,26.0,14.5,2,1.0,1.0,True,False
+Darkdevil,Darkdevil,4,31.5,57.0,27.5,4,1.0,1.0,True,False
+Darkhawk,Darkhawk,15,23.066666666666666,106.0,8.066666666666666,7,0.4666666666666667,0.5333333333333333,True,False
+Deadpool,Deadpool,41,19.70731707317073,106.0,-21.29268292682927,4,0.0975609756097561,0.0975609756097561,False,False
+Deathlok,Deathlok,20,19.25,106.0,-0.75,7,0.35,0.35,False,False
+Debrii,Debrii,5,15.0,37.0,10.0,4,0.8,0.8,True,False
+Delroy_Garrett,Delroy Garrett,7,11.285714285714286,41.0,4.2857142857142865,3,0.42857142857142855,0.5714285714285714,True,False
+Detroit_Steel,Detroit Steel,1,16.0,16.0,15.0,1,1.0,1.0,True,False
+Devil_Dinosaur,Devil Dinosaur,12,34.5,106.0,22.5,10,0.8333333333333334,0.8333333333333334,True,False
+Devil_Hulk,Devil Hulk,2,47.0,65.0,45.0,2,1.0,1.0,True,False
+Digitek_(character),Digitek (character),1,20.0,20.0,19.0,1,1.0,1.0,True,False
+Doctor_Druid,Doctor Druid,9,23.444444444444443,65.0,14.444444444444443,6,0.6666666666666666,0.6666666666666666,True,False
+Doctor_Nemesis,Doctor Nemesis,15,26.933333333333334,106.0,11.933333333333334,12,0.8,0.8666666666666667,True,False
+Doctor_Spectrum,Alice Nugent,7,25.714285714285715,57.0,18.714285714285715,7,1.0,1.0,True,False
+Doctor_Strange,Doctor Strange,57,18.982456140350877,106.0,-38.01754385964912,2,0.03508771929824561,0.03508771929824561,False,False
+Dogpool,Dogpool,1,41.0,41.0,40.0,1,1.0,1.0,True,False
+Doom_2099,Doom 2099,9,28.333333333333332,63.0,19.333333333333332,7,0.7777777777777778,0.7777777777777778,True,False
+Dragon_Lord_(character),Dragon Lord (character),2,24.0,41.0,22.0,2,1.0,1.0,True,False
+Dusk_(comics),Dusk (comics),6,25.166666666666668,106.0,19.166666666666668,3,0.5,1.0,True,False
+Eddie_Brock,Eddie Brock,22,20.954545454545453,106.0,-1.0454545454545467,8,0.36363636363636365,0.36363636363636365,False,False
+Elsa_Bloodstone,Elsa Bloodstone,15,19.866666666666667,63.0,4.866666666666667,7,0.4666666666666667,0.6,True,False
+Emma_Frost,Emma Frost,27,21.814814814814813,106.0,-5.185185185185187,5,0.18518518518518517,0.2222222222222222,False,False
+Empath_(character),Empath (character),5,15.4,27.0,10.4,4,0.8,0.8,True,False
+Emrys_Killebrew,Emrys Killebrew,2,52.0,63.0,50.0,2,1.0,1.0,True,False
+Enigma_(Marvel_Comics),Enigma (Marvel Comics),1,106.0,106.0,105.0,1,1.0,1.0,True,False
+Ethan_Edwards,Ethan Edwards,1,106.0,106.0,105.0,1,1.0,1.0,True,False
+Fabio_Medina,Fabio Medina,3,54.666666666666664,106.0,51.666666666666664,3,1.0,1.0,True,False
+Fandral,Fandral,2,34.0,65.0,32.0,2,1.0,1.0,True,False
+Fin_Fang_Foom,Fin Fang Foom,7,17.0,25.0,10.0,7,1.0,1.0,True,False
+Firebird_(Marvel_Comics),Firebird (Marvel Comics),13,22.23076923076923,65.0,9.23076923076923,9,0.6923076923076923,0.7692307692307693,True,False
+Firelord_(character),Firelord (character),2,24.0,26.0,22.0,2,1.0,1.0,True,False
+Flatman_(character),Flatman (character),3,17.666666666666668,26.0,14.666666666666668,3,1.0,1.0,True,False
+Force_(comics),Force (comics),1,8.0,8.0,7.0,1,1.0,1.0,True,False
+Frankenstein's_Monster_(Marvel_Comics),Frankenstein's Monster (Marvel Comics),11,23.727272727272727,106.0,12.727272727272727,9,0.8181818181818182,0.8181818181818182,True,False
+Franklin_Richards_(character),Franklin Richards (character),14,13.857142857142858,32.0,-0.14285714285714235,5,0.35714285714285715,0.35714285714285715,False,False
+Frog-Man,Frog-Man,6,26.333333333333332,106.0,20.333333333333332,4,0.6666666666666666,0.6666666666666666,True,False
+G._W._Bridge,G. W. Bridge,3,14.666666666666666,24.0,11.666666666666666,3,1.0,1.0,True,False
+Gargoyle_(comics),Gargoyle (comics),8,17.875,65.0,9.875,6,0.75,0.75,True,False
+Garrison_Kane,Garrison Kane,7,23.428571428571427,63.0,16.428571428571427,4,0.5714285714285714,0.5714285714285714,True,False
+Gauntlet_(Joseph_Green),Gauntlet (Joseph Green),6,26.333333333333332,65.0,20.333333333333332,5,0.8333333333333334,0.8333333333333334,True,False
+Genis-Vell,Genis-Vell,8,12.0,25.0,4.0,6,0.75,0.75,True,False
+Ghost_Rider,Ghost Rider,22,25.90909090909091,106.0,3.90909090909091,10,0.45454545454545453,0.5,True,False
+Ghost_Rider_(Danny_Ketch),Ghost Rider (Danny Ketch),10,33.5,106.0,23.5,9,0.9,0.9,True,False
+Ghost_Rider_(Johnny_Blaze),Ghost Rider (Johnny Blaze),15,27.8,106.0,12.8,8,0.5333333333333333,0.6666666666666666,True,False
+Gladiator_(Kallark),Gladiator (Kallark),10,29.1,106.0,19.1,10,1.0,1.0,True,False
+Golem_(Marvel_Comics),Golem (Marvel Comics),3,25.0,57.0,22.0,2,0.6666666666666666,1.0,True,False
+Gorgon_(Inhuman),Gorgon (Inhuman),5,10.8,18.0,5.800000000000001,4,0.8,0.8,True,False
+Gremlin_(comics),Gremlin (comics),4,27.5,65.0,23.5,4,1.0,1.0,True,False
+Guardian_(Marvel_Comics),Guardian (Marvel Comics),7,16.0,63.0,9.0,4,0.5714285714285714,0.5714285714285714,True,False
+Guardsman_(character),Guardsman (character),8,16.0,28.0,8.0,6,0.75,0.75,True,False
+Gwenpool,Gwenpool,15,32.53333333333333,106.0,17.53333333333333,12,0.8,0.8,True,False
+Hank_Pym,Hank Pym,27,15.407407407407407,57.0,-11.592592592592593,3,0.1111111111111111,0.1111111111111111,False,False
+Hawkeye_(comics),Hawkeye (comics),3,15.333333333333334,25.0,12.333333333333334,3,1.0,1.0,True,False
+Helix_(Marvel_Comics),Helix (Marvel Comics),1,106.0,106.0,105.0,1,1.0,1.0,True,False
+Hellion_(character),Hellion (character),12,26.083333333333332,106.0,14.083333333333332,6,0.5,0.5,True,False
+Hercules_(Marvel_Comics),Hercules (Marvel Comics),26,20.153846153846153,106.0,-5.846153846153847,4,0.15384615384615385,0.15384615384615385,False,False
+Hit-Monkey,Hit-Monkey,4,45.5,106.0,41.5,4,1.0,1.0,True,False
+Hornet_(comics),Hornet (comics),6,18.0,63.0,12.0,2,0.3333333333333333,0.8333333333333334,True,False
+Hrimhari,Hrimhari,2,10.0,15.0,8.0,2,1.0,1.0,True,False
+Hulk,Hulk,65,15.276923076923078,106.0,-49.723076923076924,1,0.015384615384615385,0.015384615384615385,False,False
+Hulk_2099,Hulk 2099,4,26.75,65.0,22.75,4,1.0,1.0,True,False
+Hulkling,Hulkling,11,24.727272727272727,65.0,13.727272727272727,7,0.6363636363636364,0.6363636363636364,True,False
+Human_Fly_(character),Human Fly (character),5,35.6,106.0,30.6,5,1.0,1.0,True,False
+Human_Torch,Human Torch,18,21.055555555555557,106.0,3.055555555555557,5,0.2777777777777778,0.3888888888888889,True,False
+Human_Torch_(android),Human Torch (android),17,11.705882352941176,32.0,-5.294117647058824,4,0.23529411764705882,0.23529411764705882,False,False
+Hybrid_(Scott_Washington),Hybrid (Scott Washington),5,35.2,106.0,30.200000000000003,5,1.0,1.0,True,False
+Hyperion_(character),Hyperion (character),10,16.1,32.0,6.100000000000001,5,0.5,0.5,True,False
+Ikaris,Ikaris,5,15.8,57.0,10.8,3,0.6,0.6,True,False
+Inferno_(Dante_Pertuz),Inferno (Dante Pertuz),3,11.0,18.0,8.0,3,1.0,1.0,True,False
+Iron_Fist_(character),Iron Fist (character),26,19.26923076923077,63.0,-6.73076923076923,8,0.3076923076923077,0.3076923076923077,False,False
+Iron_Lad,Iron Lad,6,24.333333333333332,63.0,18.333333333333332,6,1.0,1.0,True,False
+Iron_Man_(Ultimate_Marvel_character),Iron Man (Ultimate Marvel character),5,44.6,106.0,39.6,5,1.0,1.0,True,False
+Iron_Man_2020,Iron Man 2020,6,29.666666666666668,106.0,23.666666666666668,6,1.0,1.0,True,False
+Isaiah_Bradley,Isaiah Bradley,7,34.0,65.0,27.0,6,0.8571428571428571,1.0,True,False
+Jack_Frost_(Marvel_Comics),Jack Frost (Marvel Comics),7,11.857142857142858,32.0,4.857142857142858,5,0.7142857142857143,0.7142857142857143,True,False
+Jack_Monroe_(character),Jack Monroe (character),4,12.5,27.0,8.5,4,1.0,1.0,True,False
+Janice_Lincoln,Janice Lincoln,5,40.6,106.0,35.6,5,1.0,1.0,True,False
+Jean_Grey,Jean Grey,24,20.5,65.0,-3.5,7,0.2916666666666667,0.375,False,False
+Jean_Grey_(X-Men_film_series),Jean Grey (X-Men film series),5,20.6,32.0,15.600000000000001,5,1.0,1.0,True,False
+Jeffrey_Mace,Jeffrey Mace,8,8.75,17.0,0.75,3,0.375,0.625,True,False
+Jericho_Drumm,Jericho Drumm,15,23.0,63.0,8.0,9,0.6,0.7333333333333333,True,False
+Jessica_Jones,Jessica Jones,18,29.055555555555557,106.0,11.055555555555557,12,0.6666666666666666,0.6666666666666666,True,False
+John_Jameson_(character),John Jameson (character),14,28.5,106.0,14.5,11,0.7857142857142857,0.8571428571428571,True,False
+Jubilee_(character),Jubilee (character),15,23.133333333333333,63.0,8.133333333333333,10,0.6666666666666666,0.7333333333333333,True,False
+Junior_Juniper,Junior Juniper,2,43.5,63.0,41.5,2,1.0,1.0,True,False
+Justice_(New_Universe),Justice (New Universe),6,10.5,24.0,4.5,3,0.5,0.5,True,False
+Karnak_(character),Karnak (character),10,21.1,65.0,11.100000000000001,7,0.7,0.7,True,False
+Kid_Colt,Kid Colt,4,12.5,31.0,8.5,3,0.75,1.0,True,False
+Killpower,Killpower,3,26.666666666666668,65.0,23.666666666666668,3,1.0,1.0,True,False
+Killraven,Killraven,7,31.857142857142858,106.0,24.857142857142858,6,0.8571428571428571,0.8571428571428571,True,False
+Kismet_(Marvel_Comics),Kismet (Marvel Comics),9,22.666666666666668,65.0,13.666666666666668,8,0.8888888888888888,0.8888888888888888,True,False
+Korvus,Korvus,4,22.0,32.0,18.0,4,1.0,1.0,True,False
+Kristoff_Vernard,Kristoff Vernard,8,27.625,106.0,19.625,7,0.875,0.875,True,False
+Leech_(character),Leech (character),6,12.5,27.0,6.5,3,0.5,0.5,True,False
+Lei_Kung_(character),Lei Kung (character),4,21.75,32.0,17.75,3,0.75,0.75,True,False
+Living_Lightning,Living Lightning,6,24.0,65.0,18.0,5,0.8333333333333334,0.8333333333333334,True,False
+Luke_Cage,Luke Cage,28,21.964285714285715,106.0,-6.035714285714285,6,0.21428571428571427,0.25,False,False
+Machine_Man,Machine Man,14,24.857142857142858,106.0,10.857142857142858,9,0.6428571428571429,0.6428571428571429,True,False
+Magician_(Marvel_Comics),Magician (Marvel Comics),3,20.666666666666668,27.0,17.666666666666668,3,1.0,1.0,True,False
+Mahr_Vehl,Mahr Vehl,1,8.0,8.0,7.0,1,1.0,1.0,True,False
+Makkari_(character),Makkari (character),6,9.166666666666666,24.0,3.166666666666666,3,0.5,0.5,True,False
+Man-Thing,Man-Thing,20,23.5,106.0,3.5,9,0.45,0.45,True,False
+Mania_(character),Mania (character),7,46.142857142857146,106.0,39.142857142857146,7,1.0,1.0,True,False
+Mark_Hazzard:_Merc,Mark Hazzard: Merc,1,5.0,5.0,4.0,1,1.0,1.0,True,False
+Marvel_Boy_(Robert_Grayson),Marvel Boy (Robert Grayson),3,12.666666666666666,24.0,9.666666666666666,3,1.0,1.0,True,False
+Mayday_Parker,Mayday Parker,18,22.22222222222222,106.0,4.222222222222221,6,0.3333333333333333,0.3888888888888889,True,False
+Misty_Knight,Misty Knight,21,25.761904761904763,106.0,4.761904761904763,10,0.47619047619047616,0.5238095238095238,True,False
+Mockingbird_(Marvel_Comics),Mockingbird (Marvel Comics),21,21.428571428571427,106.0,0.42857142857142705,5,0.23809523809523808,0.2857142857142857,True,False
+Moon_Knight,Moon Knight,27,23.666666666666668,106.0,-3.333333333333332,7,0.25925925925925924,0.25925925925925924,False,False
+Moondragon,Moondragon,15,16.4,57.0,1.3999999999999986,7,0.4666666666666667,0.4666666666666667,True,False
+Moonglow_(comics),Moonglow (comics),1,57.0,57.0,56.0,1,1.0,1.0,True,False
+Morbius,Morbius,19,29.736842105263158,106.0,10.736842105263158,12,0.631578947368421,0.631578947368421,True,False
+Motormouth_(comics),Motormouth (comics),4,32.0,65.0,28.0,2,0.5,0.5,True,False
+Ms._Marvel,Ms. Marvel,11,18.818181818181817,37.0,7.818181818181817,8,0.7272727272727273,0.8181818181818182,True,False
+NFL_SuperPro,Phil Grayfield,1,106.0,106.0,105.0,1,1.0,1.0,True,False
+Nightmask,Nightmask,5,8.6,17.0,3.5999999999999996,3,0.6,0.6,True,False
+Nightwatch_(character),Nightwatch (character),4,45.0,106.0,41.0,4,1.0,1.0,True,False
+Noh-Varr,Noh-Varr,18,28.77777777777778,106.0,10.777777777777779,8,0.4444444444444444,0.5,True,False
+Nomad_(Marvel_Comics),Nomad (Marvel Comics),6,12.5,41.0,6.5,3,0.5,0.6666666666666666,True,False
+Northstar_(character),Northstar (character),17,24.470588235294116,65.0,7.470588235294116,11,0.6470588235294118,0.6470588235294118,True,False
+Nova_(Richard_Rider),Nova (Richard Rider),21,17.19047619047619,106.0,-3.80952380952381,4,0.19047619047619047,0.19047619047619047,False,False
+Outlaw_(Marvel_Comics),Outlaw (Marvel Comics),9,14.444444444444445,41.0,5.444444444444445,4,0.4444444444444444,0.5555555555555556,True,False
+Oya_(comics),Oya (comics),3,38.666666666666664,63.0,35.666666666666664,3,1.0,1.0,True,False
+Paladin_(comics),Paladin (comics),13,26.53846153846154,106.0,13.53846153846154,10,0.7692307692307693,0.9230769230769231,True,False
+Patsy_Walker,Patsy Walker,13,22.53846153846154,57.0,9.53846153846154,10,0.7692307692307693,0.8461538461538461,True,False
+Peggy_Carter,Peggy Carter,3,9.333333333333334,18.0,6.333333333333334,3,1.0,1.0,True,False
+Phil_Urich,Phil Urich,5,13.2,18.0,8.2,4,0.8,1.0,True,False
+Phoenix_Force,Phoenix (Guardians of the Galaxy),32,22.0,106.0,-10.0,2,0.0625,0.09375,False,False
+Phyla-Vell,Phyla-Vell,9,16.555555555555557,25.0,7.555555555555557,7,0.7777777777777778,0.7777777777777778,True,False
+Power_Man_(Victor_Alvarez),Power Man (Victor Alvarez),4,33.75,65.0,29.75,4,1.0,1.0,True,False
+Powerhouse_(Marvel_Comics),Powerhouse (Marvel Comics),4,51.25,106.0,47.25,4,1.0,1.0,True,False
+Puck_(Marvel_Comics),Puck (Marvel Comics),9,38.22222222222222,106.0,29.22222222222222,7,0.7777777777777778,0.7777777777777778,True,False
+Quasar_(character),Quasar (character),24,12.083333333333334,25.0,-11.916666666666666,1,0.041666666666666664,0.041666666666666664,False,False
+Quicksilver_(Marvel_Comics),Quicksilver (Marvel Comics),15,16.333333333333332,32.0,1.3333333333333321,8,0.5333333333333333,0.5333333333333333,True,False
+Rachel_Summers,Rachel Summers,24,22.416666666666668,106.0,-1.5833333333333321,8,0.3333333333333333,0.4166666666666667,False,False
+Radian_(Morituri),Radian (Morituri),6,2.6666666666666665,3.0,-3.3333333333333335,0,0.0,0.0,False,True
+Radioactive_Man_(comics),Radioactive Man (comics),11,26.545454545454547,106.0,15.545454545454547,9,0.8181818181818182,0.8181818181818182,True,False
+Ravage_2099,Ravage 2099,4,39.75,106.0,35.75,4,1.0,1.0,True,False
+Raza_Longknife,Raza Longknife,5,17.6,26.0,12.600000000000001,5,1.0,1.0,True,False
+Red_Guardian,Red Guardian,8,21.125,65.0,13.125,5,0.625,0.75,True,False
+Red_Raven_(Marvel_Comics),Red Raven (Dania),5,12.2,21.0,7.199999999999999,5,1.0,1.0,True,False
+Red_Wolf_(comics),Red Wolf (comics),9,22.444444444444443,65.0,13.444444444444443,5,0.5555555555555556,0.5555555555555556,True,False
+Redneck_(comics),Redneck (comics),1,5.0,5.0,4.0,1,1.0,1.0,True,False
+Ricochet_(comics),Ricochet (comics),6,33.666666666666664,106.0,27.666666666666664,3,0.5,1.0,True,False
+Rikki_Barnes,Rikki Barnes,6,9.666666666666666,16.0,3.666666666666666,4,0.6666666666666666,0.8333333333333334,True,False
+Robbie_Baldwin,Robbie Baldwin,15,28.266666666666666,106.0,13.266666666666666,8,0.5333333333333333,0.6,True,False
+Rocket_Raccoon,Rocket Raccoon,16,25.875,65.0,9.875,10,0.625,0.75,True,False
+Rockman_(character),Rockman (character),2,13.0,25.0,11.0,1,0.5,0.5,True,False
+Rockslide_(character),Rockslide (character),7,29.142857142857142,65.0,22.142857142857142,7,1.0,1.0,True,False
+Rom_the_Space_Knight,Rom the Space Knight,15,21.466666666666665,65.0,6.466666666666665,8,0.5333333333333333,0.5333333333333333,True,False
+Ronin_(Marvel_Comics),Ronin (Marvel Comics),7,31.142857142857142,106.0,24.142857142857142,6,0.8571428571428571,0.8571428571428571,True,False
+Ruby_Summers,Ruby Summers,2,26.5,27.0,24.5,2,1.0,1.0,True,False
+Rusty_Collins,Rusty Collins,4,17.0,26.0,13.0,4,1.0,1.0,True,False
+Sabra_(character),Sabra (character),10,31.1,106.0,21.1,6,0.6,0.7,True,False
+Satana_(Marvel_Comics),Satana (Marvel Comics),10,33.5,106.0,23.5,9,0.9,0.9,True,False
+Scaredycat,Scaredycat,3,3.6666666666666665,6.0,0.6666666666666665,1,0.3333333333333333,0.6666666666666666,True,False
+Scarlet_Scarab,Scarlet Scarab,2,22.0,27.0,20.0,2,1.0,1.0,True,False
+Scarlet_Spider,Scarlet Spider,8,28.875,106.0,20.875,7,0.875,0.875,True,False
+Scarlet_Witch,Scarlet Witch,32,22.625,106.0,-9.375,4,0.125,0.15625,False,False
+Scatterbrain_(Morituri),Scatterbrain (Morituri),2,3.0,3.0,1.0,2,1.0,1.0,True,False
+Scorpio_(Marvel_Comics),Scorpio (Marvel Comics),2,84.5,106.0,82.5,2,1.0,1.0,True,False
+Sentry_(Robert_Reynolds),Sentry (Robert Reynolds),12,28.083333333333332,106.0,16.083333333333332,6,0.5,0.5,True,False
+Shamrock_(comics),Shamrock (comics),8,21.125,41.0,13.125,8,1.0,1.0,True,False
+Shang-Chi,Shang-Chi,18,25.833333333333332,106.0,7.833333333333332,11,0.6111111111111112,0.6111111111111112,True,False
+Shatterstar,Shatterstar,5,13.0,24.0,8.0,4,0.8,0.8,True,False
+She-Hulk,She-Hulk,37,19.756756756756758,106.0,-17.243243243243242,5,0.13513513513513514,0.13513513513513514,False,False
+She-Hulk_(Lyra),She-Hulk (Lyra),6,52.0,106.0,46.0,6,1.0,1.0,True,False
+Shear_(character),Shear (character),2,4.0,6.0,2.0,1,0.5,1.0,True,False
+Shuri_(character),Shuri (character),10,37.2,106.0,27.200000000000003,8,0.8,0.8,True,False
+Silencer_(comics),Silencer (comics),2,29.0,37.0,27.0,2,1.0,1.0,True,False
+Silhouette_(comics),Silhouette (comics),2,67.0,106.0,65.0,2,1.0,1.0,True,False
+Silk_(character),Silk (character),12,25.416666666666668,106.0,13.416666666666668,10,0.8333333333333334,0.8333333333333334,True,False
+Skull_the_Slayer,Skull the Slayer,3,13.666666666666666,24.0,10.666666666666666,3,1.0,1.0,True,False
+Snapdragon_(Morituri),Snapdragon (Morituri),3,3.6666666666666665,6.0,0.6666666666666665,1,0.3333333333333333,0.6666666666666666,True,False
+Solo_(Marvel_Comics),Solo (Marvel Comics),13,22.23076923076923,65.0,9.23076923076923,7,0.5384615384615384,0.6153846153846154,True,False
+Solomon_Kane_(comics),Solomon Kane (comics),1,27.0,27.0,26.0,1,1.0,1.0,True,False
+Speed_(character),Speed (character),7,20.142857142857142,57.0,13.142857142857142,5,0.7142857142857143,0.7142857142857143,True,False
+Spider-Bitch_(Ashley_Barton),Spider-Bitch (Ashley Barton),16,30.3125,106.0,14.3125,12,0.75,0.8125,True,False
+Spider-Girl,Spider-Girl,14,23.857142857142858,106.0,9.857142857142858,11,0.7857142857142857,0.8571428571428571,True,False
+Spider-Man,Spider-Man,106,14.915094339622641,65.0,-91.08490566037736,0,0.0,0.0,False,True
+Spider-Man_(Marvel_Mangaverse),Spider-Man (Marvel Mangaverse),3,54.333333333333336,106.0,51.333333333333336,3,1.0,1.0,True,False
+Spider-Man_Noir,Spider-Man Noir,9,27.333333333333332,106.0,18.333333333333332,8,0.8888888888888888,0.8888888888888888,True,False
+Spider-UK,Spider-UK,8,27.25,106.0,19.25,8,1.0,1.0,True,False
+Spider-Woman,Spider-Woman,17,22.88235294117647,106.0,5.882352941176471,9,0.5294117647058824,0.5882352941176471,True,False
+Spider-Woman_(Gwen_Stacy),Spider-Woman (Gwen Stacy),18,21.61111111111111,106.0,3.6111111111111107,6,0.3333333333333333,0.4444444444444444,True,False
+Spider-Woman_(Jessica_Drew),Spider-Woman (Jessica Drew),22,22.681818181818183,65.0,0.6818181818181834,7,0.3181818181818182,0.3181818181818182,True,False
+Spitfire_(character),Spitfire (character),6,11.333333333333334,22.0,5.333333333333334,5,0.8333333333333334,0.8333333333333334,True,False
+Star_Brand,Star Brand,16,16.8125,32.0,0.8125,8,0.5,0.5625,True,False
+Star-Lord,Star-Lord,17,27.470588235294116,106.0,10.470588235294116,9,0.5294117647058824,0.6470588235294118,True,False
+Starhawk_(character),Starhawk (character),6,16.666666666666668,24.0,10.666666666666668,6,1.0,1.0,True,False
+Starr_the_Slayer,Starr the Slayer,3,9.0,16.0,6.0,3,1.0,1.0,True,False
+Steel_Spider,Steel Spider,4,36.25,106.0,32.25,4,1.0,1.0,True,False
+Stingray_(Marvel_Comics),Stingray (Marvel Comics),8,23.375,65.0,15.375,5,0.625,0.625,True,False
+Storm_(Marvel_Comics),Storm (Marvel Comics),27,25.037037037037038,106.0,-1.962962962962962,9,0.3333333333333333,0.37037037037037035,False,False
+Straw_Man_(comics),Straw Man (comics),2,36.0,57.0,34.0,2,1.0,1.0,True,False
+Surge_(Marvel_Comics),Surge (Marvel Comics),5,29.2,63.0,24.2,5,1.0,1.0,True,False
+Synapse_(character),Synapse (character),2,13.5,15.0,11.5,2,1.0,1.0,True,False
+Tarantula_(Marvel_Comics),Tarantula (Marvel Comics),13,20.53846153846154,106.0,7.53846153846154,6,0.46153846153846156,0.5384615384615384,True,False
+The_Union_(Marvel),The Union (Marvel),2,7.5,8.0,5.5,2,1.0,1.0,True,False
+The_Witness_(character),The Witness (character),1,2.0,2.0,1.0,1,1.0,1.0,True,False
+Thena,Thena,3,5.0,6.0,2.0,3,1.0,1.0,True,False
+Thin_Man_(character),Thin Man (character),4,11.25,21.0,7.25,4,1.0,1.0,True,False
+Thor_Girl,Thor Girl,4,20.75,65.0,16.75,4,1.0,1.0,True,False
+Thunderbolt_(Marvel_Comics),Thunderbolt (Marvel Comics),2,27.0,28.0,25.0,2,1.0,1.0,True,False
+Thunderclap_(comics),Thunderclap (comics),1,106.0,106.0,105.0,1,1.0,1.0,True,False
+Timeslip_(comics),Timeslip (comics),2,26.0,37.0,24.0,2,1.0,1.0,True,False
+Toro_(character),Toro (character),7,25.142857142857142,65.0,18.142857142857142,6,0.8571428571428571,0.8571428571428571,True,False
+Toxyn,Toxyn,3,3.6666666666666665,6.0,0.6666666666666665,1,0.3333333333333333,0.6666666666666666,True,False
+Turbo_(comics),Turbo (comics),5,11.4,21.0,6.4,3,0.6,0.8,True,False
+Two-Gun_Kid,Two-Gun Kid,6,12.0,37.0,6.0,3,0.5,0.5,True,False
+Typeface_(character),Typeface (character),4,43.75,106.0,39.75,4,1.0,1.0,True,False
+U.S._Agent,U.S. Agent,21,21.428571428571427,106.0,0.42857142857142705,5,0.23809523809523808,0.3333333333333333,True,False
+Ulysses_Bloodstone,Ulysses Bloodstone,3,21.0,37.0,18.0,3,1.0,1.0,True,False
+Union_Jack_(Joseph_Chapman),Union Jack (Joseph Chapman),7,10.571428571428571,21.0,3.571428571428571,5,0.7142857142857143,0.7142857142857143,True,False
+Union_Jack_(Marvel_Comics),Union Jack (Marvel Comics),8,10.875,26.0,2.875,4,0.5,0.625,True,False
+Ursa_Major_(character),Ursa Major (character),4,33.75,63.0,29.75,4,1.0,1.0,True,False
+Vance_Astrovik,Vance Astrovik,11,13.454545454545455,37.0,2.454545454545455,5,0.45454545454545453,0.45454545454545453,True,False
+Venom_(character),Venom (character),29,22.103448275862068,106.0,-6.896551724137932,5,0.1724137931034483,0.1724137931034483,False,False
+Vindicator_(comics),Vindicator (comics),6,18.333333333333332,63.0,12.333333333333332,5,0.8333333333333334,0.8333333333333334,True,False
+Vulcan_(Marvel_Comics),Vulcan (Marvel Comics),11,16.727272727272727,32.0,5.727272727272727,7,0.6363636363636364,0.6363636363636364,True,False
+Vyking,Vyking,3,3.6666666666666665,6.0,0.6666666666666665,1,0.3333333333333333,0.6666666666666666,True,False
+War_Machine,War Machine,16,12.375,28.0,-3.625,5,0.3125,0.3125,False,False
+Werewolf_by_Night,Werewolf by Night,15,29.2,106.0,14.2,9,0.6,0.7333333333333333,True,False
+White_Tiger_(Heroes_for_Hire),White Tiger (Heroes for Hire),3,17.333333333333332,26.0,14.333333333333332,3,1.0,1.0,True,False
+White_Tiger_(comics),White Tiger (comics),5,37.4,106.0,32.4,4,0.8,0.8,True,False
+Whizzer_(Robert_Frank),Whizzer (Robert Frank),8,16.75,41.0,8.75,5,0.625,0.625,True,False
+Wild_Child_(character),Wild Child (character),3,25.0,63.0,22.0,3,1.0,1.0,True,False
+Will_o'_the_Wisp_(comics),Will o' the Wisp (comics),3,52.0,106.0,49.0,3,1.0,1.0,True,False
+William_Burnside_(character),William Burnside (character),5,27.2,106.0,22.2,4,0.8,0.8,True,False
+Wolverine_(Ultimate_Marvel_character),Wolverine (Ultimate Marvel character),11,25.636363636363637,65.0,14.636363636363637,7,0.6363636363636364,0.6363636363636364,True,False
+Wolverine_(character),Wolverine (character),63,17.841269841269842,106.0,-45.15873015873016,2,0.031746031746031744,0.031746031746031744,False,False
+Xorn,Xorn,9,41.666666666666664,106.0,32.666666666666664,9,1.0,1.0,True,False
+Yelena_Belova,Yelena Belova,7,17.428571428571427,25.0,10.428571428571427,7,1.0,1.0,True,False
+Zombie_(comics),Zombie (comics),4,24.5,41.0,20.5,4,1.0,1.0,True,False

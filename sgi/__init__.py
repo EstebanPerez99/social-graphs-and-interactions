@@ -19,6 +19,10 @@ from .plots import set_style, plot_distribution, degree_panels, PALETTE     # no
 from .graph import draw                                                    # noqa: E402
 from .export import save_fig, save_json, save_table                         # noqa: E402
 from .wiki import fetch_thumbnails                                         # noqa: E402
+from .friendship import (                                                   # noqa: E402
+    friendship_table, friendship_summary, popular_friends,
+    sample_friendship_pairs,
+)
 
 __all__ = [
     "ROOT", "DATA", "FIGURES", "SITE",
@@ -28,4 +32,6 @@ __all__ = [
     "draw",
     "save_fig", "save_json", "save_table",
     "fetch_thumbnails",
+    "friendship_table", "friendship_summary", "popular_friends",
+    "sample_friendship_pairs",
 ]

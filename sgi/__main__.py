@@ -18,6 +18,9 @@ SCHEDULE = {  # misma secuencia que site/src/site.config.ts
     7: ("NLP III", "2026-10-21"), 8: ("Networks × language", "2026-10-28"),
 }
 
+# El número de "Go nuts" puede cambiar cuando una semana tiene más ejercicios.
+GO_NUTS_EXERCISE = {1: "1.8", 2: "2.11"}
+
 POST = '''---
 title: "Week {n}: working title"
 description: "One sentence: what we asked and what we found."
@@ -54,11 +57,12 @@ What the agent did, what we verified by hand, and what we did not verify — see
 '''
 
 
-def notebook(n: int, topic: str):
+def notebook(n: int, topic: str, exercise: str):
     md, code = nbf.v4.new_markdown_cell, nbf.v4.new_code_cell
     nb = nbf.v4.new_notebook()
     nb.cells = [
-        md(f"# {n}.8 — Go nuts with your LLM 🚀 Builder · grupo\n\n**Semana {n} · {topic}**\n\n"
+        md(f"# {exercise} — Go nuts with your LLM 🚀 Builder · grupo\n\n**Semana {n} · {topic}**\n\n"
+           f"[Enunciado oficial](https://sunelehmann.com/socialgraphs2026-web/weeks/week{n}.html)\n\n"
            "Pipeline reproducible del post: carga → cálculo → figuras y JSON para el sitio.\n\n**Pregunta:** _TODO_"),
         code("import numpy as np, pandas as pd, networkx as nx\nimport matplotlib.pyplot as plt\nimport sgi\nsgi.set_style()\n\n"
              f"# Si el dataset de la semana {n} tiene el mismo formato que el de la semana 1:\n"
@@ -78,6 +82,7 @@ def notebook(n: int, topic: str):
 def new_week(n: int, topic: str | None):
     topic_default, class_date = SCHEDULE.get(n, (f"Week {n}", None))
     topic = topic or topic_default
+    exercise = GO_NUTS_EXERCISE.get(n, f"{n}.8")
     due = (dt.date.fromisoformat(class_date) + dt.timedelta(days=5)).isoformat() if class_date else dt.date.today().isoformat()
 
     created = []
@@ -87,9 +92,9 @@ def new_week(n: int, topic: str | None):
     if not readme.exists():
         readme.write_text(f"# Week {n} data\n\nDescarga los archivos de https://sunelehmann.com/socialgraphs2026-web/data/ aquí.\n")
         created.append(readme)
-    nbp = ROOT / "notebooks" / f"week{n}" / f"{n}.8-go-nuts.ipynb"
+    nbp = ROOT / "notebooks" / f"week{n}" / f"{exercise}-go-nuts.ipynb"
     if not nbp.exists():
-        nbf.write(notebook(n, topic), nbp); created.append(nbp)
+        nbf.write(notebook(n, topic, exercise), nbp); created.append(nbp)
     post = SITE / "src" / "content" / "posts" / f"week{n}.mdx"
     if not post.exists():
         post.write_text(POST.format(n=n, topic=topic, due=due)); created.append(post)
