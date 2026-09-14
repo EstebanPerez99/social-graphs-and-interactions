@@ -69,6 +69,19 @@ const degreeShuffle = nullModels.find(
   (model) => model.model === "degree-preserving shuffle",
 );
 
+const welcomeCharacterIds = [
+  "Spider-Man",
+  "Hulk",
+  "Wolverine_(character)",
+  "Doctor_Strange",
+  "Deadpool",
+  "She-Hulk",
+] as const;
+
+const welcomeCharacters = welcomeCharacterIds
+  .map((id) => data.nodes.find((node) => node.id === id))
+  .filter((node): node is JourneyNode => Boolean(node?.thumbnail));
+
 const stages = [
   {
     short: "Question",
@@ -682,23 +695,56 @@ function SceneOverlay({
   selected,
   selectedId,
   onSelect,
+  onAdvance,
 }: {
   stage: number;
   selected: JourneyNode | null;
   selectedId: string | null;
   onSelect: (id: string | null) => void;
+  onAdvance: () => void;
 }) {
   return (
     <Html fullscreen className="journey-html">
       <div className={`journey-overlay stage-${stage}`} key={stage}>
         {stage === 0 && (
-          <div className="journey-title-card">
-            <p>Week 2 · Friendship paradox</p>
-            <h1 id="journey-title">The Superfriends Paradox</h1>
+          <div className="journey-welcome">
+            <div className="journey-portraits" aria-label="Popular characters in the network">
+              {welcomeCharacters.map((character, index) => (
+                <button
+                  key={character.id}
+                  type="button"
+                  className={`journey-portrait journey-portrait-${index + 1}`}
+                  aria-label={`Explore ${character.name}, degree ${character.degree}`}
+                  onClick={() => {
+                    onSelect(character.id);
+                    onAdvance();
+                  }}
+                >
+                  <img src={character.thumbnail ?? ""} alt="" />
+                  <span>{character.name.replaceAll("_", " ")}</span>
+                  <b>k = {character.degree}</b>
+                </button>
+              ))}
+            </div>
+            <div className="journey-title-card">
+              <p className="journey-title-eyebrow">
+                <span>Week 02</span>
+                <span>303 heroes · 1,434 links</span>
+              </p>
+              <h1 id="journey-title" aria-label="The Superfriends Paradox">
+                <span className="journey-title-the">The</span>
+                <span className="journey-title-superfriends">Superfriends</span>
+                <span className="journey-title-paradox">Paradox</span>
+              </h1>
             <p className="journey-title-question">
-              Does the friendship paradox hold among superheroes? Who are the
-              popular friends that drive it—and is anyone out-popularized by nobody?
+                Are superheroes’ friends more connected than they are? Meet the
+                popular friends who create the paradox—and the characters nobody
+                out-popularizes.
             </p>
+              <button type="button" className="journey-title-cta" onClick={onAdvance}>
+                Explore the network <span aria-hidden="true">→</span>
+              </button>
+            </div>
           </div>
         )}
         {(stage === 1 || stage === 2) && (
@@ -798,6 +844,7 @@ export default function FriendshipJourney() {
               selected={selected}
               selectedId={selectedId}
               onSelect={setSelectedId}
+              onAdvance={() => setStage(1)}
             />
           </Canvas>
         ) : (
