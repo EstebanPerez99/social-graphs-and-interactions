@@ -127,33 +127,67 @@ function useReducedMotion() {
   return reduced;
 }
 
-function TopCamera() {
+function StageCamera({
+  stage,
+  reducedMotion,
+  animationEnabled,
+}: {
+  stage: number;
+  reducedMotion: boolean;
+  animationEnabled: { current: boolean };
+}) {
   const { camera, size } = useThree();
+  const targetDistance = useRef(44);
+  const moving = useRef(true);
+  const activeStage = useRef(stage);
 
   useEffect(() => {
     const perspective = camera as PerspectiveCamera;
-    const halfExtent = 22;
+    const halfExtent = stage === 0 ? 8.5 : 22;
     const verticalFov = (perspective.fov * Math.PI) / 180;
     const aspect = Math.max(0.5, size.width / size.height);
     const verticalDistance = halfExtent / Math.tan(verticalFov / 2);
     const horizontalDistance = halfExtent / (Math.tan(verticalFov / 2) * aspect);
     const distance = Math.max(verticalDistance, horizontalDistance);
-    camera.position.set(0, distance, 0);
+    activeStage.current = stage;
+    animationEnabled.current = true;
+    targetDistance.current = stage === 0 ? distance * 0.8 : distance;
+    moving.current = true;
+    if (stage === 0 || reducedMotion) {
+      camera.position.set(0, distance, 0);
+      camera.up.set(0, 0, -1);
+      camera.lookAt(0, 0, 0);
+    }
+    perspective.updateProjectionMatrix();
+  }, [camera, reducedMotion, size.height, size.width, stage]);
+
+  useFrame((_, delta) => {
+    if (!moving.current || !animationEnabled.current || reducedMotion) return;
+    const destination = pointForCamera.set(0, targetDistance.current, 0);
+    const cameraSpeed = activeStage.current === 0 ? 0.075 : 2.8;
+    camera.position.lerp(destination, 1 - Math.exp(-cameraSpeed * delta));
     camera.up.set(0, 0, -1);
     camera.lookAt(0, 0, 0);
-    perspective.updateProjectionMatrix();
-  }, [camera, size.height, size.width]);
+    if (camera.position.distanceTo(destination) < 0.02) {
+      camera.position.copy(destination);
+      moving.current = false;
+    }
+  });
 
   return null;
 }
 
+const pointForCamera = new Vector3();
+
 function NetworkScene({
+  stage,
   shuffled,
   selectedId,
   colors,
   reducedMotion,
   onSelect,
 }: {
+  stage: number;
   shuffled: boolean;
   selectedId: string | null;
   colors: SceneColors;
@@ -162,6 +196,7 @@ function NetworkScene({
 }) {
   const nodeMeshes = useRef<Array<Mesh | null>>([]);
   const lines = useRef<LineSegments>(null);
+  const cameraAnimationEnabled = useRef(true);
   const point = useMemo(() => new Vector3(), []);
   const nodeGeometry = useMemo(() => new SphereGeometry(1, 12, 12), []);
   const current = useRef(data.nodes.map((node) => new Vector3(...node.position)));
@@ -257,7 +292,11 @@ function NetworkScene({
           />
         );
       })}
-      <TopCamera />
+      <StageCamera
+        stage={stage}
+        reducedMotion={reducedMotion}
+        animationEnabled={cameraAnimationEnabled}
+      />
       <OrbitControls
         makeDefault
         enablePan={false}
@@ -265,6 +304,9 @@ function NetworkScene({
         maxDistance={110}
         rotateSpeed={0.55}
         zoomSpeed={0.65}
+        onStart={() => {
+          cameraAnimationEnabled.current = false;
+        }}
       />
     </>
   );
@@ -833,6 +875,7 @@ export default function FriendshipJourney() {
             }
           >
             <NetworkScene
+              stage={stage}
               shuffled={stage >= 2}
               selectedId={selectedId}
               colors={colors}

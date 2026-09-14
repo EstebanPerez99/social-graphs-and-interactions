@@ -156,11 +156,12 @@
 }
 
 .journey-title-cta {
-  display: inline-flex;
+  display: flex;
+  width: max-content;
   min-height: 3rem;
   align-items: center;
   gap: 2rem;
-  margin-top: 1.5rem;
+  margin: 1.5rem 0 0 auto;
   padding-inline: 1rem;
   color: var(--color-ink);
   font: 600 0.75rem/1 var(--font-mono);
@@ -184,12 +185,14 @@
 
 .journey-portrait {
   position: absolute;
+  inset-block-start: var(--orbit-y);
+  inset-inline-start: var(--orbit-x);
   display: grid;
-  grid-template-columns: 3rem auto;
+  grid-template-columns: 3.5rem auto;
   grid-template-rows: 1fr 1fr;
   width: max-content;
-  max-width: 10.5rem;
-  min-height: 4rem;
+  max-width: 12rem;
+  min-height: 4.5rem;
   align-items: center;
   padding: 0.45rem 0.7rem 0.45rem 0.45rem;
   overflow: hidden;
@@ -201,13 +204,14 @@
   box-shadow: 0 0.8rem 2rem color-mix(in oklch, var(--color-ink) 12%, transparent);
   cursor: pointer;
   pointer-events: auto;
+  transform: translate(-50%, -50%);
   backdrop-filter: blur(10px);
 }
 
 .journey-portrait img {
   grid-row: 1 / 3;
-  width: 3rem;
-  height: 3rem;
+  width: 3.5rem;
+  height: 3.5rem;
   object-fit: cover;
   object-position: top center;
   border: 2px solid var(--color-out);
@@ -220,7 +224,7 @@
   align-self: end;
   margin-inline-start: 0.65rem;
   overflow: hidden;
-  font: 700 0.66rem/1.2 var(--font-display);
+  font: 700 0.72rem/1.2 var(--font-display);
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -229,19 +233,19 @@
   align-self: start;
   margin: 0.2rem 0 0 0.65rem;
   color: var(--color-ink-muted);
-  font: 0.56rem/1 var(--font-mono);
+  font: 0.6rem/1 var(--font-mono);
 }
 
 .journey-portrait:hover { border-color: var(--color-ink); }
 .journey-portrait:active { background: var(--color-grid); }
 .journey-portrait:disabled { opacity: 0.55; cursor: not-allowed; }
 
-.journey-portrait-1 { inset-block-start: -1%; inset-inline-start: 0; }
-.journey-portrait-2 { inset-block-start: 2%; inset-inline-end: 0; }
-.journey-portrait-3 { inset-block-start: 42%; inset-inline-start: -1%; }
-.journey-portrait-4 { inset-block-start: 45%; inset-inline-end: -1%; }
-.journey-portrait-5 { inset-block-end: -1%; inset-inline-start: 2%; }
-.journey-portrait-6 { inset-block-end: 0; inset-inline-end: 2%; }
+.journey-portrait-1 { --orbit-x: 50%; --orbit-y: 0%; }
+.journey-portrait-2 { --orbit-x: 94%; --orbit-y: 27%; }
+.journey-portrait-3 { --orbit-x: 94%; --orbit-y: 73%; }
+.journey-portrait-4 { --orbit-x: 50%; --orbit-y: 93%; }
+.journey-portrait-5 { --orbit-x: 6%; --orbit-y: 73%; }
+.journey-portrait-6 { --orbit-x: 6%; --orbit-y: 27%; }
 
 .journey-scene-label {
   position: absolute;
@@ -904,12 +908,12 @@
   .journey-portrait span,
   .journey-portrait b { display: none; }
 
-  .journey-portrait-1 { inset-block-start: -1rem; inset-inline-start: 8%; }
-  .journey-portrait-2 { inset-block-start: -0.5rem; inset-inline-end: 8%; }
-  .journey-portrait-3 { inset-block-start: 42%; inset-inline-start: 0.2rem; }
-  .journey-portrait-4 { inset-block-start: 44%; inset-inline-end: 0.2rem; }
-  .journey-portrait-5 { inset-block-end: -1rem; inset-inline-start: 11%; }
-  .journey-portrait-6 { inset-block-end: -0.5rem; inset-inline-end: 10%; }
+  .journey-portrait-1 { --orbit-x: 50%; --orbit-y: 0%; }
+  .journey-portrait-2 { --orbit-x: 91%; --orbit-y: 25%; }
+  .journey-portrait-3 { --orbit-x: 91%; --orbit-y: 75%; }
+  .journey-portrait-4 { --orbit-x: 50%; --orbit-y: 92%; }
+  .journey-portrait-5 { --orbit-x: 9%; --orbit-y: 75%; }
+  .journey-portrait-6 { --orbit-x: 9%; --orbit-y: 25%; }
 
   .journey-scene-label {
     inset-block-start: 0.75rem;
