@@ -58,3 +58,26 @@ _To be filled by the group: ten factual questions, grading against trusted sourc
 - Read a sample of rows in the character-level export back against direct NetworkX neighbor lists.
 - Agree as a group that “unbeaten” means no **direct neighbor** has strictly greater undirected degree, and retain that wording in the post.
 - Review the null-model interpretation and final prose before removing `draft: true`.
+
+## Week 3 — Who matters, and why
+
+### 🚀 Builder — maximum-clique story
+- A coding agent chose the clique prompt, implemented the reproducible pipeline in `notebooks/week3/build_week3.py`, added validation tests, wrote the first post draft, and built the interactive 2 × 3 rotating-seat explorable.
+- The analysis projects the frozen directed network to a simple undirected graph, enumerates all cliques and all maximal cliques, and identifies every maximum clique plus their intersection.
+- The baseline is 100 degree-preserving double-edge shuffles with 10 swaps per edge and a published seed. Every shuffled graph is checked against the complete observed degree sequence before its clique number, triangle count, and transitivity are recorded.
+
+### What we verified, and how
+| Check | Method |
+|---|---|
+| Clique number 8; six maximum cliques | Computed with `networkx.find_cliques`; unit test checks both values. |
+| Six-character common core | Intersected all six maximum-clique node sets; unit test checks the intersection size. |
+| Rotating seats form a 2 × 3 choice | Induced the subgraph on the five non-core characters; it is bipartite with side sizes 2 and 3 and all six cross-links present. |
+| 1,839 triangles and 477 five-cliques | Counted with `enumerate_all_cliques`; the triangle total was independently checked with `sum(nx.triangles(G).values()) / 3`. |
+| Null preserves the degree sequence | Exact sorted degree-sequence equality asserted after every one of the 100 shuffles. |
+| Null result | Clique numbers are 5 in 37 shuffles, 6 in 58, and 7 in 5; none reaches the observed 8. |
+| Site artifact | The build writes identical JSON to the analysis and site directories; the Astro/TypeScript build validates the consumed schema. |
+
+### Still to verify by hand
+- Open the eleven source Wikipedia pages and agree that “X-Men orbit” is fair wording for every character, especially the Phoenix Force.
+- Review the caveat that this is a network of article links, not a direct record of team membership or co-appearance.
+- Review and own the final post wording before sharing the link in Teams.

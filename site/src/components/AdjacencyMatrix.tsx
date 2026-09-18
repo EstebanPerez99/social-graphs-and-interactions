@@ -10,7 +10,12 @@ const loaders = import.meta.glob<Data>("../data/week*/network.json", { import: "
 
 export default function AdjacencyMatrix({ week = 1, size = 520 }: { week?: number; size?: number }) {
   const [data, setData] = useState<Data | null>(null);
-  useEffect(() => { loaders[`../data/week${week}/network.json`]?.().then(setData); }, [week]);
+  useEffect(() => {
+    // Every weekly post currently uses the same frozen Marvel snapshot. A week
+    // may add a focused artifact without duplicating the full network export.
+    const load = loaders[`../data/week${week}/network.json`] ?? loaders["../data/week1/network.json"];
+    load?.().then(setData);
+  }, [week]);
   if (!data) return <div style={{ aspectRatio: "1 / 1", width: "100%" }} className="animate-pulse bg-grid/60 rounded" />;
   return <Matrix data={data} size={size} />;
 }

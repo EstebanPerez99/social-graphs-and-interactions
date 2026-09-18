@@ -1,0 +1,58 @@
+---
+title: "Six cliques are one X-Men core in disguise"
+description: "Marvel’s largest cliques are not six separate teams: they are one six-character core with two rotating seats—and degree alone cannot explain them."
+week: 3
+topic: "Who matters, and why"
+date: 2026-09-21
+dataset: "Marvel Wikipedia link network · week-1 snapshot"
+---
+import CliqueLab from "../../components/CliqueLab";
+
+A clique is network science’s strictest idea of a group: every character must be linked to every other character. In Marvel’s Wikipedia network, the largest such group has eight members and 28 pairwise links. But there is not just one of these groups. There are six—and they are almost the same.
+
+## What we asked
+
+**Are Marvel’s largest cliques six distinct teams, or six views of the same dense editorial neighbourhood?** And before calling an eight-clique special, we asked the question from last week again: compared with what?
+
+High-degree characters have many chances to form cliques by accident. Our baseline therefore keeps every character’s degree exactly fixed and only rewires who links to whom. If degree is enough to make an eight-clique, shuffled networks should make them too.
+
+## What we did
+
+We collapsed the 1,784 directed Wikipedia links into a simple undirected network: two characters count as connected when either article links to the other. That leaves 303 nodes and 1,434 pairs. This is the right projection for a clique question—membership requires a relationship between every pair, not a particular arrow direction.
+
+We enumerated every clique with NetworkX, identified all *maximal* cliques, and kept those at the clique number: the largest size present. Then we generated 100 null networks with 14,340 degree-preserving double-edge swaps each. After every shuffle, we asserted that the entire sorted degree sequence was unchanged.
+
+## The figure
+
+<div id="clique-lab" className="wide">
+  <CliqueLab client:visible />
+</div>
+
+Choose one character from each rotating-seat column. Every one of the 2 × 3 combinations closes all 28 links and produces one of the network’s six maximum cliques.
+
+## What surprised us
+
+**1. Six maxima hide one core.** All six eight-cliques share Betsy Braddock, Cyclops, Emma Frost, Jean Grey, Rachel Summers and Wolverine. So the headline count—six maximum cliques—overstates the variety. Their intersection already contains three quarters of every clique.
+
+**2. The remaining seats form a tiny product.** One seat is either Cable or Storm. The other is Jubilee, Northstar or the Phoenix Force. Every cross-pair works; no same-column pair does. That makes exactly 2 × 3 = 6 valid lineups. It is less like discovering six teams and more like finding one tightly interlinked X-Men editorial core with two positions that Wikipedia can fill several ways.
+
+| fixed core (always present) | seat A (choose 1) | seat B (choose 1) |
+|---|---|---|
+| Betsy Braddock | Cable | Jubilee |
+| Cyclops | Storm | Northstar |
+| Emma Frost |  | Phoenix Force |
+| Jean Grey |  |  |
+| Rachel Summers |  |  |
+| Wolverine |  |  |
+
+**3. Popularity does not explain the clique away.** None of the 100 degree-preserving worlds rebuilt an eight-clique. Their clique numbers were 5 in 37 runs, 6 in 58, and 7 in 5. The observed value of 8 sits beyond the entire null distribution. The real network also contains 1,839 triangles against a null mean of 1,161 (standard deviation 48), another sign that its links close into groups far more often than degrees alone predict.
+
+**4. A clique here is partly social and partly editorial.** The nodes are characters, but the edges are Wikipedia links. An eight-clique does not prove eight characters shared a panel or belonged to one roster at one time. It says their articles form a mutually referential pocket. The fact that all eleven characters involved belong to the X-Men orbit makes the social reading plausible; the unusually dense linking is still an editorial fact first.
+
+## What we would check next
+
+Clique membership is binary: one missing link destroys the group even when 27 of 28 pairs remain. Next we would relax the definition and trace *near-cliques* around the shared core. We would also retain direction and ask whether the 28 pairs are mostly reciprocal or whether a few hub articles supply one-way links that make the undirected clique look more mutual than it is.
+
+## Methods and AI
+
+A coding agent implemented the deterministic analysis, the degree-preserving null, the checks, and the interactive. The group should verify the character interpretation and the final prose before sharing. Two independent counts—enumerating all cliques and summing NetworkX triangle counts over nodes—both give 1,839 triangles in the frozen TSV in this repository. The full audit trail is in the repository’s [AI methods log](https://github.com/EstebanPerez99/social-graphs-and-interactions/blob/main/AI_METHODS.md).

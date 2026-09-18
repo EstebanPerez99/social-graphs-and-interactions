@@ -1,0 +1,272 @@
+{
+  "method": {
+    "seed": 20260918,
+    "null_samples": 100,
+    "swaps_per_edge": 10,
+    "projection": "simple undirected"
+  },
+  "network": {
+    "nodes": 303,
+    "undirected_edges": 1434,
+    "triangles": 1839,
+    "five_cliques": 477,
+    "clique_number": 8,
+    "maximum_cliques": 6,
+    "transitivity": 0.18249479011610598
+  },
+  "core": [
+    {
+      "id": "Betsy_Braddock",
+      "name": "Betsy Braddock",
+      "degree": 28,
+      "url": "https://en.wikipedia.org/wiki/Betsy_Braddock",
+      "description": "Elizabeth \"Betsy\" Braddock is a character appearing in American comic books published by Marvel Comics, commonly in association with the X-Men."
+    },
+    {
+      "id": "Cyclops_(Marvel_Comics)",
+      "name": "Cyclops",
+      "degree": 26,
+      "url": "https://en.wikipedia.org/wiki/Cyclops_(Marvel_Comics)",
+      "description": "Cyclops is a superhero appearing in American comic books published by Marvel Comics."
+    },
+    {
+      "id": "Emma_Frost",
+      "name": "Emma Frost",
+      "degree": 27,
+      "url": "https://en.wikipedia.org/wiki/Emma_Frost",
+      "description": "Emma Grace Frost is a character appearing in American comic books published by Marvel Comics."
+    },
+    {
+      "id": "Jean_Grey",
+      "name": "Jean Grey",
+      "degree": 24,
+      "url": "https://en.wikipedia.org/wiki/Jean_Grey",
+      "description": "Jean Grey is a superhero appearing in American comic books published by Marvel Comics, usually those featuring the X-Men, a group of superheroes of which she is a founding member."
+    },
+    {
+      "id": "Rachel_Summers",
+      "name": "Rachel Summers",
+      "degree": 24,
+      "url": "https://en.wikipedia.org/wiki/Rachel_Summers",
+      "description": "Rachel Anne Summers is a fictional character appearing in American comic books published by Marvel Comics."
+    },
+    {
+      "id": "Wolverine_(character)",
+      "name": "Wolverine",
+      "degree": 63,
+      "url": "https://en.wikipedia.org/wiki/Wolverine_(character)",
+      "description": "Wolverine is a superhero appearing in American comic books published by Marvel Comics."
+    }
+  ],
+  "seat_a": [
+    {
+      "id": "Cable_(character)",
+      "name": "Cable",
+      "degree": 24,
+      "url": "https://en.wikipedia.org/wiki/Cable_(character)",
+      "description": "Cable (Nathan Christopher Charles Summers) is a character appearing in American comic books published by Marvel Comics, commonly in association with X-Force and the X-Men."
+    },
+    {
+      "id": "Storm_(Marvel_Comics)",
+      "name": "Storm",
+      "degree": 27,
+      "url": "https://en.wikipedia.org/wiki/Storm_(Marvel_Comics)",
+      "description": "Storm is a superhero appearing in American comic books published by Marvel Comics."
+    }
+  ],
+  "seat_b": [
+    {
+      "id": "Jubilee_(character)",
+      "name": "Jubilee",
+      "degree": 15,
+      "url": "https://en.wikipedia.org/wiki/Jubilee_(character)",
+      "description": "Jubilee (Jubilation Lee) is a superhero appearing in American comic books published by Marvel Comics, most commonly in association with the X-Men."
+    },
+    {
+      "id": "Northstar_(character)",
+      "name": "Northstar",
+      "degree": 17,
+      "url": "https://en.wikipedia.org/wiki/Northstar_(character)",
+      "description": "Northstar (Jean-Paul Beaubier) is a fictional superhero appearing in American comic books published by Marvel Comics."
+    },
+    {
+      "id": "Phoenix_Force",
+      "name": "Phoenix Force",
+      "degree": 32,
+      "url": "https://en.wikipedia.org/wiki/Phoenix_Force",
+      "description": "The Phoenix Force is a fictional entity appearing in American comic books published by Marvel Comics."
+    }
+  ],
+  "cliques": [
+    [
+      "Betsy_Braddock",
+      "Cable_(character)",
+      "Cyclops_(Marvel_Comics)",
+      "Emma_Frost",
+      "Jean_Grey",
+      "Jubilee_(character)",
+      "Rachel_Summers",
+      "Wolverine_(character)"
+    ],
+    [
+      "Betsy_Braddock",
+      "Cable_(character)",
+      "Cyclops_(Marvel_Comics)",
+      "Emma_Frost",
+      "Jean_Grey",
+      "Northstar_(character)",
+      "Rachel_Summers",
+      "Wolverine_(character)"
+    ],
+    [
+      "Betsy_Braddock",
+      "Cable_(character)",
+      "Cyclops_(Marvel_Comics)",
+      "Emma_Frost",
+      "Jean_Grey",
+      "Phoenix_Force",
+      "Rachel_Summers",
+      "Wolverine_(character)"
+    ],
+    [
+      "Betsy_Braddock",
+      "Cyclops_(Marvel_Comics)",
+      "Emma_Frost",
+      "Jean_Grey",
+      "Jubilee_(character)",
+      "Rachel_Summers",
+      "Storm_(Marvel_Comics)",
+      "Wolverine_(character)"
+    ],
+    [
+      "Betsy_Braddock",
+      "Cyclops_(Marvel_Comics)",
+      "Emma_Frost",
+      "Jean_Grey",
+      "Northstar_(character)",
+      "Rachel_Summers",
+      "Storm_(Marvel_Comics)",
+      "Wolverine_(character)"
+    ],
+    [
+      "Betsy_Braddock",
+      "Cyclops_(Marvel_Comics)",
+      "Emma_Frost",
+      "Jean_Grey",
+      "Phoenix_Force",
+      "Rachel_Summers",
+      "Storm_(Marvel_Comics)",
+      "Wolverine_(character)"
+    ]
+  ],
+  "null": {
+    "max_clique_numbers": [
+      6,
+      5,
+      6,
+      6,
+      5,
+      6,
+      6,
+      5,
+      6,
+      6,
+      6,
+      7,
+      5,
+      5,
+      5,
+      5,
+      6,
+      5,
+      6,
+      6,
+      5,
+      5,
+      6,
+      6,
+      7,
+      5,
+      6,
+      6,
+      5,
+      5,
+      5,
+      6,
+      5,
+      6,
+      5,
+      6,
+      5,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      5,
+      5,
+      5,
+      5,
+      6,
+      5,
+      6,
+      6,
+      6,
+      6,
+      5,
+      6,
+      6,
+      6,
+      6,
+      5,
+      6,
+      5,
+      6,
+      6,
+      5,
+      6,
+      6,
+      6,
+      5,
+      5,
+      6,
+      6,
+      7,
+      5,
+      6,
+      6,
+      6,
+      6,
+      6,
+      5,
+      5,
+      7,
+      5,
+      5,
+      6,
+      5,
+      5,
+      6,
+      6,
+      6,
+      6,
+      5,
+      5,
+      7
+    ],
+    "max_clique_mean": 5.68,
+    "max_clique_max": 7,
+    "triangles_mean": 1160.55,
+    "triangles_sd": 47.85276898989232,
+    "transitivity_mean": 0.11516820482286395,
+    "transitivity_sd": 0.004748711817990705
+  }
+}
