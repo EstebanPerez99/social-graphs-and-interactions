@@ -3,7 +3,12 @@ import matplotlib.pyplot as plt
 
 from .degree import goodies_bins, raw_distribution
 
-PALETTE = {"in": "#d1495b", "out": "#1f6f8b", "und": "#5c6b73", "bin": "#111111"}
+PALETTE = {"in": "#d1495b", "out": "#1f6f8b", "und": "#5c6b73", "bin": "#111111",
+           # Excepción documentada en site/DESIGN.md: 8 tonos apagados para comunidades,
+           # solo dentro de vistas de datos (escena 3D, figuras, chips de leyenda). El orden es
+           # fijo: comunidad i -> communities[i]; validado con el validador de dataviz.
+           "communities": ("#cb9328", "#9d83c7", "#903d7b", "#526922",
+                           "#66c292", "#6773b4", "#d0622c", "#2e9e8f")}
 
 
 def set_style() -> None:

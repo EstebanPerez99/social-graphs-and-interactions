@@ -19,7 +19,7 @@ SCHEDULE = {  # misma secuencia que site/src/site.config.ts
 }
 
 # El número de "Go nuts" puede cambiar cuando una semana tiene más ejercicios.
-GO_NUTS_EXERCISE = {1: "1.8", 2: "2.11"}
+GO_NUTS_EXERCISE = {1: "1.8", 2: "2.11", 3: "3.12", 4: "4.13"}
 
 POST = '''---
 title: "Week {n}: working title"

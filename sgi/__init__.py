@@ -13,7 +13,7 @@ DATA = ROOT / "data"
 FIGURES = ROOT / "figures"
 SITE = ROOT / "site"
 
-from .data import load_marvel                                              # noqa: E402
+from .data import load_marvel, load_philosophers                                             # noqa: E402
 from .degree import degree_table, top, raw_distribution, goodies_bins       # noqa: E402
 from .plots import set_style, plot_distribution, degree_panels, PALETTE     # noqa: E402
 from .graph import draw                                                    # noqa: E402
@@ -26,7 +26,7 @@ from .friendship import (                                                   # no
 
 __all__ = [
     "ROOT", "DATA", "FIGURES", "SITE",
-    "load_marvel",
+    "load_marvel", "load_philosophers",
     "degree_table", "top", "raw_distribution", "goodies_bins",
     "set_style", "plot_distribution", "degree_panels", "PALETTE",
     "draw",

@@ -23,3 +23,28 @@ def load_marvel(week: int = 1) -> tuple[nx.DiGraph, pd.DataFrame]:
     nx.set_node_attributes(
         G, nodes.set_index("node_id")[["name", "url", "description"]].to_dict("index"))
     return G, nodes
+
+
+def load_philosophers() -> tuple[nx.Graph, nx.Graph, pd.DataFrame]:
+    """Carga la red de filósofos (semana 4) como Graph no dirigido y con pesos.
+
+    Sigue el snippet oficial de la página de datos al pie de la letra: primero todos
+    los nodos, luego las aristas dirigidas A -> B sumando ambos sentidos en `weight`.
+    Devuelve (G, giant, nodes): 1,444 nodos / 9,140 links; gigante 1,374 / 9,139.
+    name, era, subfields, url y description quedan como atributos de cada nodo.
+    """
+    d = DATA / "week4"
+    nodes = pd.read_csv(d / "week4_philosophers_nodes.tsv", sep="\t", comment="#", quoting=3)
+    edges = pd.read_csv(d / "week4_philosophers_edges.tsv", sep="\t", comment="#")
+
+    G = nx.Graph()
+    G.add_nodes_from(nodes.node_id)
+    for s, t, w in edges.itertuples(index=False):
+        if G.has_edge(s, t):
+            G[s][t]["weight"] += w
+        else:
+            G.add_edge(s, t, weight=w)
+    attrs = nodes.set_index("node_id")[["name", "era", "subfields", "url", "description"]]
+    nx.set_node_attributes(G, attrs.fillna("").to_dict("index"))
+    giant = G.subgraph(max(nx.connected_components(G), key=len)).copy()
+    return G, giant, nodes
