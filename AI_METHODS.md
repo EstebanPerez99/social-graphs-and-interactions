@@ -81,3 +81,32 @@ _To be filled by the group: ten factual questions, grading against trusted sourc
 - Open the eleven source Wikipedia pages and agree that “X-Men orbit” is fair wording for every character, especially the Phoenix Force.
 - Review the caveat that this is a network of article links, not a direct record of team membership or co-appearance.
 - Review and own the final post wording before sharing the link in Teams.
+
+## Week 4 — Communities & backbones
+
+### 🚀 Builder — where philosophy snaps (exercise 4.13)
+- A coding agent followed the group's plan (`notebooks/week4/PLAN.md`): downloaded and documented the philosophers snapshot, added `sgi.load_philosophers()` (the course snippet verbatim), and implemented the disparity filter, Louvain helpers and NMI from their definitions in `sgi/backbone.py` and `sgi/communities.py`.
+- `notebooks/week4/build_week4.py` is the deterministic pipeline: the course table, Louvain on the full unweighted giant (seed 20260923) with a 20-shuffle null and a five-seed NMI matrix, a union-find sweep over α that logs every chunk of 5+ philosophers the giant loses and the links that last held it, and two nulls for the sweep (50 weight shuffles, 50 degree-preserving rewirings that carry weights). It exports `backbone-snap.json` (0.50 MB) and the three static figures.
+- The agent built the 3D opener (`BackboneSnap.tsx`, react-three-fiber): instanced spheres coloured by community, the α dial filtering in the browser, islands drifting as they detach, and the "Which tradition leaves first?" game. It also drafted the post, chose the community palette with the dataviz validator, and wrote the DESIGN.md exception.
+
+### What we verified, and how
+| Check | Method |
+|---|---|
+| Loader: 1,444 / 9,140; giant 1,374 / 9,139; no self-loops | Unit test on `load_philosophers()`. Weights 1–24, 5,899 of weight 1, Aristotle s = 521 on k = 300, Erasmus–More = 24: all match the course page. |
+| Naive thresholds w ≥ 2 / 3 / 4 → 3,240 / 1,572 / 785 links; w ≥ 3 keeps 863 philosophers | Unit test. |
+| Disparity table (α = 0.05, 0.1, 0.2, 0.3, 0.5: links, philosophers, giant) | Unit test against all 15 numbers of the course table; also the Moses of Narbonne example, (1 − 2/11)⁹. |
+| Why 1,540 at α = 0.2 | Two links have p-value exactly 0.2 in exact arithmetic, (1 − 4/5)¹; floating point gives 0.19999999999999996, so they pass `< 0.2`. Rounding the export to 6 digits dropped them (1,538), so the JSON ships full precision; a test parses the exported JSON on its own and recounts the table with the browser's rule. |
+| Louvain: 8 communities, Q = 0.499; null Q = 0.223 ± 0.002 (z ≈ 127) | Course expects ≈ 8, 0.50 and 0.23. Degree sequence asserted after every one of the 20 shuffles. |
+| Five-seed stability: 7–9 communities, NMI 0.67–0.78 | Course quotes 0.65–0.83. |
+| NMI implementation | Hand-computed toy case in a test; all 10 seed pairs and NMI vs era (0.424) equal scikit-learn's `normalized_mutual_info_score` to 6 decimals (scikit-learn installed in a throwaway venv only, not in the project). |
+| Sweep | Toy two-triangle test; on the data, the first break (24 philosophers, α = 0.297238, bridge Gaudapada–The Buddha) and the Chinese break through Confucius–Voltaire at the α where the giant falls below 50 % are asserted in tests. |
+| Nulls keep degrees | Asserted for every one of the 100 sweep nulls; a test also checks the weighted rewiring keeps the weight multiset. |
+| Determinism | Two runs with different `PYTHONHASHSEED` produce byte-identical JSON (a strength tie between Mencius and Shen Buhai had to be broken by id first). |
+| Page | `astro check` 0 errors, `astro build` green; played the game in Chromium (right and wrong guess, freeze, verdict, break log), no console errors; frame time while dragging with islands drifting: median 14.3 ms, p95 15.2 ms, no long tasks; no horizontal overflow at 390 px; reduced motion makes positions jump. |
+| Community palette | `validate_palette.js` (dataviz skill): adjacent CVD ΔE ≥ 11.8, normal-vision ≥ 18.7; all-pairs fails as expected for 8 hues, so identity is also carried by position, legend, hover card and chips. |
+
+### Still to verify by hand
+- The community names (`TRADITIONS` in `build_week4.py`), especially "Aristotle and the Latin West" and "British and American moderns".
+- The three Wikipedia readings in the post (Gaudapada–Buddha, Confucius–Voltaire, Max Müller and the Upanishadic sages).
+- The 60 fps claim on a real laptop GPU; the timing above is headless Chromium on one Mac.
+- Review and own the final wording before posting the link in Teams.

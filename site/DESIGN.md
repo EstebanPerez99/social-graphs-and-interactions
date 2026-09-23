@@ -20,6 +20,31 @@ If an element does not encode something true about the content, cut it.
 Red and blue are **semantic**, not decorative: never use them for emphasis, buttons, or "brand" — only for the
 in/out direction. A third accent is not allowed; if something needs attention, use weight, size or ink.
 
+### Exception: community palette (data views only, from week 4)
+
+Communities need categorical hues, and red/blue already mean in/out. So data views (and only data views: the 3D
+scene, matplotlib figures, legend chips) may use this muted eight-hue palette. Never for UI, buttons, links,
+emphasis or text. Community *i* always gets slot *i*; the same hex values live in `sgi.PALETTE["communities"]`
+so the static figures match the scene.
+
+| Slot | Hex | Week 4 community |
+|---|---|---|
+| 0 | `#cb9328` ochre | German philosophy |
+| 1 | `#9d83c7` lavender | Early modern Europe |
+| 2 | `#903d7b` plum | Aristotle and the Latin West |
+| 3 | `#526922` olive | British and American moderns |
+| 4 | `#66c292` sage | Greek and Roman antiquity |
+| 5 | `#6773b4` periwinkle | Indian philosophy |
+| 6 | `#d0622c` burnt orange | Islamic and Jewish philosophy |
+| 7 | `#2e9e8f` teal | Chinese philosophy |
+
+Hues avoid the in-red and out-blue families. Validated with the dataviz skill's `validate_palette.js` on white:
+lightness band, chroma floor and adjacent-pair CVD (worst ΔE 11.8) and normal-vision (18.7) checks pass. With all
+28 pairs in play no eight-hue palette passes, so the slot order puts the two closest pairs (lavender/periwinkle,
+olive/burnt orange) on communities that share almost no links, and every view also carries identity without
+colour: position in the layout, a named legend, and names in hover cards. Sage and ochre sit below 3:1 on white,
+so they appear only with a visible label or legend nearby.
+
 Light only. `color-scheme: light` is declared; figures from matplotlib are light too.
 
 ## Type
@@ -76,6 +101,7 @@ week's `N.8-go-nuts.ipynb`.
 | `WeekGrid.tsx` | landing: the course sequence as cards; unlocked → link, locked → encrypted topic + unlock date | one island for all cards |
 | `SpiderRace.tsx` | the week-1 game: reach / escape Spider-Man through real out-links | BFS live; facts computed from the same JSON |
 | `PostTitle.tsx` | post h1 with the one reveal per page | `role="heading"` wrapper |
+| `BackboneSnap.tsx` | week 4 opener: disparity-filter dial on the philosophers in 3D, guessing game, break log | `client:only="react"`; demand frame loop (renders only while the dial or camera moves); community palette exception |
 
 ### React Bits (`src/components/bits/`, MIT)
 
@@ -87,7 +113,7 @@ Used sparingly, each with one job. Do not add a background or cursor effect; the
 | `CountUp` | `Stats` | numbers count up once when scrolled into view |
 | `BlurText` | post `h1` | one quiet reveal per page, 0.4s, never on body text |
 | `DecryptedText` | locked week cards | "locked" literally reads as encrypted until unlocked |
-| `ClickSpark` | the game | tactile feedback on each jump |
+| `ClickSpark` | the games | tactile feedback on each jump (week 1) and on each guess (week 4) |
 | `Magnet` | primary CTA (Play) | one magnetic button per page, max |
 
 Anything else from React Bits needs a sentence here justifying it.
