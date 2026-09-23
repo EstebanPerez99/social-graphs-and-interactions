@@ -48,7 +48,7 @@ def nmi(a, b) -> float:
 def top_members(part: dict, score: dict, k: int = 3) -> dict:
     """Los k miembros con mayor `score` (p. ej. fuerza) de cada comunidad."""
     out: dict = {}
-    for n in sorted(part, key=lambda n: -score[n]):
+    for n in sorted(part, key=lambda n: (-score[n], n)):  # desempate por id: independiente del hash
         out.setdefault(part[n], [])
         if len(out[part[n]]) < k:
             out[part[n]].append(n)
