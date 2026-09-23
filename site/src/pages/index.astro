@@ -20,11 +20,13 @@ const cards: WeekCard[] = site.schedule.map((s) => {
     : { week: s.week, topic: s.topic, date: fmtDate(s.date), unlock: fmtDate(plus(s.date, 5)), locked: true };
 });
 cards.push({ week: "9–13", topic: "Final project", date: "Nov–Dec", unlock: "2 Dec · demo fair", locked: true });
-const latestCta = latest?.data.week === 3
-  ? { anchor: "#clique-lab", label: "Explore the six cliques" }
-  : latest?.data.week === 1
-    ? { anchor: "#play", label: "Play: two clicks from Spider-Man" }
-    : { anchor: "", label: "Explore this week" };
+const latestCta = latest?.data.week === 4
+  ? { anchor: "#snap", label: "Play: where does philosophy snap?" }
+  : latest?.data.week === 3
+    ? { anchor: "#clique-lab", label: "Explore the six cliques" }
+    : latest?.data.week === 1
+      ? { anchor: "#play", label: "Play: two clicks from Spider-Man" }
+      : { anchor: "", label: "Explore this week" };
 ---
 <Base>
   <!-- hero: la matriz de la semana actual + el post más reciente -->
