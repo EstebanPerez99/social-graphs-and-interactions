@@ -1,0 +1,347 @@
+/* Week 4 opener: the disparity-filter dial. Community hues live only inside the data view
+   (scene, chips, legend) — see DESIGN.md → "Community palette (exception)". */
+.snap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 17.5rem;
+  grid-template-areas:
+    "stage side"
+    "controls side";
+  width: 100%;
+  margin: 0 0 3rem;
+  overflow: hidden;
+  color: var(--color-ink);
+  background: white;
+  border: 1px solid var(--color-grid);
+  border-radius: 8px;
+  font-family: var(--font-body);
+}
+
+.snap-kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0 0 0.35rem;
+  color: var(--color-ink-muted);
+  font: 500 0.68rem/1.3 var(--font-mono);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.snap-chip {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 0.62rem;
+  height: 0.62rem;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1.5px white, 0 0 0 2.5px rgb(15 23 42 / 0.12);
+}
+
+/* ---------- stage ---------- */
+.snap-stage {
+  grid-area: stage;
+  position: relative;
+  height: min(80dvh, 46rem);
+  min-height: 30rem;
+  border-bottom: 1px solid var(--color-grid);
+}
+
+.snap-canvas,
+.snap-canvas > div { position: absolute; inset: 0; }
+.snap-canvas canvas { touch-action: none; cursor: grab; }
+.snap-canvas canvas:active { cursor: grabbing; }
+
+.snap-fallback {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  padding: 2rem;
+  color: var(--color-ink-muted);
+  font: 0.8rem/1.4 var(--font-mono);
+  text-align: center;
+}
+
+.snap-readout {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.7rem 0.85rem 0.6rem;
+  background: rgb(255 255 255 / 0.88);
+  border: 1px solid var(--color-grid);
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.snap-alpha {
+  margin: 0 0 0.35rem;
+  font: 750 1.9rem/1 var(--font-display);
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.snap-readout dl {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 0.1rem 0.9rem;
+  margin: 0;
+  font: 0.72rem/1.45 var(--font-mono);
+}
+.snap-readout dl > div { display: contents; }
+.snap-readout dt { color: var(--color-ink-muted); }
+.snap-readout dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+
+.snap-label {
+  transform: translate(8px, -50%);
+  padding: 0.12rem 0.4rem;
+  white-space: nowrap;
+  color: white;
+  background: var(--color-ink);
+  border-radius: 3px;
+  font: 500 0.7rem/1.2 var(--font-mono);
+}
+
+/* ---------- the guess ---------- */
+.snap-gate,
+.snap-verdict {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: 1rem;
+  width: min(52rem, calc(100% - 2rem));
+  transform: translateX(-50%);
+  padding: 0.9rem 1.1rem 1rem;
+  background: rgb(255 255 255 / 0.95);
+  border: 1px solid var(--color-grid);
+  border-top: 2px solid var(--color-ink);
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgb(15 23 42 / 0.08);
+}
+
+.snap-gate h2,
+.snap-verdict h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.4rem;
+  font: 750 clamp(1.35rem, 2.6vw, 1.8rem)/1.08 var(--font-display);
+  letter-spacing: -0.03em;
+}
+.snap-verdict h2 .snap-chip { width: 0.9rem; height: 0.9rem; }
+
+.snap-gate > p:not(.snap-kicker),
+.snap-verdict > p:not(.snap-kicker) {
+  margin: 0;
+  color: var(--color-ink-muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+.snap-verdict b { color: var(--color-ink); font-weight: 600; }
+.snap-verdict {
+  top: 1rem;
+  right: 1rem;
+  bottom: auto;
+  left: auto;
+  width: min(22rem, calc(100% - 2rem));
+  transform: none;
+}
+.snap-verdict.is-fresh { border-top-width: 4px; }
+
+.snap-guesses {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+}
+
+.snap-guesses button {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  column-gap: 0.5rem;
+  width: 100%;
+  padding: 0.5rem 0.65rem;
+  text-align: left;
+  color: var(--color-ink);
+  background: white;
+  border: 1px solid var(--color-grid);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: border-color 150ms, background 150ms;
+}
+.snap-guesses button:hover { border-color: var(--color-ink); background: var(--color-paper); }
+.snap-guesses button span { font: 600 0.8rem/1.2 var(--font-body); }
+
+.snap-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 0.4rem 0.7rem;
+  color: white;
+  background: var(--color-ink);
+  border-radius: 4px;
+  font: 500 0.75rem/1.3 var(--font-mono);
+  white-space: nowrap;
+}
+
+/* ---------- hover card ---------- */
+.snap-card {
+  position: absolute;
+  z-index: 3;
+  right: 1rem;
+  bottom: 1rem;
+  width: min(17rem, calc(100% - 2rem));
+  padding: 0.8rem 0.9rem;
+  background: rgb(255 255 255 / 0.95);
+  border: 1px solid var(--color-grid);
+  border-radius: 6px;
+}
+.snap-card h3 { margin: 0; font: 700 1.1rem/1.15 var(--font-display); letter-spacing: -0.015em; }
+.snap-card-era { margin: 0.15rem 0 0; color: var(--color-ink-muted); font: 0.7rem/1.3 var(--font-mono); }
+.snap-card-desc {
+  display: -webkit-box;
+  margin: 0.45rem 0 0;
+  overflow: hidden;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+.snap-card dl { display: flex; gap: 1.2rem; margin: 0.5rem 0 0; font: 0.72rem/1.3 var(--font-mono); }
+.snap-card dt { color: var(--color-ink-muted); }
+.snap-card dd { margin: 0; font-weight: 500; }
+.snap-card-last { margin: 0.5rem 0 0; font: 0.72rem/1.4 var(--font-mono); color: var(--color-ink-muted); }
+.snap-card-last b { color: var(--color-ink); }
+.snap-card-actions { display: flex; justify-content: space-between; margin: 0.55rem 0 0; font: 0.72rem var(--font-mono); }
+.snap-card-actions a { color: var(--color-ink); }
+.snap-card-actions button { padding: 0; color: var(--color-ink-muted); background: none; border: 0; cursor: pointer; font: inherit; }
+
+/* ---------- controls ---------- */
+.snap-controls {
+  grid-area: controls;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.35rem 1rem;
+  padding: 0.9rem 1rem 1rem;
+}
+
+.snap-controls label { display: grid; font-family: var(--font-mono); }
+.snap-controls label span { font: 750 1.2rem/1 var(--font-display); }
+.snap-controls label small { color: var(--color-ink-muted); font-size: 0.66rem; }
+
+.snap-controls input[type="range"] {
+  width: 100%;
+  accent-color: var(--color-ink);
+  direction: rtl; /* left = alpha 1, right = alpha 0.001: dragging right removes links */
+  cursor: pointer;
+}
+.snap-controls input[type="range"]:disabled { cursor: not-allowed; opacity: 0.4; }
+
+.snap-scale {
+  grid-column: 2;
+  display: flex;
+  justify-content: space-between;
+  margin-top: -0.2rem;
+  color: var(--color-ink-faint);
+  font: 0.64rem/1 var(--font-mono);
+}
+
+.snap-presets {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.35rem;
+}
+.snap-presets button {
+  padding: 0.32rem 0.6rem;
+  color: var(--color-ink);
+  background: white;
+  border: 1px solid var(--color-grid);
+  border-radius: 4px;
+  font: 500 0.72rem/1.2 var(--font-mono);
+  cursor: pointer;
+}
+.snap-presets button:hover:not(:disabled) { border-color: var(--color-ink); }
+.snap-presets button[aria-pressed="true"] { color: white; background: var(--color-ink); border-color: var(--color-ink); }
+.snap-presets button:disabled { color: var(--color-ink-faint); cursor: not-allowed; }
+.snap-presets .snap-reset { margin-left: auto; }
+
+/* ---------- side: legend + log ---------- */
+.snap-side {
+  grid-area: side;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border-left: 1px solid var(--color-grid);
+}
+
+.snap-legend { padding: 1rem 1rem 0.8rem; border-bottom: 1px solid var(--color-grid); }
+.snap-legend ul { margin: 0; padding: 0; list-style: none; }
+.snap-legend li {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.12rem 0;
+  font-size: 0.82rem;
+  line-height: 1.3;
+}
+.snap-legend small { color: var(--color-ink-muted); font: 0.68rem var(--font-mono); }
+
+.snap-log {
+  flex: 1 1 0;
+  min-height: 10rem;
+  padding: 1rem 1rem 0.5rem;
+  overflow-y: auto;
+}
+.snap-log-empty { margin: 0; color: var(--color-ink-faint); font: 0.75rem var(--font-mono); }
+.snap-log ol { margin: 0; padding: 0; list-style: none; }
+.snap-log li {
+  display: grid;
+  grid-template-columns: 3.1rem auto 1fr;
+  align-items: baseline;
+  gap: 0.4rem;
+  padding: 0.35rem 0;
+  border-top: 1px solid var(--color-grid);
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+.snap-log li.is-big .snap-log-what { font-weight: 600; }
+.snap-log-alpha { font: 0.72rem var(--font-mono); font-variant-numeric: tabular-nums; }
+.snap-log-what small {
+  display: block;
+  color: var(--color-ink-muted);
+  font: 400 0.66rem/1.35 var(--font-mono);
+}
+
+/* ---------- small screens: stack everything ---------- */
+@media (max-width: 52rem) {
+  .snap {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "stage" "controls" "side";
+  }
+  .snap-stage { height: 72dvh; min-height: 34rem; }
+  .snap-side { border-left: 0; border-top: 1px solid var(--color-grid); }
+  .snap-log { max-height: 18rem; }
+}
+
+@media (max-width: 64rem) {
+  .snap-guesses { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 34rem) {
+  .snap-guesses { gap: 0.3rem; }
+  .snap-guesses button { padding: 0.4rem 0.5rem; }
+  .snap-gate > p:not(.snap-kicker) { display: none; }
+  .snap-readout { top: 0.6rem; left: 0.6rem; padding: 0.5rem 0.6rem; }
+  .snap-alpha { font-size: 1.4rem; }
+  .snap-hint { white-space: normal; width: calc(100% - 2rem); text-align: center; }
+}
+
+@media (max-width: 42rem) {
+  .snap-verdict { top: auto; bottom: 0.6rem; left: 0.6rem; right: 0.6rem; width: auto; }
+  .snap-verdict h2 { font-size: 1.2rem; }
+  .snap-card { top: 0.6rem; bottom: auto; right: 0.6rem; }
+}
