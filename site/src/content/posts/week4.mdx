@@ -1,6 +1,6 @@
 ---
-title: "The East leaves first"
-description: "Turn up the disparity filter on 1,374 philosophers and Indian philosophy is the first tradition to let go of the rest, held until α = 0.297 by a single link: Gaudapada and the Buddha."
+title: "Philosophy hangs by one thread"
+description: "We turned one dial on 1,374 philosophers until the history of philosophy came apart. Whole traditions turn out to hang from a single Wikipedia link. Guess which one lets go first, then read why."
 week: 4
 topic: "Communities & backbones"
 date: 2026-09-28
@@ -31,25 +31,35 @@ export const nullB = snap.null.rewire;
 export const purity = (rows) => rows.filter((r) => r.first_break_purity).reduce((t, r, _, all) => t + r.first_break_purity / all.length, 0);
 export const row = (a) => snap.table.find((r) => r.alpha === a);
 
+This week the network is not Marvel. Every dot below is a philosopher with an English Wikipedia article, born before 1900: {n(net.nodes)} of them, every one reachable from every other. Two dots are joined when one article mentions the other, and the more often it does, the heavier the link. That is the whole dataset. No birth dates, no schools, no textbook: only who Wikipedia writes about together.
+
+**The colours are communities.** A community is a group of philosophers who link to each other far more than to everyone else. An algorithm called Louvain finds them from the links alone, without being told any history, and they still come out looking like the traditions a textbook would name: the Greeks, the scholastics, the German idealists. We named each one after reading its strongest members; the names are ours, the groups are the algorithm's.
+
+**The dial is a filter.** At α = 1 you see every link. As you lower α, a link survives only if it is one of the links that really matter to at least one of its two philosophers. One mention among the hundreds on Kant's page disappears early; the only heavy link on a short article stays to the end. Keep lowering it and, at some point, an entire tradition is left hanging from the rest of philosophy by a single link. One step further and it floats away.
+
+**Play before you read.** Guess which tradition lets go of the rest first. That unlocks the dial. Then drag it down and watch. The answer, and the reasons we trust it, come after the figure.
+
 <div id="snap" className="wide scroll-mt-8">
   <BackboneSnap client:only="react" />
 </div>
 
-Every philosopher on Wikipedia's lists, born before 1900, sits in one connected web of {n(net.links)} links. We pushed a single dial until that web started to come apart. The first tradition to let go was not a modern school or an ancient one but Indian philosophy: {first.size} Vedānta, Mīmāṃsā and Buddhist-logic philosophers who were holding on by one link, {thread(first)}.
+If you played, you have seen the tradition that left first, the α where it happened, and the two philosophers whose link was the last thread. The rest of this post is what we asked, what we did to make sure that answer is not an accident of the data, and what surprised us when we read it.
 
 ## What we asked
 
-**If you keep only the links that matter, where does the history of philosophy snap, and who goes first?** The dial is the significance level α of the disparity filter. At α = 1 every link survives. Lower it, and a link survives only if it carries an unusually large share of the weight of at least one of its two philosophers. At some α the giant component stops being one thing. We wanted that α, the tradition that leaves, and the two philosophers whose link was the last thread.
+**If you keep only the links that matter, where does the history of philosophy snap, and who goes first?** The dial is the significance level α of the disparity filter, the standard way of finding a network's backbone: the links that are large relative to the philosopher they belong to, rather than large in absolute terms. At α = 1 every link survives. Lower it, and a link survives only if it carries an unusually large share of the weight of at least one of its two philosophers. At some α the giant component, the one connected web that holds everybody, stops being one thing. We wanted that α, the tradition that leaves, and the two philosophers whose link was the last thread.
 
 And, as every week: **compared to what?** Maybe any network with these weights snaps at the same α, and the tradition that leaves is just whoever happens to sit on the edge. So we ran the same dial on two kinds of null network: the same links with the weights shuffled among them, and degree-preserving rewirings that carry each weight along.
 
 ## What we did
 
+In one line: load the network, build the filter ourselves, colour it with communities, then turn the dial down one link at a time and record every moment a chunk of philosophers falls off. The details matter because the numbers below only mean something if each step can be checked.
+
 We loaded the frozen snapshot exactly as the course's snippet does: all {n(net.nodes_all)} philosophers first, then the directed links, summing the two directions into one weight. That leaves a giant component of {n(net.nodes)} philosophers and {n(net.links)} links, with weights from 1 to {net.max_weight} ({n(net.weight_one)} links have weight 1).
 
 We implemented the disparity filter from its formula, without a package. For philosopher *i* with degree *k* and strength *s*, a link of weight *w* is significant at *i* when (1 − *w*/*s*)<sup>*k*−1</sup> < α; the link is kept if it is significant at either end. Storing the smaller of the two values per link turns every α into a simple threshold, which is what lets the page above filter in the browser. The filter reproduces the course table exactly: {n(row(0.2).links)} links and {n(row(0.2).nodes)} philosophers at α = 0.2, and the naive thresholds *w* ≥ 2, 3, 4 give 3,240, 1,572 and 785 links. (Two of those 1,540 links sit at exactly 0.2 on paper, (1 − 4/5)<sup>1</sup>. They are in the course's count only because floating point makes the number 0.19999999999999996, so the page ships the values unrounded.)
 
-Colours come from Louvain on the full unweighted giant, not on the backbone (rule 3 of the week): {net.communities} communities, modularity *Q* = {net.q.toFixed(3)}, against {net.null_q_mean.toFixed(3)} ± {net.null_q_sd.toFixed(3)} for 20 degree-preserving shuffles (*z* ≈ {Math.round(net.z)}). Five seeds agree with each other at NMI {net.stability.nmi_min.toFixed(2)}–{net.stability.nmi_max.toFixed(2)} and find {Math.min(...net.stability.communities)} to {Math.max(...net.stability.communities)} communities, so the colours are one honest run, not the truth. We named each community after reading its strongest members.
+Colours come from Louvain on the full unweighted giant, not on the backbone (rule 3 of the week): {net.communities} communities, modularity *Q* = {net.q.toFixed(3)}. Modularity scores how much more linking happens inside the groups than you would expect by chance, and it is only meaningful next to a baseline: 20 shuffled networks with the same number of links per philosopher score {net.null_q_mean.toFixed(3)} ± {net.null_q_sd.toFixed(3)} (*z* ≈ {Math.round(net.z)}). Five seeds agree with each other at NMI {net.stability.nmi_min.toFixed(2)}–{net.stability.nmi_max.toFixed(2)} and find {Math.min(...net.stability.communities)} to {Math.max(...net.stability.communities)} communities, so the colours are one honest run, not the truth. We named each community after reading its strongest members.
 
 Then the sweep: remove links from the highest α down and, at every step, check whether the giant just lost a chunk. A **break** is a chunk of {snap.method.break_size} or more philosophers leaving at once; the **last thread** is the link whose removal cut it off.
 
@@ -70,8 +80,7 @@ Then the sweep: remove links from the highest α down and, at every step, check 
 
 ## What surprised us
 
-**1. The first tradition to leave is Vedānta, and the Buddha stays behind.** At α = {a3(first.alpha)}, {first.size} philosophers leave together: Adi Shankara, Ramanuja, Madhvacharya and the Dvaita lineage, the Mīmāṃsā philosophers, and the Buddhist logicians Dignāga and Dharmakīrti. Their only significant link to everyone else was {thread(first)} (weight {first.bridge[0][2]}), and it was significant for the Buddha's sake: 2 of his strength of 62, not 2 of Gaudapada's 14. The Buddha himself stays in the giant, held by the Europeans who wrote about him. Read on Wikipedia, the thread is real: Gaudapada's *Māṇḍūkya Kārikā* is where the article discusses Buddhist influence on early Advaita, and two of its verses name the Buddha. Whether that influence was real is contested, which is exactly what a bridge between two traditions should look like.
-
+**1. The East leaves first: the first tradition to go is Indian philosophy, and the Buddha stays behind.** Not a modern school and not an ancient European one. At α = {a3(first.alpha)}, {first.size} philosophers leave together: Adi Shankara, Ramanuja, Madhvacharya and the Dvaita lineage, the Mīmāṃsā philosophers, and the Buddhist logicians Dignāga and Dharmakīrti. Their only significant link to everyone else was {thread(first)} (weight {first.bridge[0][2]}), and it was significant for the Buddha's sake: 2 of his strength of 62, not 2 of Gaudapada's 14. The Buddha himself stays in the giant, held by the Europeans who wrote about him. Read on Wikipedia, the thread is real: Gaudapada's *Māṇḍūkya Kārikā* is where the article discusses Buddhist influence on early Advaita, and two of its verses name the Buddha. Whether that influence was real is contested, which is exactly what a bridge between two traditions should look like.
 **2. Real philosophy snaps four times earlier than its nulls.** With the weights shuffled across the same links, the first chunk of {snap.method.break_size} or more leaves at α = {a3(nullA.first_break_alpha_mean)} ± {a3(nullA.first_break_alpha_sd)} ({nullA.samples} networks; {nullA.no_break} never broke). With degree-preserving rewiring it leaves at {a3(nullB.first_break_alpha_mean)} ± {a3(nullB.first_break_alpha_sd)}. The observed {a3(first.alpha)} is above every one of the 100 nulls. And the null chunks are a mix: on average only {Math.round(100 * purity(nullA.rows))} % (shuffled weights) and {Math.round(100 * purity(nullB.rows))} % (rewired) of a null chunk shares one community, against {Math.round(100 * first.purity)} % for the real one. The early break is not the degree sequence and not the weight distribution. It is *where* the weights sit: heavy inside traditions, light across them.
 
 **3. Philosophy loses its majority through Voltaire.** The second break is {tradition(second)}: {second.size} philosophers from Confucius and Mencius to Zhu Xi and Wang Yangming leave at α = {a3(second.alpha)}, and on that same step the giant falls from over half of the network to {n(second.giant_after)} philosophers. The last thread is {thread(second)} (weight {second.bridge[0][2]}), significant on Voltaire's side. That is a bridge the Enlightenment built on purpose: Voltaire admired Confucian ethics and government and said so often, and Confucius's article lists him among his Western readers.
