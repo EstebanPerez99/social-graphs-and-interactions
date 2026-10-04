@@ -1,0 +1,66 @@
+---
+title: "Marvel's most-linked heroes get more words — with revealing exceptions"
+description: "Across 303 Wikipedia articles, links and length rise together. The exceptions expose publication history, shared superhero names, and the limits of calling links fame."
+week: 5
+topic: "Words & documents"
+date: 2026-10-04
+dataset: "303 Marvel Wikipedia articles · course text archive and frozen week-1 link network"
+---
+import FameVsWords from "../../components/FameVsWords";
+import Stats from "../../components/Stats";
+import data from "../../data/week5/fame-vs-words.json";
+
+export const row = (id) => data.nodes.find(n => n.id === id);
+export const count = (id) => row(id).tokens.toLocaleString("en-US");
+
+A Wikipedia link gives a character attention. A Wikipedia paragraph gives them space. We asked whether the same heroes get both. Across this Marvel snapshot, they usually do. But the articles that break the pattern tell us what these two measurements actually capture.
+
+## What we asked
+
+**Do characters with more incoming links have longer Wikipedia articles — and who gets far more or fewer words than their links suggest?** Here “fame” is shorthand for **in-degree within this 303-article network**, not sales, reader recognition, or mentions across all Wikipedia. An incoming link is another character's article linking to this one.
+
+## What we did
+
+We joined the course's `marvel_pages.zip` to the frozen week-1 network by `node_id`, checking that all 303 pages match. We counted alphabetic word tokens, preserving internal apostrophes, splitting hyphenated words, lowercasing, and excluding punctuation and numbers. We kept stopwords and all the supplied text, including headings and any reference or external-link text retained in the archive. These are word tokens, not an LLM's subword tokens.
+
+We counted incoming edges for every character, including the {data.summary.zero_indegree} with no incoming links. Spearman's rank correlation is **{data.summary.spearman.toFixed(3)}**: a strong positive association in this snapshot. As a preprocessing check, counting whitespace-separated tokens instead gives **{data.summary.whitespace_spearman.toFixed(3)}**. The broad relationship survives that change.
+
+To find exceptions, we fitted `log10(word tokens)` against `ln(1 + in-degree)`. Adding one keeps zero-link characters in the analysis. The dashed line is a descriptive least-squares fit; it is not a causal model, a significance boundary, or a claim that each character deserves that many words. We ranked deviations in log space: an article twice the fitted length and one half the fitted length are equally far away in opposite directions.
+
+<Stats client:visible items={[
+  { value: data.summary.nodes, label: "matched character articles" },
+  { value: data.summary.edges, label: "directed Wikipedia links" },
+  { value: Number(data.summary.spearman.toFixed(3)), label: "Spearman rank correlation" },
+]} />
+
+## The figure
+
+**Hover or click a dot, search for a character, or select an outlier below.** The two scale settings show the same observations and fit. Log scales make the smaller articles visible; linear scales show how much space the biggest heroes occupy. The red selection marks the character whose incoming links you are inspecting.
+
+<div id="fame-vs-words" className="wide scroll-mt-8">
+  <FameVsWords client:load />
+</div>
+
+“Relative to fit” is observed length divided by fitted length at the same in-degree. The outlier buttons show the three largest and three smallest ratios across all 303 characters; they were selected by that rule, not because we recognised their names.
+
+## What surprised us
+
+**1. Brian Braddock has a long history and almost no incoming links in this snapshot.** His article contains **{count("Brian_Braddock")} word tokens**, but only **{row("Brian_Braddock").degree} incoming link** — about **{row("Brian_Braddock").ratio.toFixed(1)} times** the fitted length. We inspected the frozen article's opening, publication history and section structure: it follows his Captain Britain debut, Marvel UK publication, Excalibur, later teams, Captain Avalon, alternate versions and adaptations. That breadth gives a concrete explanation for the length. It does not explain why this network records so few links. His multiple names make redirect and alias handling a useful next check, but we have not established a redirect error and did not alter the course network.
+
+**2. Miracleman's history extends beyond Marvel.** With **{count("Miracleman_(character)")} tokens and zero incoming links**, this page is **{row("Miracleman_(character)").ratio.toFixed(1)} times** the zero-degree fitted length. The archived opening and publication-history sections trace L. Miller & Son, the Warrior revival, Eclipse, an ownership dispute, and Marvel's later reprints and continuation. Our interpretation: a Marvel-only link network cannot capture that wider publication history. Zero incoming links here means absence from this particular set of link targets, not absence of cultural importance.
+
+**3. Quasar is a well-linked name with a compact shared article.** Quasar has **{row("Quasar_(character)").degree} incoming links** but just **{count("Quasar_(character)")} tokens**, around **{row("Quasar_(character)").ratio.toFixed(2)} times** the fitted length. The first paragraph says the name belongs to several superheroes; the biography is divided into Wendell Vaughn, Phyla-Vell, Richard Rider and Avril Kincaid. This is a different kind of article from a long biography of one person. Incoming links to a shared identity and length of that umbrella page need not track the detailed coverage of any one incarnation. We have not summed separate incarnation pages, so this remains an article-level finding.
+
+**4. A long article can record reinvention rather than just popularity.** Betsy Braddock is the third-largest positive deviation: **{count("Betsy_Braddock")} tokens**, **{row("Betsy_Braddock").degree} incoming links**, and **{row("Betsy_Braddock").ratio.toFixed(1)} times** fitted length. Her archived opening explicitly discusses Psylocke, the body swap with Kwannon, the return to her original body and becoming Captain Britain. The many biography and powers subsections support the interpretation that changing identities creates explanatory work for an article. This reading helps interpret the outlier; it does not prove a general mechanism for all characters.
+
+## What we would check next
+
+The main limitation is that **we measure Wikipedia's organisation of Marvel, not popularity itself**. Category membership restricts which links count; aliases, redirects and shared identities can change the unit being measured. Both files identify the frozen snapshot as 26 August 2026; the analysis is about that snapshot, not today’s Wikipedia. Headings and retained reference material also contribute to our length measure.
+
+We would first audit incoming links and aliases for Brian and Betsy, then repeat the analysis on biography-only text and compare Quasar's shared page with individual incarnation pages. That would test whether these exceptions survive a more consistent definition of an article. The current conclusion is narrower: links and article length are strongly associated in these supplied files, and reading the outliers exposes reasons not to equate either with fame.
+
+## Methods and AI
+
+A coding agent implemented the reproducible analysis, interactive figure and draft post for **Week 5, exercise 5.9**. It inspected the archived openings and section structure of the named outliers before writing the interpretations. Verified automatically: exact page/network ID alignment, 303 nodes, 1,784 unique directed edges, zero-degree inclusion, independent incoming-link counts, tokenization examples, outlier ranking, deterministic exports, and site checks. Group review of the interpretations and final wording remains to be done. See the repository's [AI methods log](https://github.com/EstebanPerez99/social-graphs-and-interactions/blob/main/AI_METHODS.md).
+
+Sources: [course exercise 5.9](https://sunelehmann.com/socialgraphs2026-web/weeks/week5.html#counting-stops), [course data and loading instructions](https://sunelehmann.com/socialgraphs2026-web/data/), and the frozen archive stored in `data/week5/`. The explorer links to live Wikipedia for convenience; our readings and counts use the archive.
