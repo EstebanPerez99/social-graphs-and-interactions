@@ -110,3 +110,42 @@ _To be filled by the group: ten factual questions, grading against trusted sourc
 - The three Wikipedia readings in the post (Gaudapada–Buddha, Confucius–Voltaire, Max Müller and the Upanishadic sages).
 - The 60 fps claim on a real laptop GPU; the timing above is headless Chromium on one Mac.
 - Review and own the final wording before posting the link in Teams.
+
+## Week 5 — Words & documents
+
+### 🚀 Builder — does network fame buy more words? (exercise 5.9)
+A coding agent downloaded the course's unchanged 303-page archive, implemented
+`notebooks/week5/build_week5.py`, exported article lengths and in-degrees, built
+`FameVsWords.tsx`, and drafted the post. The figure uses the site's existing tokens:
+ink points, incoming-link red for the selected character, and no new accent colours.
+
+Alphabetic word tokens retain internal apostrophes and stopwords; numbers and
+punctuation are excluded, while headings and any retained reference text remain.
+All 303 characters are included, including 58 with zero incoming links.
+Spearman rho = 0.751328; whitespace tokenization gives 0.751015.
+The descriptive fit is log10(tokens) against ln(1 + in-degree).
+Outliers are the largest/smallest signed log residuals, not hand-picked examples.
+The agent inspected archived openings and section structure for Brian Braddock,
+Miracleman, Betsy Braddock and Quasar before drafting interpretations. Alias issues
+remain a hypothesis; no redirect extraction failure or causal popularity effect is claimed.
+
+### Verification
+The pipeline asserts exact ID alignment, 303 pages and 1,784 unique directed edges.
+Week-5 tests independently check incoming degrees, zero-degree inclusion,
+tokenization, fitted values and outlier rankings. Export determinism and site
+check/build results are recorded in the implementation handoff.
+
+### Still to verify by hand
+- Review the four article readings and own the final wording before sharing in Teams.
+- Audit alias/redirect handling, particularly Brian Braddock / Captain Britain.
+- Check the relationship on biography-only text and harmonise the article unit for shared names.
+
+### Implementation validation result
+- `python -m unittest discover -s tests -p test_week5_fame.py`: 2 tests pass.
+- Re-running the pipeline produces byte-identical JSON (SHA-256
+  `a564ca49f0346123207de4d1300ac91f8420d546d37f37944a0a08dc5d994006`).
+- `npm run check`: 0 errors, 0 warnings, 12 existing deprecation hints.
+- `npm run build`: succeeds, including `/posts/week5/`.
+- Browser interaction and visual QA could not be completed: no Chromium binary
+  is installed, and the browser download returned an invalid archive. Mobile,
+  keyboard and hover behaviour need a real-browser review before publication.
