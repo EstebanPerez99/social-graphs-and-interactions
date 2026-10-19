@@ -1,0 +1,7 @@
+# Isolated, reproducible Week 6 analysis. Python 3.12+; see notebooks/week6/README.md.
+numpy==2.5.4
+scipy==1.18.1
+networkx==3.7
+scikit-learn==1.9.1
+nbformat==5.11.1
+ipykernel==7.3.0

@@ -1,0 +1,1020 @@
+{
+  "summary": {
+    "nodes": 303,
+    "pairs": 45753,
+    "directed_links": 1784,
+    "undirected_links": 1434,
+    "vocabulary": 14513,
+    "text_communities": 11,
+    "network_communities": 25,
+    "isolates": 17,
+    "disconnected_pairs": 7491,
+    "within_mean": 0.060478,
+    "across_mean": 0.028989,
+    "within_pairs": 5781,
+    "across_pairs": 39972,
+    "nmi": 0.437001,
+    "k_stability_nmi": {
+      "5": 0.70324,
+      "12": 0.75879
+    }
+  },
+  "examples": [
+    {
+      "a": 80,
+      "b": 137,
+      "cosine": 0.494072,
+      "clean_cosine": 0.123047,
+      "distance": 3,
+      "path": [
+        80,
+        1,
+        223,
+        137
+      ],
+      "shared": [
+        {
+          "word": "frost",
+          "contribution": 0.46407297
+        },
+        {
+          "word": "men",
+          "contribution": 0.0037009
+        },
+        {
+          "word": "marvel",
+          "contribution": 0.00188719
+        },
+        {
+          "word": "diamond",
+          "contribution": 0.0012498
+        },
+        {
+          "word": "ice",
+          "contribution": 0.00092677
+        },
+        {
+          "word": "issue",
+          "contribution": 0.00082039
+        },
+        {
+          "word": "character",
+          "contribution": 0.00071294
+        },
+        {
+          "word": "team",
+          "contribution": 0.00070976
+        }
+      ],
+      "excerpts": [
+        "Emma Grace Frost is a character appearing in American comic books published by Marvel Comics. Created by writer Chris Claremont and artist/co-writer John Byrne, the character first appeared in The Unca\u2026",
+        "Jack Frost is a fictional superhero appearing in American comic books published by Marvel Comics. The character first appeared in 1941 in U.S.A. Comics published by Marvel's 1940s forerunner Time\u2026"
+      ],
+      "names": [
+        "Emma Frost",
+        "Jack Frost (Marvel Comics)"
+      ]
+    },
+    {
+      "a": 10,
+      "b": 220,
+      "cosine": 0.446885,
+      "clean_cosine": 0.234506,
+      "distance": 3,
+      "path": [
+        10,
+        288,
+        200,
+        220
+      ],
+      "shared": [
+        {
+          "word": "morituri",
+          "contribution": 0.35015235
+        },
+        {
+          "word": "strikeforce",
+          "contribution": 0.02527717
+        },
+        {
+          "word": "process",
+          "contribution": 0.01168764
+        },
+        {
+          "word": "hordians",
+          "contribution": 0.00963771
+        },
+        {
+          "word": "brent",
+          "contribution": 0.00486601
+        },
+        {
+          "word": "anderson",
+          "contribution": 0.0043915
+        },
+        {
+          "word": "gillis",
+          "contribution": 0.0043915
+        },
+        {
+          "word": "effect",
+          "contribution": 0.00315091
+        }
+      ],
+      "excerpts": [
+        "\u2026books published by Marvel Comics. The character is usually depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson. Publication history Backhand (Greg Mattingly) was created by writer Peter B. Gillis and artist Brent Anderson. He\u2026",
+        "\u2026n comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson. Publication history Scaredycat was created by writer Peter B. Gillis and artist Brent Anderson. She had a cameo a\u2026"
+      ],
+      "names": [
+        "Backhand (character)",
+        "Scaredycat"
+      ]
+    },
+    {
+      "a": 75,
+      "b": 155,
+      "cosine": 0.425946,
+      "clean_cosine": 0.128053,
+      "distance": 3,
+      "path": [
+        75,
+        24,
+        18,
+        155
+      ],
+      "shared": [
+        {
+          "word": "doom",
+          "contribution": 0.37134008
+        },
+        {
+          "word": "latveria",
+          "contribution": 0.02454906
+        },
+        {
+          "word": "doctor",
+          "contribution": 0.004013
+        },
+        {
+          "word": "von",
+          "contribution": 0.00238137
+        },
+        {
+          "word": "richards",
+          "contribution": 0.00202154
+        },
+        {
+          "word": "victor",
+          "contribution": 0.00087617
+        },
+        {
+          "word": "armor",
+          "contribution": 0.0008626
+        },
+        {
+          "word": "heir",
+          "contribution": 0.00085494
+        }
+      ],
+      "excerpts": [
+        "Doom 2099 is an American comic book series published by Marvel Comics, featuring the fictional anti-hero Doom, aka Victor Von Doom. Created by writer John Francis Moore and artist Pat Broder\u2026",
+        "Kristoff Vernard (formerly known as Kristoff von Doom and Dr. Doom) is a fictional character appearing in American comic books published by Marvel Comics. The adoptive son of Victor von Doom, he has been involved mainly with the Fantastic\u2026"
+      ],
+      "names": [
+        "Doom 2099",
+        "Kristoff Vernard"
+      ]
+    },
+    {
+      "a": 10,
+      "b": 27,
+      "cosine": 0.415097,
+      "clean_cosine": 0.297934,
+      "distance": 3,
+      "path": [
+        10,
+        288,
+        200,
+        27
+      ],
+      "shared": [
+        {
+          "word": "morituri",
+          "contribution": 0.33827745
+        },
+        {
+          "word": "strikeforce",
+          "contribution": 0.01367516
+        },
+        {
+          "word": "process",
+          "contribution": 0.01185584
+        },
+        {
+          "word": "effect",
+          "contribution": 0.00596634
+        },
+        {
+          "word": "gillis",
+          "contribution": 0.00475168
+        },
+        {
+          "word": "brent",
+          "contribution": 0.00263256
+        },
+        {
+          "word": "wildcard",
+          "contribution": 0.00241015
+        },
+        {
+          "word": "anderson",
+          "contribution": 0.00237584
+        }
+      ],
+      "excerpts": [
+        "\u2026books published by Marvel Comics. The character is usually depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson. Publication history Backhand (Greg Mattingly) was created by writer Peter B. Gillis and artist Brent Anderson. He\u2026",
+        "\u2026books published by Marvel Comics. The character is usually depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson. Publication history Aline Pagrovna (Blackthorn) was created by writer Peter B. Gillis and artist Brent Anderson a\u2026"
+      ],
+      "names": [
+        "Backhand (character)",
+        "Blackthorn (character)"
+      ]
+    },
+    {
+      "a": 10,
+      "b": 275,
+      "cosine": 0.400718,
+      "clean_cosine": 0.134814,
+      "distance": 3,
+      "path": [
+        10,
+        288,
+        200,
+        275
+      ],
+      "shared": [
+        {
+          "word": "morituri",
+          "contribution": 0.32799563
+        },
+        {
+          "word": "strikeforce",
+          "contribution": 0.02260144
+        },
+        {
+          "word": "brent",
+          "contribution": 0.00580123
+        },
+        {
+          "word": "anderson",
+          "contribution": 0.00523551
+        },
+        {
+          "word": "gillis",
+          "contribution": 0.00523551
+        },
+        {
+          "word": "horde",
+          "contribution": 0.00492751
+        },
+        {
+          "word": "process",
+          "contribution": 0.00348348
+        },
+        {
+          "word": "generation",
+          "contribution": 0.00303551
+        }
+      ],
+      "excerpts": [
+        "\u2026books published by Marvel Comics. The character is usually depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson. Publication history Backhand (Greg Mattingly) was created by writer Peter B. Gillis and artist Brent Anderson. He\u2026",
+        "\u2026n comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson. Publication history Toxyn was created by writer Peter B. Gillis and artist Brent Anderson. She made her first cam\u2026"
+      ],
+      "names": [
+        "Backhand (character)",
+        "Toxyn"
+      ]
+    },
+    {
+      "a": 98,
+      "b": 242,
+      "cosine": 0.379986,
+      "clean_cosine": 0.022173,
+      "distance": 3,
+      "path": [
+        98,
+        62,
+        172,
+        242
+      ],
+      "shared": [
+        {
+          "word": "kane",
+          "contribution": 0.37052497
+        },
+        {
+          "word": "marvel",
+          "contribution": 0.00195197
+        },
+        {
+          "word": "september",
+          "contribution": 0.00089962
+        },
+        {
+          "word": "issue",
+          "contribution": 0.00089496
+        },
+        {
+          "word": "century",
+          "contribution": 0.00081831
+        },
+        {
+          "word": "comics",
+          "contribution": 0.00067099
+        },
+        {
+          "word": "series",
+          "contribution": 0.00052315
+        },
+        {
+          "word": "box",
+          "contribution": 0.00042236
+        }
+      ],
+      "excerpts": [
+        "Garrison Kane, also known as Weapon X and Kane, is a character appearing in American comic books published by Marvel Comics. Garrison Kane was created by Fabian Nicieza and Rob Liefeld, debuting in X\u2026",
+        "Solomon Kane is a fictional character featured in several comics published by Marvel Comics between 1973 and 1994. He was originally created by the pulp-era writer Robert E. Howard. Dark Horse Comic\u2026"
+      ],
+      "names": [
+        "Garrison Kane",
+        "Solomon Kane (comics)"
+      ]
+    },
+    {
+      "a": 10,
+      "b": 224,
+      "cosine": 0.3759,
+      "clean_cosine": 0.194553,
+      "distance": 4,
+      "path": [
+        10,
+        288,
+        200,
+        220,
+        224
+      ],
+      "shared": [
+        {
+          "word": "morituri",
+          "contribution": 0.29355411
+        },
+        {
+          "word": "strikeforce",
+          "contribution": 0.0247233
+        },
+        {
+          "word": "hordians",
+          "contribution": 0.00942653
+        },
+        {
+          "word": "brent",
+          "contribution": 0.00475939
+        },
+        {
+          "word": "effect",
+          "contribution": 0.0046228
+        },
+        {
+          "word": "anderson",
+          "contribution": 0.00429527
+        },
+        {
+          "word": "gillis",
+          "contribution": 0.00429527
+        },
+        {
+          "word": "process",
+          "contribution": 0.00428683
+        }
+      ],
+      "excerpts": [
+        "\u2026books published by Marvel Comics. The character is usually depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson. Publication history Backhand (Greg Mattingly) was created by writer Peter B. Gillis and artist Brent Anderson. He\u2026",
+        "\u2026n comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson. Publication history Scatterbrain (Will Deguchi) was created by writer Peter B. Gillis and artist Brent Anderson a\u2026"
+      ],
+      "names": [
+        "Backhand (character)",
+        "Scatterbrain (Morituri)"
+      ]
+    },
+    {
+      "a": 32,
+      "b": 34,
+      "cosine": 0.371186,
+      "clean_cosine": 0.143876,
+      "distance": 3,
+      "path": [
+        32,
+        163,
+        128,
+        34
+      ],
+      "shared": [
+        {
+          "word": "blue",
+          "contribution": 0.29701887
+        },
+        {
+          "word": "marvel",
+          "contribution": 0.0302528
+        },
+        {
+          "word": "diamond",
+          "contribution": 0.00990745
+        },
+        {
+          "word": "nigh",
+          "contribution": 0.00245624
+        },
+        {
+          "word": "invulnerability",
+          "contribution": 0.00223522
+        },
+        {
+          "word": "particles",
+          "contribution": 0.00168442
+        },
+        {
+          "word": "comics",
+          "contribution": 0.00138299
+        },
+        {
+          "word": "comic",
+          "contribution": 0.00131372
+        }
+      ],
+      "excerpts": [
+        "Blue Diamond is a superhero appearing in American comic books published by Marvel Comics, debuting under the company's 1940s forerunner, Timely Comics. The character was created in 1941 by B\u2026",
+        "Blue Marvel (Adam Bernard Brashear) is a superhero appearing in American comic books published by Marvel Comics. Created by Kevin Grevioux, who originally conceived the character as a child,\u2026"
+      ],
+      "names": [
+        "Blue Diamond (character)",
+        "Blue Marvel"
+      ]
+    },
+    {
+      "a": 33,
+      "b": 174,
+      "cosine": 0.325843,
+      "clean_cosine": 0.221464,
+      "distance": 3,
+      "path": [
+        33,
+        26,
+        73,
+        174
+      ],
+      "shared": [
+        {
+          "word": "squadron",
+          "contribution": 0.18293718
+        },
+        {
+          "word": "supreme",
+          "contribution": 0.06151089
+        },
+        {
+          "word": "overmind",
+          "contribution": 0.01601124
+        },
+        {
+          "word": "modification",
+          "contribution": 0.01067416
+        },
+        {
+          "word": "redeemers",
+          "contribution": 0.01001646
+        },
+        {
+          "word": "behavior",
+          "contribution": 0.00663729
+        },
+        {
+          "word": "nighthawk",
+          "contribution": 0.00379293
+        },
+        {
+          "word": "gravity",
+          "contribution": 0.00296735
+        }
+      ],
+      "excerpts": [
+        "\u2026eated by Roy Thomas and John Buscema, and debuted as a member of the team of superheroes called the Squadron Supreme in The Avengers #85 (Feb. 1971) as American Eagle, then as Cap'n Hawk in The Avengers #148 (June 1976), and finally as Blue Eagle in Squadron Supreme #1 (Sept. 1985). Fict\u2026",
+        "\u2026ring in American comic books published by Marvel Comics. She was a member of a team of superheroes, Squadron Supreme. The Supreme Squadron members exist in numerous alternate universes, but their main and original timeline is Earth-712. Publication history Many of the Squadron Supreme's\u2026"
+      ],
+      "names": [
+        "Blue Eagle (character)",
+        "Moonglow (comics)"
+      ]
+    },
+    {
+      "a": 224,
+      "b": 288,
+      "cosine": 0.319741,
+      "clean_cosine": 0.204607,
+      "distance": 3,
+      "path": [
+        224,
+        220,
+        200,
+        288
+      ],
+      "shared": [
+        {
+          "word": "morituri",
+          "contribution": 0.22331453
+        },
+        {
+          "word": "hordians",
+          "contribution": 0.01261567
+        },
+        {
+          "word": "strikeforce",
+          "contribution": 0.01191153
+        },
+        {
+          "word": "horde",
+          "contribution": 0.01136154
+        },
+        {
+          "word": "process",
+          "contribution": 0.00757301
+        },
+        {
+          "word": "effect",
+          "contribution": 0.00494942
+        },
+        {
+          "word": "brent",
+          "contribution": 0.00382174
+        },
+        {
+          "word": "anderson",
+          "contribution": 0.00344906
+        }
+      ],
+      "excerpts": [
+        "\u2026n comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson. Publication history Scatterbrain (Will Deguchi) was created by writer Peter B. Gillis and artist Brent Anderson a\u2026",
+        "\u2026n comic books published by Marvel Comics. The character is depicted as a member of the Strikeforce: Morituri. The character was created by Peter B. Gillis and Brent Anderson. Publication history Vyking (Harold Carl Everson) was created by writer Peter B. Gillis and artist Brent Anderson\u2026"
+      ],
+      "names": [
+        "Scatterbrain (Morituri)",
+        "Vyking"
+      ]
+    },
+    {
+      "a": 216,
+      "b": 221,
+      "cosine": 0.306043,
+      "clean_cosine": 0.075466,
+      "distance": 4,
+      "path": [
+        216,
+        58,
+        192,
+        172,
+        221
+      ],
+      "shared": [
+        {
+          "word": "ruby",
+          "contribution": 0.1784496
+        },
+        {
+          "word": "layla",
+          "contribution": 0.11938412
+        },
+        {
+          "word": "named",
+          "contribution": 0.00122211
+        },
+        {
+          "word": "character",
+          "contribution": 0.00097614
+        },
+        {
+          "word": "father",
+          "contribution": 0.0007692
+        },
+        {
+          "word": "marvel",
+          "contribution": 0.00073211
+        },
+        {
+          "word": "years",
+          "contribution": 0.00061472
+        },
+        {
+          "word": "living",
+          "contribution": 0.00051934
+        }
+      ],
+      "excerpts": [
+        "Ruby Summers is a fictional character appearing in American comic books published by Marvel Comics. The character first appeared in the one-shot X-Factor: Layla Miller. Fictional character\u2026",
+        "\u2026le \"about whom I had written my second professional comics story back in 1965.\" The creators of the Ruby Scarab were named Garret and Dann. Publication history The first Scarlet Scarab first appeared in The Invaders #23 (December 1977), and was created by Roy Thomas, Archie Goodwin, and\u2026"
+      ],
+      "names": [
+        "Ruby Summers",
+        "Scarlet Scarab"
+      ]
+    },
+    {
+      "a": 25,
+      "b": 184,
+      "cosine": 0.301093,
+      "clean_cosine": 0.139277,
+      "distance": 3,
+      "path": [
+        25,
+        73,
+        29,
+        184
+      ],
+      "shared": [
+        {
+          "word": "rider",
+          "contribution": 0.27210953
+        },
+        {
+          "word": "issue",
+          "contribution": 0.00219015
+        },
+        {
+          "word": "new",
+          "contribution": 0.0020964
+        },
+        {
+          "word": "black",
+          "contribution": 0.00199847
+        },
+        {
+          "word": "character",
+          "contribution": 0.00167938
+        },
+        {
+          "word": "kid",
+          "contribution": 0.00162826
+        },
+        {
+          "word": "marvel",
+          "contribution": 0.00129552
+        },
+        {
+          "word": "later",
+          "contribution": 0.00108071
+        }
+      ],
+      "excerpts": [
+        "The Black Rider is a fictional Western character appearing in American comic books published by Marvel Comics. He first appeared in All-Western Winners #2 (Winter 1948), from the company's 1940s forer\u2026",
+        "Richard \"Rich\" Rider, also known as Nova, is a superhero appearing in American comic books published by Marvel Comics. The character appeared historically as the star of his own series, and at other times,\u2026"
+      ],
+      "names": [
+        "Black Rider (character)",
+        "Nova (Richard Rider)"
+      ]
+    },
+    {
+      "a": 112,
+      "b": 147,
+      "cosine": 0.402815,
+      "clean_cosine": 0.097104,
+      "distance": null,
+      "path": [],
+      "shared": [
+        {
+          "word": "commandos",
+          "contribution": 0.12559036
+        },
+        {
+          "word": "howling",
+          "contribution": 0.11255948
+        },
+        {
+          "word": "sgt",
+          "contribution": 0.0542787
+        },
+        {
+          "word": "fury",
+          "contribution": 0.04634654
+        },
+        {
+          "word": "kirby",
+          "contribution": 0.00397859
+        },
+        {
+          "word": "carter",
+          "contribution": 0.00349163
+        },
+        {
+          "word": "nick",
+          "contribution": 0.00340984
+        },
+        {
+          "word": "ceiling",
+          "contribution": 0.00338792
+        }
+      ],
+      "excerpts": [
+        "\u2026by writer Stan Lee and artist Jack Kirby, the character first appeared in Sgt. Fury and his Howling Commandos #1 (May 1963). Sawyer, also known as \"Happy Sam,\" served as the commanding officer of the Howling Commandos. He has since been portrayed as holding various senior military position\u2026",
+        "\u2026l Comics. Created by Stan Lee and Jack Kirby, his first appearance was in Sgt. Fury and the Howling Commandos vol. 1 #1. He is known to be the first major character death in a Marvel comic and the only Howling Commando ever to die in battle. Publication history Jonathan \"Junior\" Juniper\u2026"
+      ],
+      "names": [
+        "Happy Sam Sawyer",
+        "Junior Juniper"
+      ]
+    },
+    {
+      "a": 38,
+      "b": 113,
+      "cosine": 0.279335,
+      "clean_cosine": 0.051554,
+      "distance": null,
+      "path": [],
+      "shared": [
+        {
+          "word": "barton",
+          "contribution": 0.25947073
+        },
+        {
+          "word": "reality",
+          "contribution": 0.00400629
+        },
+        {
+          "word": "marvel",
+          "contribution": 0.0032641
+        },
+        {
+          "word": "alternate",
+          "contribution": 0.00245487
+        },
+        {
+          "word": "earth",
+          "contribution": 0.00211323
+        },
+        {
+          "word": "set",
+          "contribution": 0.00146978
+        },
+        {
+          "word": "universe",
+          "contribution": 0.00128157
+        },
+        {
+          "word": "single",
+          "contribution": 0.00082272
+        }
+      ],
+      "excerpts": [
+        "Breeze Barton is a fictional character appearing in American comic books published by Marvel Comics. The character first appeared in Daring Mystery Comics #3 (cover-dated April 1940), by Timely Com\u2026",
+        "\u2026racters appearing in American comic books published by Marvel Comics. Mainstream versions Clint Barton Clint Barton was the first character to take up the name of Hawkeye. He was originally a supervillain that assisted Black Widow and fought Iron Man before he joined the Avengers. Jer\u2026"
+      ],
+      "names": [
+        "Breeze Barton",
+        "Hawkeye (comics)"
+      ]
+    },
+    {
+      "a": 39,
+      "b": 46,
+      "cosine": 0.229873,
+      "clean_cosine": 0.135084,
+      "distance": null,
+      "path": [],
+      "shared": [
+        {
+          "word": "captain",
+          "contribution": 0.07910202
+        },
+        {
+          "word": "britain",
+          "contribution": 0.06453341
+        },
+        {
+          "word": "british",
+          "contribution": 0.02118393
+        },
+        {
+          "word": "mi",
+          "contribution": 0.01431189
+        },
+        {
+          "word": "wisdom",
+          "contribution": 0.01245726
+        },
+        {
+          "word": "cornell",
+          "contribution": 0.00482148
+        },
+        {
+          "word": "pete",
+          "contribution": 0.00343712
+        },
+        {
+          "word": "paul",
+          "contribution": 0.00173679
+        }
+      ],
+      "excerpts": [
+        "\u2026d artist Herb Trimpe, with later contributions from Alan Moore and Alan Davis, he first appeared in Captain Britain Weekly #1. He is the first character in publication to use the Captain Britain moniker, later adopting the title Captain Avalon. As Captain Britain, Brian was empowered by th\u2026",
+        "Captain Midlands (Sid Ridley) is a fictional character appearing in American comic books published by Marvel Comics. Captain Midlands was created by writer Paul Cornell and first penciled by\u2026"
+      ],
+      "names": [
+        "Brian Braddock",
+        "Captain Midlands"
+      ]
+    },
+    {
+      "a": 38,
+      "b": 215,
+      "cosine": 0.20567,
+      "clean_cosine": 0.037116,
+      "distance": null,
+      "path": [],
+      "shared": [
+        {
+          "word": "barton",
+          "contribution": 0.19471942
+        },
+        {
+          "word": "marvel",
+          "contribution": 0.0032194
+        },
+        {
+          "word": "character",
+          "contribution": 0.00097982
+        },
+        {
+          "word": "mystery",
+          "contribution": 0.00081917
+        },
+        {
+          "word": "japanese",
+          "contribution": 0.00062124
+        },
+        {
+          "word": "alternate",
+          "contribution": 0.00049127
+        },
+        {
+          "word": "set",
+          "contribution": 0.0004412
+        },
+        {
+          "word": "universe",
+          "contribution": 0.00032974
+        }
+      ],
+      "excerpts": [
+        "Breeze Barton is a fictional character appearing in American comic books published by Marvel Comics. The character first appeared in Daring Mystery Comics #3 (cover-dated April 1940), by Timely Com\u2026",
+        "\u2026dis and Joe Quesada. Following this, the Ronin mantle has been taken up by characters such as Clint Barton (Hawkeye), Alexei Shostakov (Red Guardian), Eric Brooks (Blade), and Bullseye. Two incarnations of the character appear in the Marvel Cinematic Universe. The first incarnation, Clint\u2026"
+      ],
+      "names": [
+        "Breeze Barton",
+        "Ronin (Marvel Comics)"
+      ]
+    },
+    {
+      "a": 87,
+      "b": 142,
+      "cosine": 0.15947,
+      "clean_cosine": 0.136356,
+      "distance": null,
+      "path": [],
+      "shared": [
+        {
+          "word": "america",
+          "contribution": 0.04065415
+        },
+        {
+          "word": "captain",
+          "contribution": 0.03322779
+        },
+        {
+          "word": "winners",
+          "contribution": 0.00658879
+        },
+        {
+          "word": "time",
+          "contribution": 0.00582558
+        },
+        {
+          "word": "heroes",
+          "contribution": 0.00571241
+        },
+        {
+          "word": "comics",
+          "contribution": 0.00551799
+        },
+        {
+          "word": "superhero",
+          "contribution": 0.00420337
+        },
+        {
+          "word": "war",
+          "contribution": 0.0037283
+        }
+      ],
+      "excerpts": [
+        "\u2026cs. The character was created by writer Stan Lee and artist Al Avison and first appeared in Captain America Comics #6 (Sept. 1941), published by Marvel predecessor Timely Comics during the period fans and historians call the Golden Age of comic books. He was one of the many costumed operat\u2026",
+        "Jeffrey Solomon Mace, also known as the Patriot and Captain America, is a superhero appearing in American comic books published by Marvel Comics. The character was created during the 1940s, a period fans and historians call the Golden Age of Comic Bo\u2026"
+      ],
+      "names": [
+        "Father Time (Marvel Comics)",
+        "Jeffrey Mace"
+      ]
+    },
+    {
+      "a": 23,
+      "b": 87,
+      "cosine": 0.158367,
+      "clean_cosine": 0.154805,
+      "distance": null,
+      "path": [],
+      "shared": [
+        {
+          "word": "america",
+          "contribution": 0.02347632
+        },
+        {
+          "word": "heroes",
+          "contribution": 0.01686011
+        },
+        {
+          "word": "captain",
+          "contribution": 0.01560226
+        },
+        {
+          "word": "time",
+          "contribution": 0.00859705
+        },
+        {
+          "word": "marvel",
+          "contribution": 0.00787169
+        },
+        {
+          "word": "crook",
+          "contribution": 0.00771336
+        },
+        {
+          "word": "comics",
+          "contribution": 0.0065145
+        },
+        {
+          "word": "father",
+          "contribution": 0.00598898
+        }
+      ],
+      "excerpts": [
+        "\u2026ing out a cure for pneumonia that transformed him into a ruthless killer. He then traveled to South America to investigate a supposedly haunted mine with a massive diamond that killed with a touch. He helped expose that it was all a hoax created by a con man named Ridley and his accomplice\u2026",
+        "\u2026cs. The character was created by writer Stan Lee and artist Al Avison and first appeared in Captain America Comics #6 (Sept. 1941), published by Marvel predecessor Timely Comics during the period fans and historians call the Golden Age of comic books. He was one of the many costumed operat\u2026"
+      ],
+      "names": [
+        "Black Marvel",
+        "Father Time (Marvel Comics)"
+      ]
+    }
+  ],
+  "method": {
+    "seed": 7,
+    "k": 8,
+    "source": "https://sunelehmann.com/socialgraphs2026-web/data/",
+    "verified_against_official_downloads": "2026-10-19",
+    "snapshot": "2026-08-26",
+    "sha256": {
+      "marvel_pages.zip": "36023ca077053b3df5bd55630754cb514c3f9dbecbd70afcb2283e5bcc0017ee",
+      "week1_nodes.tsv": "a10ec309ac60ea8b72bcc1a18aba801414896676dac172619def0435e585391e",
+      "week1_edges.tsv": "87be017a35e8f27a1f1bc0912ebb5723c0084e460cb2dbd0d2abd0e83fc644b2"
+    },
+    "tfidf": {
+      "lowercase": true,
+      "stop_words": "sklearn English",
+      "token_pattern": "(?u)\\b[a-zA-Z]{2,}\\b",
+      "min_df": 2,
+      "tf": "raw counts",
+      "idf": "ln((1+N)/(1+df)) + 1",
+      "normalization": "L2",
+      "sublinear_tf": false,
+      "text_scope": "all supplied text; names retained in primary analysis"
+    },
+    "text_graph": "union of each article\u2019s 8 highest-positive-cosine neighbors; cosine edge weights",
+    "communities": "Louvain, resolution=1, seed=7; weighted text graph, unweighted undirected link graph",
+    "network_distance": "shortest paths after symmetrizing links; disconnected pairs have null distance",
+    "layout": "categorical community lanes: x deterministic seeded jitter, y network membership, z text membership; not a metric embedding",
+    "name_check": "remove alphabetic words capitalized in more than half their occurrences; refit IDF and L2 norm",
+    "versions": {
+      "numpy": "2.5.4",
+      "networkx": "3.7",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1"
+    }
+  }
+}

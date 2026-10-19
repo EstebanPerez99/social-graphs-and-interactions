@@ -1,0 +1,194 @@
+/* Week 6 uses Week 2's actual immersive shell; these rules only adapt the evidence controls. */
+.marvel-journey > .mj-overlay { position: absolute; z-index: 20; inset: 0; }
+.marvel-journey .journey-stage { background: var(--color-paper); }
+.marvel-journey .journey-methods-trigger { color: var(--color-ink); }
+.marvel-journey .mp-node-label.is-light { color: var(--color-ink); background: #fffffff2; border-color: var(--color-grid); box-shadow: 0 3px 10px #0f172a10; }
+.mj-welcome-active .mp-node-label { display: none; }
+.marvel-journey .mp-fallback { color: var(--color-ink-muted); }
+.marvel-journey .journey-scene-label { max-width: calc(100% - 36rem); }
+.mj-community-panel { inset-inline: 1rem auto; width: 17rem; }
+.mj-community-panel h3 { font-size: 1.3rem; }
+.mj-panel-description { color: var(--color-ink-muted); font-size: .85rem; line-height: 1.45; margin: .7rem 0; }
+.mj-community-list { display: grid; gap: .2rem; margin-top: .8rem; }
+.mj-community-list button { display: flex; width: 100%; align-items: center; gap: .55rem; background: transparent; border: 1px solid transparent; border-radius: 4px; padding: .45rem .3rem; color: var(--color-ink); font: .62rem/1.4 var(--font-mono); text-align: left; cursor: pointer; }
+.mj-community-list button:hover, .mj-community-list button[aria-pressed=true] { border-color: var(--color-grid); background: var(--color-paper); }
+.mj-community-list i { height: 8px; width: 8px; border-radius: 50%; flex-shrink: 0; }
+.mj-community-list small { margin-left: auto; color: var(--color-ink-muted); }
+.mj-community-list b { font-weight: 600; }
+.mj-text-button { min-height: 2.75rem; padding: .5rem 0; border: 0; background: none; text-decoration: underline; color: var(--color-ink-muted); font: .65rem var(--font-mono); cursor: pointer; }
+.mj-pair-panel { width: 20rem; }
+.mj-selectors { display: grid; gap: .7rem; }
+.mj-selectors label { display: grid; gap: .35rem; color: var(--color-ink-muted); font: .65rem/1.3 var(--font-mono); }
+.mj-selectors select { width: 100%; min-height: 2.75rem; padding: .45rem .5rem; color: var(--color-ink); background: var(--color-white); border: 1px solid var(--color-grid); border-radius: 4px; font: .75rem var(--font-mono); }
+.marvel-journey .mj-small { color: var(--color-ink-muted); font: .62rem/1.55 var(--font-mono); margin: .65rem 0; }
+.marvel-journey .mj-measures { margin: 1rem 0; gap: .8rem; }
+.mj-terms { display: grid; gap: .3rem; margin-top: .8rem; }
+.mj-terms > div { display: grid; grid-template-columns: 1fr 1fr 3rem; gap: .5rem; align-items: center; font: .65rem var(--font-mono); }
+.mj-terms meter { width: 100%; height: 5px; background: var(--color-grid); border: 0; }
+.mj-terms meter::-webkit-meter-bar { background: var(--color-grid); border: 0; }
+.mj-terms meter::-webkit-meter-optimum-value { background: var(--color-ink-muted); }
+.mj-terms meter::-moz-meter-bar { background: var(--color-ink-muted); }
+.mj-terms small { text-align: right; color: var(--color-ink-muted); font-size: .6rem; }
+.mj-camera-buttons { display: flex; gap: .4rem; margin-top: 1rem; }
+.mj-camera-buttons button, .mj-compare-tabs button { padding: .55rem .75rem; min-height: 2.75rem; border: 1px solid var(--color-grid); border-radius: 4px; background: var(--color-white); color: var(--color-ink-muted); font: .68rem var(--font-mono); cursor: pointer; }
+.mj-camera-buttons button[aria-pressed=true], .mj-compare-tabs button[aria-pressed=true] { color: var(--color-white); background: var(--color-ink); border-color: var(--color-ink); }
+.mj-checkbox { display: flex; gap: .5rem; align-items: center; font: .65rem var(--font-mono); margin: .8rem 0; }
+.mj-checkbox input { accent-color: var(--color-ink); }
+.mj-hover { position: absolute; left: 50%; bottom: 9rem; transform: translateX(-50%); background: #fffffff0; border: 1px solid var(--color-grid); border-radius: 4px; padding: .7rem; }
+.mj-hover b, .mj-hover span { display: block; font: .7rem var(--font-mono); }
+.mj-hover span { font-size: .6rem; color: var(--color-ink-muted); margin-top: .3rem; }
+.marvel-journey .mj-comparison { display: block; padding: 1.5rem; width: min(70rem, calc(100% - 6rem)); height: calc(100% - 11rem); max-height: 45rem; overflow-y: auto; }
+.mj-comparison .journey-conclusion-question { margin: 0; padding-bottom: 1rem; }
+.mj-compare-tabs { display: flex; gap: .5rem; margin-top: 1rem; flex-wrap: wrap; }
+.mj-compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; height: calc(100% - 10rem); min-height: 12rem; padding-top: 1rem; }
+.mj-pair-list, .mj-pair-evidence { overflow-y: auto; padding: .25rem .5rem .5rem 0; }
+.mj-pair-list > button { display: grid; gap: .4rem; width: 100%; text-align: left; padding: .75rem; margin: 0 0 .45rem; background: var(--color-white); border: 1px solid var(--color-grid); border-radius: 4px; cursor: pointer; }
+.mj-pair-list > button[aria-pressed=true], .mj-pair-list > button:hover { background: var(--color-paper); border-color: var(--color-ink); }
+.mj-pair-list small { color: var(--color-ink-muted); font: .6rem var(--font-mono); }
+.mj-pair-list span { font: 650 1rem/1.2 var(--font-display); }
+.mj-pair-evidence .mj-selectors { grid-template-columns: 1fr 1fr; }
+.mj-pair-evidence h3 { font: 700 1.1rem var(--font-display); margin-top: 1rem; }
+.mj-excerpt a { font: .68rem var(--font-mono); color: var(--color-ink); }
+.mj-excerpt blockquote { margin: .4rem 0 1rem; padding-left: .7rem; border-left: 2px solid var(--color-grid); font-size: .9rem; color: var(--color-ink-muted); }
+.mj-overlap { padding-top: .8rem; font-size: .95rem; }
+.mj-table-scroll { max-width: 100%; overflow: auto; margin-top: 1rem; }
+.mj-table-scroll table { border-collapse: collapse; width: 100%; font: .65rem var(--font-mono); }
+.mj-table-scroll th, .mj-table-scroll td { padding: .7rem .5rem; border-bottom: 1px solid var(--color-grid); text-align: center; }
+.mj-table-scroll th:first-child { text-align: left; white-space: nowrap; font-weight: 400; }
+.mj-table-scroll caption { color: var(--color-ink-muted); text-align: left; padding-bottom: .7rem; }
+.marvel-journey button:focus-visible, .marvel-journey select:focus-visible { outline: 2px solid var(--color-ink); outline-offset: 3px; }
+@media (max-width: 1000px) and (min-width: 768px) {
+  .mj-community-panel { width: 14rem; }
+  .mj-pair-panel { width: 17rem; }
+  .marvel-journey .journey-scene-label { max-width: calc(100% - 26rem); }
+}
+@media (max-width: 47.99rem) {
+  .marvel-journey .journey-conclusions { inset-block-start: 4.5rem; }
+  .mj-community-panel { inset: 4.5rem .75rem auto; width: calc(100% - 1.5rem); max-height: 7.5rem; padding: .65rem; }
+  .mj-community-panel h3, .mj-community-panel .mj-panel-description, .mj-community-panel .mj-text-button { display: none; }
+  .mj-community-list { display: flex; overflow-x: auto; margin: .4rem 0 0; }
+  .mj-community-list button { width: 12rem; flex: 0 0 auto; min-height: 2.75rem; }
+  .mj-pair-panel { max-height: 15rem; width: auto; }
+  .mj-pair-panel .mj-selectors { grid-template-columns: 1fr 1fr; }
+  .mj-pair-panel .mj-terms, .mj-pair-panel h3, .mj-pair-panel > .mj-small { display: none; }
+  .mj-pair-panel .mj-measures { grid-template-columns: repeat(4, 1fr); gap: .5rem; }
+  .mj-measures dt { font-size: .5rem; }
+  .mj-measures dd { font-size: .85rem; }
+  .mj-camera-buttons { margin-top: .6rem; }
+  .mj-checkbox { margin: .5rem 0 0; }
+  .marvel-journey .journey-scene-label { max-width: calc(100% - 11rem); }
+  .marvel-journey .mj-comparison { width: calc(100% - 1.5rem); height: auto; max-height: none; padding: 1rem; }
+  .mj-compare-grid { display: block; height: auto; }
+  .mj-pair-list { max-height: 12rem; margin-bottom: 1rem; }
+  .mj-pair-evidence { overflow: visible; }
+}
+
+/* Guided perspectives: only the fourth step accepts orbit gestures. */
+.mj-step-1 .journey-stage canvas, .mj-step-2 .journey-stage canvas { cursor: default; touch-action: auto; }
+.mj-view-lock { color: var(--color-ink-muted); font: .61rem var(--font-mono); border-top: 1px solid var(--color-grid); padding-top: .9rem; margin-top: 1rem; }
+.mj-next-reveal { display: block; width: 100%; min-height: 2.75rem; padding: .65rem; border: 1px solid var(--color-grid); border-radius: 4px; background: var(--color-ink); color: white; text-align: left; font: .65rem/1.5 var(--font-mono); cursor: pointer; }
+.mj-language-score { padding: .8rem 0 1rem; margin: .8rem 0; border-block: 1px solid var(--color-grid); }
+.mj-language-score span, .mj-language-score small { display: block; color: var(--color-ink-muted); font: .61rem/1.5 var(--font-mono); }
+.mj-language-score strong { display: block; font: 750 2.8rem/1.2 var(--font-display); letter-spacing: -.04em; }
+.mj-structure-results { inset-inline: 1rem auto; width: 24rem; }
+.mj-structure-results > h3 { font-size: 1.65rem; max-width: 19ch; }
+.mj-pair-heading { margin: 1.2rem 0; font: 600 .9rem/1.4 var(--font-display); }
+.mj-pair-heading span { color: var(--color-ink-muted); }
+.mj-result-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1rem 0; border-block: 1px solid var(--color-grid); }
+.mj-result-pair span, .mj-result-pair small { display: block; color: var(--color-ink-muted); font: .6rem/1.5 var(--font-mono); }
+.mj-result-pair strong { display: block; font: 750 2rem/1.25 var(--font-display); }
+.mj-community-result { border-top: 1px solid var(--color-grid); padding-top: 1rem; margin-top: 1rem; }
+.mj-community-result dl { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; margin: 1rem 0; }
+.mj-community-result dt { color: var(--color-ink-muted); font: .6rem var(--font-mono); }
+.mj-community-result dd { margin: .4rem 0; font: 700 1.4rem var(--font-display); }
+.mj-side-key { width: 16rem; max-height: calc(100dvh - 13rem); }
+.mj-insight-panel { inset-inline: 1rem auto; width: 23rem; }
+.mj-insight-panel section { padding: 1rem 0; border-bottom: 1px solid var(--color-grid); }
+.mj-insight-panel section:first-of-type { padding-top: .5rem; }
+.mj-insight-panel section:last-of-type { margin-bottom: 1rem; }
+.mj-insight-number { display: block; color: var(--color-ink-muted); font: .61rem var(--font-mono); margin-bottom: .55rem; }
+.mj-insight-panel section h3 { font-size: 1.3rem; }
+.mj-insight-panel section p { margin: .75rem 0; color: var(--color-ink-muted); font-size: .9rem; line-height: 1.5; }
+.mj-insight-panel section button { padding: .3rem 0; min-height: 2.75rem; background: none; border: 0; color: var(--color-ink); text-align: left; text-decoration: underline; font: .65rem var(--font-mono); cursor: pointer; }
+.mj-color-select { display: grid; gap: .4rem; font: .65rem var(--font-mono); color: var(--color-ink-muted); }
+.mj-color-select select { min-height: 2.75rem; padding: .5rem; border: 1px solid var(--color-grid); background: white; border-radius: 4px; color: var(--color-ink); }
+.mj-evidence-dialog { position: fixed; inset: 0; margin: auto; width: min(72rem, calc(100% - 2rem)); height: min(46rem, calc(100dvh - 2rem)); max-height: calc(100dvh - 2rem); padding: 0; border: 1px solid var(--color-grid); border-radius: var(--journey-radius); background: white; color: var(--color-ink); }
+.mj-evidence-dialog::backdrop { background: #0f172a55; backdrop-filter: blur(4px); }
+.marvel-journey .mj-evidence-dialog .mj-comparison { position: relative; inset: auto; width: 100%; height: 100%; max-height: none; transform: none; margin: 0; border: 0; overflow: auto; }
+.mj-evidence-dialog .journey-conclusion-question { position: relative; padding-right: 2.5rem; }
+.mj-evidence-close { position: absolute; top: 0; right: 0; width: 2.75rem; height: 2.75rem; border: 1px solid var(--color-grid); border-radius: 4px; background: var(--color-paper); color: var(--color-ink); font-size: 1.5rem; cursor: pointer; }
+@media (min-width: 768px) and (max-width: 1100px) {
+  .mj-insight-panel { width: 19rem; }
+  .mj-structure-results { width: 20rem; }
+  .mj-side-key { width: 13rem; }
+}
+@media (max-width: 47.99rem) {
+  .mj-structure-results { inset: auto .75rem 7.25rem; width: auto; max-height: 18rem; padding: .9rem; }
+  .mj-structure-results > h3 { font-size: 1.15rem; max-width: none; }
+  .mj-structure-results .mj-pair-heading { margin: .6rem 0; font-size: .8rem; }
+  .mj-result-pair { padding: .6rem 0; }
+  .mj-result-pair strong { font-size: 1.6rem; }
+  .mj-side-key { inset: 4.5rem .75rem auto; width: auto; max-height: 6rem; padding: .65rem; }
+  .mj-side-key .mj-community-list { display: flex; overflow-x: auto; }
+  .mj-side-key .mj-community-list button { width: 12rem; flex: 0 0 auto; }
+  .mj-side-key > .mj-small { display: none; }
+  .mj-insight-panel { inset: 4.5rem .75rem auto; width: auto; max-height: 11rem; padding: .65rem; display: grid; grid-template-columns: 1fr 1fr; column-gap: 1rem; }
+  .mj-insight-panel > .journey-kicker, .mj-insight-panel > .mj-next-reveal { grid-column: 1 / -1; }
+  .mj-insight-panel section { padding: .5rem 0; margin: 0; }
+  .mj-insight-panel section h3 { font-size: 1rem; }
+  .mj-insight-panel section p { font-size: .75rem; }
+  .mj-insight-number, .mj-insight-panel section button { font-size: .55rem; }
+  .mj-explore-panel { max-height: 12rem; }
+  .mj-explore-panel > h3, .mj-explore-panel > .mj-small, .mj-explore-panel > .mj-color-select { display: none; }
+  .mj-language-score { margin: .6rem 0; padding: .6rem 0; }
+  .mj-language-score strong { font-size: 2rem; }
+  .mj-view-lock { font-size: .55rem; }
+  .mj-evidence-dialog .mj-compare-grid { height: auto; }
+}
+
+/* Dark stage, with the existing light evidence panels retained for readability. */
+.marvel-journey, .marvel-journey .journey-stage { background: #0b1220; }
+.marvel-journey .journey-title-card { background: #111b2ff2; border-color: #314058; }
+.marvel-journey .journey-title-card h1 { display: block; text-transform: none; line-height: .94; letter-spacing: -.055em; }
+.marvel-journey .journey-title-the { display: block; margin: 0 0 .7rem; color: #aebbd0; font: 500 .75rem var(--font-mono); letter-spacing: .1em; }
+.marvel-journey .journey-title-superfriends { display: block; color: #f5f7fb; font-size: clamp(3rem, 6.2vw, 6.4rem); font-weight: 550; }
+.marvel-journey .journey-title-paradox { display: block; color: #f5f7fb; -webkit-text-stroke: 0; font-size: clamp(3.2rem, 7.3vw, 7.5rem); font-weight: 800; }
+@media (max-width: 47.99rem) {
+  .marvel-journey .journey-title-superfriends { font-size: clamp(2rem, 10.5vw, 3.5rem); }
+  .marvel-journey .journey-title-paradox { font-size: clamp(2.65rem, 14vw, 4.7rem); }
+}
+
+/* Week 6 theme tokens stay scoped so the other weeks keep their existing style. */
+.marvel-journey {
+  color-scheme: dark;
+  --color-ink: #edf2f8;
+  --color-ink-muted: #b2bed0;
+  --color-ink-faint: #8191a8;
+  --color-grid: #33435b;
+  --color-paper: #0b1220;
+  --color-white: #162237;
+  --color-out: #87c9df;
+  --color-in: #f09cad;
+  --color-out-soft: #23374c;
+  --color-in-soft: #382a3a;
+  color: var(--color-ink);
+  background: var(--color-paper);
+}
+.marvel-journey button { color: var(--color-ink); }
+.marvel-journey .journey-title-card { color: #edf2f8; background: #111c30f5; border-color: #394b65; box-shadow: 0 1.5rem 4rem #0005; }
+.marvel-journey .journey-title-card .journey-title-question { color: #c5cfdf; }
+.marvel-journey .journey-title-card .journey-title-eyebrow { color: #a8b8cf; }
+.marvel-journey .journey-panel, .marvel-journey .journey-scene-label,
+.marvel-journey .journey-conclusions { background: #111d30f5; border-color: #33435b; box-shadow: 0 .5rem 2rem #0002; }
+.marvel-journey .journey-home, .marvel-journey .journey-methods-trigger,
+.marvel-journey .journey-controls, .marvel-journey .journey-caption { background: #101b2df5; color: var(--color-ink); }
+.marvel-journey .journey-portrait { background: #162237f5; }
+.marvel-journey .mj-next-reveal, .marvel-journey .journey-title-cta { background: #e8eef7; color: #0b1220; border-color: #e8eef7; }
+.marvel-journey .mj-next-reveal:hover, .marvel-journey .journey-title-cta:hover { background: #cbd9eb; }
+.marvel-journey .mj-selectors select, .marvel-journey .mj-color-select select { background: #0c1627; color: #edf2f8; border-color: #3a4c66; }
+.marvel-journey .mj-hover { background: #162237f5; color: var(--color-ink); }
+.marvel-journey .mj-evidence-dialog, .marvel-journey .journey-methods-dialog { background: #111d30; color: var(--color-ink); }
+.marvel-journey .mj-pair-list > button { background: #162237; color: #edf2f8; }
+.marvel-journey .mj-pair-list > button:hover, .marvel-journey .mj-pair-list > button[aria-pressed=true] { background: #24344d; }
+.marvel-journey .journey-methods-dialog::backdrop, .marvel-journey .mj-evidence-dialog::backdrop { background: #0009; }
+.marvel-journey .mj-compare-tabs button[aria-pressed=true] { background: #e8eef7; color: #0b1220; }

@@ -47,6 +47,17 @@ so they appear only with a visible label or legend nearby.
 
 Light only. `color-scheme: light` is declared; figures from matplotlib are light too.
 
+### Week 6 follows the Week 2 journey
+
+Week 6 reuses `friendship-journey.css`: the same paper background, full-viewport
+3D canvas, editorial title card, character portraits, floating panels,
+Methods dialog and five-step bottom navigation. It changes the title, questions,
+steps, analytical controls and results. The opener also reuses the original Week 2
+3D node positions. Comparison stages use categorical lanes to reveal text groups
+from above and link groups from the side; spacing is not a distance measurement.
+Node size encodes link degree. No star field or separate standalone layout is used
+for the course website.
+
 ## Type
 
 | Role | Face | Use |
@@ -127,3 +138,9 @@ micro 150ms · reveal 400ms · matrix draw 1.4s. No looping ambient animation an
 
 Sentence case. Active voice. Controls say what they do ("Read the post →", "Play again"). Numbers use thin
 separators (1,784). Captions state what is data and what is layout. Copy in English; code comments may be Spanish.
+
+Week 6 now scopes a full dark theme to `.marvel-journey`, including cards, controls
+and dialogs with off-white text. The title uses filled mixed-case typography.
+Steps 2 and 3 have concise, distinct UIs and locked cameras; their transition
+uses a 1.6-second eased quaternion rotation. Step 4 enables orbiting and two
+insight cards, with detailed evidence in a dialog. Reduced motion snaps views.

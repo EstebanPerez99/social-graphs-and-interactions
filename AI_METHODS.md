@@ -149,3 +149,44 @@ check/build results are recorded in the implementation handoff.
 - Browser interaction and visual QA could not be completed: no Chromium binary
   is installed, and the browser download returned an invalid archive. Mobile,
   keyboard and hover behaviour need a real-browser review before publication.
+## Week 6 — Two perspectives (19 October 2026)
+
+User-directed Builder exercise 6.11. A coding agent located the existing course
+repository and reused its Astro/React/Three.js stack. It installed a dedicated
+Python environment and the locked website dependencies. The local archive and
+week-1 TSV files were downloaded independently from the official course data
+page and matched byte-for-byte; hashes are in the generated export.
+
+Agent work: explicit TF-IDF preprocessing, 45,753 pairwise cosines across 303
+articles, symmetrized link distances, separate Louvain partitions of the link
+graph and weighted cosine-neighbor graph, capitalization-filter sensitivity
+check, k=5/8/12 comparison, reproducible notebook/builder, interactive 3D scene,
+archived excerpts, evidence inspector, community table and draft post. The dark
+static scene background was requested by the user. Community lanes intentionally
+support two camera perspectives; they do not claim to preserve metric distances.
+
+Verification: seven analysis tests check the formula against a hand calculation,
+empty-document rejection, normalization, all network distances, pair ranking,
+shared-term dot products, isolated singleton identities, descriptive means and
+identical browser/research exports. Astro check and production build pass; the
+existing Zod deprecation hints and large Three.js chunk warning remain. Browser
+checks confirmed top/side camera presets, community comparison and no console
+errors. Interpretations use the frozen articles; live Wikipedia is linked for
+convenience. The agent drafted prose; group interpretation and editorial review
+remain open. No Teams message or GitHub publication was performed.
+
+### Week 6 presentation revision
+
+At the user's request, Week 6 now follows the complete Week 2 immersive page,
+including the paper background, typography, title card, portrait ring, full-screen
+3D canvas, floating panels, Methods dialog and five-stage navigation. The opening
+network uses Week 2's 3D coordinates, and node size follows its degree encoding.
+Only the title, context, steps, controls and findings differ. Language/Structure
+retain one fixed dual-community layout; all numerical results are unchanged.
+The repo's Week 6 route is the deliverable; the earlier standalone file is superseded.
+
+Week 6 follow-up: shortened Steps 2–3, locked their cameras, added a 1.6-second
+eased top-to-side rotation, and moved free orbit and two insights to Step 4.
+User requested a fully dark theme and filled mixed-case title. These styles are
+scoped to Week 6; the numerical analysis remains unchanged. Browser verification
+confirmed readable dark cards and no console errors.
