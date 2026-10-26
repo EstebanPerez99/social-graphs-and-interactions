@@ -190,3 +190,31 @@ eased top-to-side rotation, and moved free orbit and two insights to Step 4.
 User requested a fully dark theme and filled mixed-case title. These styles are
 scoped to Week 6; the numerical analysis remains unchanged. Browser verification
 confirmed readable dark cards and no console errors.
+
+## Week 7 — Text vs links (26 October 2026)
+
+Builder exercise 7.13. A coding agent chose the question ("can text rebuild the link network?")
+from the course's suggested openers, installed spaCy 3.8.17 with `en_core_web_sm` 3.8.0 in a
+separate `.venv-week7`, and wrote the builder, the explorer (`TextVsLinks.tsx`) and the draft post.
+
+Agent work: NER over the 303 frozen articles, alias table from titles and lead sentences, dropping
+shared names and alternate-universe pages, text network vs hyperlinks, literal-string NER recall
+check, PERSON-only sensitivity check, and a reading of 30 randomly sampled text-only edges in context.
+
+Verification: tests recompute edge kinds, in-degrees and recall from the export and the week-1 TSV,
+check alias rules on hand-picked cases, and confirm the 30 sampled edges are absent from the
+hyperlinks. Re-running the builder gives byte-identical JSON. Astro check (0 errors) and build pass;
+the page was checked in a browser.
+
+### Still to verify by hand
+- The 30 edge readings were done by the agent. The group should re-read them (`READING` in the builder).
+- Only text-only edges were sampled; shared edges have no error estimate.
+
+## Week 8 — Retracting a week-1 claim (26 October 2026)
+
+Exercise 8.2. The agent picked the week-1 claim "fame is one-way traffic" as the missing check,
+wrote the retraction criterion before running anything, and ran 500 directed degree-preserving
+rewirings. Result: all ten hubs reciprocate more than the null, and Spider-Man links back to all 9
+articles he links to. The claim is retracted in the week-8 post; the week-1 post is left unchanged
+as a record. Tests confirm that the rewiring preserves in/out degrees with no self-loops or duplicates,
+and recompute the observed counts. The 8.2 question list was drafted by the agent for the group to revise.

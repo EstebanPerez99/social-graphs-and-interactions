@@ -1,0 +1,6 @@
+# Weeks 7–8. Python 3.12; see notebooks/week7/README.md.
+numpy==2.5.4
+scipy==1.18.1
+networkx==3.7
+spacy==3.8.17
+en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl

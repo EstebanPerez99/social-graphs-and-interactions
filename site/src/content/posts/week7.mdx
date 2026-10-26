@@ -1,0 +1,64 @@
+---
+title: "Text can rebuild two thirds of Marvel's links, but names are not characters"
+description: "We ran spaCy's NER over 303 Marvel articles and built a network from who is named where. It recovers 66% of the hyperlinks. The misses and the extras both come from the same place: a name is not a person."
+week: 7
+topic: "NLP III"
+date: 2026-10-26
+dataset: "303 frozen Marvel Wikipedia articles · week-1 link network"
+---
+import TextVsLinks from "../../components/TextVsLinks";
+import Stats from "../../components/Stats";
+import data from "../../data/week7/text-vs-links.json";
+
+export const s = data.summary;
+export const pct = (v) => `${Math.round(100 * v)}%`;
+export const node = (id) => data.nodes.find(n => n.id === id);
+
+Every network we have drawn since week 1 came from hyperlinks: someone at Wikipedia decided that one article should point to another. This week we tried to build the same network without those decisions, from the prose alone, and compared the two.
+
+## What we asked
+
+**If we only had the text, could we rebuild the Marvel hyperlink network? And where the two networks disagree, which one is wrong?** An edge A → B in the *text network* means a named entity in A's article resolves to one of B's names. The hyperlink network is the comparison, not the truth. Both measure how Wikipedia writes about Marvel.
+
+## What we did
+
+We ran spaCy's small English pipeline (`en_core_web_sm` 3.8.0) over the full text of all 303 articles in the course archive. Then we resolved each entity span to a character. A character's names are its article title without the disambiguator ("Cyclops (Marvel Comics)" becomes *Cyclops*), plus any real name in brackets in the lead sentence (*Natasha Romanova*, *Emil Blonsky*). The match ignores case, a possessive *'s* and a leading *the*. We dropped seven names shared by more than one article, like *Ghost Rider*, *Spider-Woman* and *She-Hulk*, because NER cannot tell which one is meant. We gave no names at all to the four alternate-universe pages (Ultimate Iron Man, Mangaverse Spider-Man…), because their names belong to the main character. We kept every entity label, not just PERSON. The next section explains why.
+
+As a second instrument we counted every capitalised literal occurrence of a name, with no model. That gives a direct check of NER recall: of the times a name is literally in the text, how often did the model put an entity span around it?
+
+<Stats client:visible items={[
+  { value: s.both, label: "edges in both networks" },
+  { value: s.text_only, label: "named in the text, not linked" },
+  { value: s.link_only, label: "linked, never resolved in the text", tone: "in" },
+  { value: Math.round(100 * s.link_recall), suffix: "%", label: "of hyperlinks the text recovers" },
+]} />
+
+## The figure
+
+**Every dot is a character**: how many articles link to it (x) against how many articles name it (y). Dots on the dashed diagonal look the same in both networks. Click a dot, or choose a name, to see its incoming edges by kind, along with the sentence that created each text edge.
+
+<div id="text-vs-links" className="wide scroll-mt-8">
+  <TextVsLinks client:load />
+</div>
+
+The two in-degree rankings agree only moderately (Spearman {data.summary.indegree_spearman.toFixed(2)}). The dots far from the diagonal are not noise. They fall into two groups that have one cause.
+
+## What surprised us
+
+**1. Doctor Strange vanishes.** {node("Doctor_Strange").link_in} articles link to him, and his name appears {node("Doctor_Strange").string_mentions} times in their text. The model resolves it zero times. *Doctor Strange and Wong defend the Sanctum* comes back with one entity: *Wong*. Ms. Marvel goes the same way ({node("Ms._Marvel").string_mentions} literal mentions, 0 resolved). When it tags anything, it tags *Marvel* alone, as a PERSON. A model trained on news has learned that "Doctor" and "Ms." are not part of names. Across all characters NER covers {pct(s.ner_coverage)} of literal name mentions, but its misses pile up on a few hubs. A literal string match with no model recovers {pct(s.string_link_recall)} of hyperlinks, against {pct(s.link_recall)} for NER.
+
+**2. The model finds the Hulk, but not as a person.** It catches {Math.round(100 * node("Hulk").ner_seen / node("Hulk").string_mentions)}% of Hulk mentions and labels {node("Hulk").labels.ORG} of them ORG. Cyclops is ORG {node("Cyclops_(Marvel_Comics)").labels.ORG} times; Spider-Man is PRODUCT {node("Spider-Man").labels.PRODUCT} times. Keeping only PERSON entities is the obvious choice for a "who appears with whom" network. Had we done that, the text would recover {pct(s.person_only_link_recall)} of hyperlinks instead of {pct(s.link_recall)}, and Hulk would fall from {node("Hulk").text_in} naming articles to {s.person_only_in.Hulk}, and Cyclops to {s.person_only_in["Cyclops_(Marvel_Comics)"]}. The week-7 explorable warned that Black Widow comes back as an organisation. In this corpus, that kind of error is common, not occasional.
+
+**3. A third of the extra edges are not characters at all.** We read a random sample of 30 text-only edges in their sentences. **{data.reading_counts.right}** were genuine mentions of the character that Wikipedia simply did not link. **{data.reading_counts.thing}** were things that share a character's name: the sword in *the Blade of the Phoenix*, the *Hellfire Club*, the TV series *Ultimate Spider-Man*, the film *Shang-Chi and the Legend of the Ten Rings*, and *magician* in lowercase, labelled a place. **{data.reading_counts.umbrella}** pointed at "umbrella" pages such as *Hawkeye*, a page listing several characters with one codename. The text names Clint Barton's Hawkeye; the network only holds the umbrella page, which no article links to. That is why Hawkeye goes from {node("Hawkeye_(comics)").link_in} linking articles to {node("Hawkeye_(comics)").text_in} naming ones. **{data.reading_counts.mantle}** was the wrong holder of a shared mantle: Misty Knight's romance with *Power Man* was Luke Cage, not Victor Alvarez.
+
+**4. The disagreements are about identity, not grammar.** Missing edges come from names the model will not see (Doctor Strange) and from names we refused to guess (seven shared mantles). Extra edges come from names that are not characters and from codenames held by several characters. Hyperlinks avoid both problems, because a link points to one article. The text network is cheaper and covers more, but it only becomes a character network after entity resolution, and resolution is where all of our errors were.
+
+## What we would check next
+
+The main limitation: **our 30-edge reading was done once, by one reader, and only on the text-only edges.** The 1,179 shared edges were not sampled, so we have no estimate of how many of those are also accidents that happen to match a link. Next we would hand-label a sample from each of the three edge kinds, fix *Doctor* and *Ms.* with an entity ruler, and check whether a larger spaCy model or a transformer NER changes the label errors in finding 2. Names that are both a character and a thing (*Blade*, *Phoenix*, *Nova*) would need sentence-level disambiguation, not a bigger alias list.
+
+## Methods and AI
+
+A coding agent wrote the pipeline (`notebooks/week7/build_week7.py`), the explorer and a draft of this post for **exercise 7.13**. Automatic checks: exact page/network ID alignment, 303 nodes, 1,784 links, every edge count recomputed independently from the exported edge list, alias rules on hand-picked cases (*Antonio "Tony" Stark*, *Black Widow (Natasha Romanova)*, variant pages), and byte-identical exports. The agent read the 30 sampled sentences against the frozen article text and labelled them. The group still has to re-read and agree on those labels. See the repository's [AI methods log](https://github.com/EstebanPerez99/social-graphs-and-interactions/blob/main/AI_METHODS.md).
+
+Sources: [course week 7](https://sunelehmann.com/socialgraphs2026-web/weeks/week7.html#go-nuts), [course data](https://sunelehmann.com/socialgraphs2026-web/data/). All counts use the 26 August 2026 snapshot; links in the explorer go to live Wikipedia, which may have changed.

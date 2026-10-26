@@ -1,0 +1,63 @@
+---
+title: "We retract “fame is one-way traffic”"
+description: "Week 8 asked us to find the check one of our posts was missing. We ran it on our very first claim, and the claim does not survive: Marvel's hubs link back far more than chance."
+week: 8
+topic: "Networks × language"
+date: 2026-10-26
+dataset: "Marvel Wikipedia link network · week-1 snapshot, 2026-08-26"
+---
+import ReciprocityNull from "../../components/ReciprocityNull";
+import Interactive from "../../components/Interactive.astro";
+import Stats from "../../components/Stats";
+import data from "../../data/week8/reciprocity-null.json";
+
+export const spidey = data.hubs[0];
+export const net = data.network;
+export const pct = (v) => `${Math.round(100 * v)}%`;
+
+This week has no new method. It asks a harder question: which of the questions we answered were worth answering, and which of our answers would survive a check we skipped? We went back through seven posts. One of them failed the check, and it was the first thing we ever published.
+
+## What we asked
+
+Exercise 8.2 asks for the one post where a check was missing, the check itself, and the result that would make us retract the post. Our week-1 post said **"fame is one-way traffic"**: of the 106 articles that link to Spider-Man, his own article links back to only 9 (8%), against 39% for the network as a whole. That is a comparison with no null. **Is 8% low for a character with Spider-Man's degrees, or is it what any network with these degrees would produce?** We wrote the retraction criterion down before running anything: *if the hubs link back no less than a degree-preserving null predicts, the claim goes.*
+
+## What we did
+
+We rewired the week-1 network {data.method.samples} times with directed double-edge swaps (a→b, c→d becomes a→d, c→b), {data.method.swaps_per_edge} swaps per edge. Every character keeps its exact in-degree and out-degree, so Spider-Man is still linked by 106 articles and still links out to {spidey.out}. Self-loops and duplicate edges are rejected. For each of the ten most-linked characters, we counted how many of their linking articles they link back to, in the real network and in each rewiring.
+
+<Stats client:visible items={[
+  { value: spidey.out, label: "articles Spider-Man links to" },
+  { value: spidey.observed, label: "of those that link back", tone: "in" },
+  { value: Number(spidey.null_mean.toFixed(1)), label: "expected by the null" },
+  { value: Math.round(100 * net.mutual), suffix: "%", label: `reciprocated edges · null ${pct(net.null_mutual_mean)}` },
+]} />
+
+## The figure
+
+<Interactive label="Reciprocity of the ten biggest hubs against their null" note="Hover a dot for the numbers. Counts, not ratios: the ratio in the right column is what our week-1 post reported.">
+  <ReciprocityNull client:visible />
+</Interactive>
+
+## What surprised us
+
+**1. Spider-Man links back to everyone he links to.** His article has {spidey.out} outgoing links, and all {spidey.observed} go to articles that link to him. The "8%" in week 1 was out-degree divided by in-degree, with the numerator at its ceiling. The dashed blue line in the figure is that ceiling. A degree-preserving network predicts {spidey.null_mean.toFixed(1)} links back (95% range {spidey.null_lo}–{spidey.null_hi}). The real {spidey.observed} is above every one of the {data.method.samples} rewirings.
+
+**2. None of the ten hubs is one-way.** Every one sits at or beyond the top of its null range. Cyclops links back to {data.hubs[8].observed} of the {data.hubs[8].out} articles he links to, against a null mean of {data.hubs[8].null_mean.toFixed(1)}. Across the whole network {pct(net.mutual)} of edges are reciprocated, against {pct(net.null_mutual_mean)} ± {pct(net.null_mutual_sd)} in the null (maximum {pct(net.null_mutual_max)}). What looked like "fame" was a cap: an article links out to at most 28 other superheroes, so a hub linked by 106 *cannot* reciprocate most of them.
+
+**3. Our honest version, in three sentences.** We asked whether heavily linked Marvel characters link back less than chance would predict. They do not: all ten hubs reciprocate more often than in {data.method.samples} degree-preserving rewirings (Spider-Man {spidey.observed} against {spidey.null_mean.toFixed(1)} expected), and their low reciprocity *ratios* come from out-degree being capped near 28 links per article. Among these characters, Wikipedia linking is far more mutual than chance. The asymmetry we called fame comes from how few links any one article makes, not from one-way attention.
+
+## Our posts as questions
+
+8.2 also asks us to name the question each post answered and what its measurement misses. Here are the three we are proudest of:
+
+- **Week 3:** *Are Marvel's largest cliques separate teams?* Measured with maximum cliques plus a 100-network degree-preserving null. It captures mutually referential pockets of articles. It misses whether those characters ever shared a panel: a clique is an editorial fact first.
+- **Week 4:** *Which tradition does the history of philosophy hold by the thinnest thread?* Measured with the disparity filter, swept until the giant component breaks, against two nulls. It captures where mention weights concentrate. It misses anything English Wikipedia does not write about densely.
+- **Week 7:** *Can text rebuild the link network?* Measured with spaCy NER plus alias resolution, compared with hyperlinks and a 30-sentence reading. It captures who is named where. It misses identity: names, mantles and things that share a name.
+
+## What we would check next
+
+Exercise 8.2 asks for one missing check; week 5 lacks another. Its outliers were defined against a fitted line with no null for how far a residual has to be before it means something. Before the project, we want every claim to come with the result that would retract it, written down before the analysis runs, as we did here.
+
+## Methods and AI
+
+A coding agent wrote `notebooks/week8/build_week8.py`, the figure and a draft of this post. Tests check that every rewiring preserves each node's in- and out-degree with no self-loops or duplicates, and recompute the observed counts independently from the week-1 TSV. The retraction criterion was set before the null was run. The 8.2 question list is the group's to revise. See the [AI methods log](https://github.com/EstebanPerez99/social-graphs-and-interactions/blob/main/AI_METHODS.md) and [course week 8](https://sunelehmann.com/socialgraphs2026-web/weeks/week8.html).

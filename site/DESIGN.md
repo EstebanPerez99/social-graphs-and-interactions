@@ -113,6 +113,8 @@ week's `N.8-go-nuts.ipynb`.
 | `SpiderRace.tsx` | the week-1 game: reach / escape Spider-Man through real out-links | BFS live; facts computed from the same JSON |
 | `PostTitle.tsx` | post h1 with the one reveal per page | `role="heading"` wrapper |
 | `BackboneSnap.tsx` | week 4 opener: disparity-filter dial on the philosophers in 3D, guessing game, break log | `client:only="react"`; demand frame loop (renders only while the dial or camera moves); community palette exception |
+| `TextVsLinks.tsx` | week 7: link in-degree vs NER in-degree, with each text edge's sentence | √ scales; selection uses in-red (it is in-degree); edge kinds are tabs, not colours |
+| `ReciprocityNull.tsx` | week 8: observed links back vs degree-preserving null for the top hubs | static SVG; out-blue marks out-degree, the ceiling on links back |
 
 ### React Bits (`src/components/bits/`, MIT)
 
