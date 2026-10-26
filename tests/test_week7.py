@@ -1,7 +1,6 @@
-"""Independent checks of the week-7 text network and the week-8 reciprocity null."""
+"""Independent checks of the week-7 text network."""
 import importlib.util
 import json
-import random
 from collections import Counter
 from pathlib import Path
 import unittest
@@ -54,26 +53,6 @@ class Week7(unittest.TestCase):
         self.assertEqual(len(r), 30)
         self.assertEqual(sum(self.d['reading_counts'].values()), 30)
         self.assertTrue(all((x['s'], x['t']) not in EDGES for x in r))
-
-
-class Week8(unittest.TestCase):
-    def test_rewire_preserves_degrees(self):
-        w8 = module('notebooks/week8/build_week8.py', 'week8')
-        edges = sorted(EDGES)
-        g = w8.rewire(edges, random.Random(0), 5000)
-        self.assertEqual(Counter(s for s, _ in g), Counter(s for s, _ in edges))
-        self.assertEqual(Counter(t for _, t in g), Counter(t for _, t in edges))
-        self.assertEqual(len(set(g)), len(g)); self.assertFalse(any(a == b for a, b in g))
-        self.assertNotEqual(set(g), EDGES)
-
-    def test_observed(self):
-        d = json.loads((ROOT / 'site/src/data/week8/reciprocity-null.json').read_text())
-        for h in d['hubs']:
-            back = sum((h['id'], s) in EDGES for s, t in EDGES if t == h['id'])
-            self.assertEqual(h['observed'], back)
-            self.assertLessEqual(h['observed'], h['out'])
-        self.assertEqual(d['hubs'][0]['id'], 'Spider-Man')
-        self.assertEqual((d['hubs'][0]['in'], d['hubs'][0]['observed']), (106, 9))
 
 
 if __name__ == '__main__':

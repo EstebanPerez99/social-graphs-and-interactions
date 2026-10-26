@@ -209,12 +209,3 @@ the page was checked in a browser.
 ### Still to verify by hand
 - The 30 edge readings were done by the agent. The group should re-read them (`READING` in the builder).
 - Only text-only edges were sampled; shared edges have no error estimate.
-
-## Week 8 — Retracting a week-1 claim (26 October 2026)
-
-Exercise 8.2. The agent picked the week-1 claim "fame is one-way traffic" as the missing check,
-wrote the retraction criterion before running anything, and ran 500 directed degree-preserving
-rewirings. Result: all ten hubs reciprocate more than the null, and Spider-Man links back to all 9
-articles he links to. The claim is retracted in the week-8 post; the week-1 post is left unchanged
-as a record. Tests confirm that the rewiring preserves in/out degrees with no self-loops or duplicates,
-and recompute the observed counts. The 8.2 question list was drafted by the agent for the group to revise.

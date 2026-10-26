@@ -6,7 +6,7 @@ Exercise [7.13](https://sunelehmann.com/socialgraphs2026-web/weeks/week7.html#go
 uv venv --python 3.12 .venv-week7
 uv pip install --python .venv-week7/bin/python -r requirements-week7.txt
 .venv-week7/bin/python notebooks/week7/build_week7.py      # ~1 min, spaCy over 303 pages
-.venv-week7/bin/python -m unittest tests.test_week7_8
+.venv-week7/bin/python -m unittest tests.test_week7
 ```
 
 Inputs: `data/week5/marvel_pages.zip` and the frozen week-1 TSVs. Outputs (byte-identical):

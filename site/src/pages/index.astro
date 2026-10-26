@@ -20,9 +20,7 @@ const cards: WeekCard[] = site.schedule.map((s) => {
     : { week: s.week, topic: s.topic, date: fmtDate(s.date), unlock: fmtDate(plus(s.date, 5)), locked: true };
 });
 cards.push({ week: "9–13", topic: "Final project", date: "Nov–Dec", unlock: "2 Dec · demo fair", locked: true });
-const latestCta = latest?.data.week === 8
-  ? { anchor: "#what-we-asked", label: "See the check we skipped" }
-  : latest?.data.week === 7
+const latestCta = latest?.data.week === 7
   ? { anchor: "#text-vs-links", label: "Explore text vs links" }
   : latest?.data.week === 6
   ? { anchor: "#two-perspectives", label: "Explore two perspectives" }
